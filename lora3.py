@@ -279,7 +279,19 @@ def main():
         )
 
 
-    optimizer_cls = torch.optim.AdamW
+        # Initialize the optimizer
+    if args.use_8bit_adam:
+        print("hsjhdhdj")
+        try:
+            import bitsandbytes as bnb
+        except ImportError:
+            raise ImportError(
+                "Please install bitsandbytes to use 8-bit Adam. You can do so by running `pip install bitsandbytes`"
+            )
+
+        optimizer_cls = bnb.optim.AdamW8bit
+    else:
+        optimizer_cls = torch.optim.AdamW
 
     optimizer = optimizer_cls(
         lora_layers,
