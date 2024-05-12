@@ -37,26 +37,29 @@ from preprocessing import preprocess_data
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.28.0.dev0")
-args = parse_args()
 
-logger = get_logger(__name__, log_level="INFO")
-logging_dir = Path(args.output_dir, args.logging_dir)
-accelerator_project_config = ProjectConfiguration(project_dir=args.output_dir, logging_dir=logging_dir)
-
-accelerator = Accelerator(
-    gradient_accumulation_steps=args.gradient_accumulation_steps,
-    log_with=args.report_to,
-    project_config=accelerator_project_config,
-)
-
-train_dataloader = preprocess_data(accelerator)
 
 
 def main():
-
-    global accelerator, args, caption_column, image_column, tokenizer, train_dataloader
-    #global accelerator, args,train_dataloader
+    #global caption_column, image_column, tokenizer
     args = parse_args()
+
+    logger = get_logger(__name__, log_level="INFO")
+    logging_dir = Path(args.output_dir, args.logging_dir)
+    accelerator_project_config = ProjectConfiguration(project_dir=args.output_dir, logging_dir=logging_dir)
+
+    accelerator = Accelerator(
+        gradient_accumulation_steps=args.gradient_accumulation_steps,
+        log_with=args.report_to,
+        project_config=accelerator_project_config
+    )
+
+    train_dataloader = preprocess_data(accelerator)
+
+    #global accelerator, args, caption_column, image_column, tokenizer, train_dataloader
+    #global accelerator, args,train_dataloader
+    
+    #args = parse_args()
 
     if args.report_to == "wandb":
         if not is_wandb_available():
@@ -373,8 +376,6 @@ def main():
                 pipeline = DiffusionPipeline.from_pretrained(
                     args.pretrained_model_name_or_path,
                     unet=unwrap_model(unet),
-                    revision=args.revision,
-                    variant=args.variant,
                     torch_dtype=weight_dtype,
                 )
                 pipeline = pipeline.to(accelerator.device)
@@ -432,8 +433,6 @@ def main():
         if args.validation_prompt is not None:
             pipeline = DiffusionPipeline.from_pretrained(
                 args.pretrained_model_name_or_path,
-                revision=args.revision,
-                variant=args.variant,
                 torch_dtype=weight_dtype,
             )
             pipeline = pipeline.to(accelerator.device)
