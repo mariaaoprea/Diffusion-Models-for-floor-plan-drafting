@@ -19,6 +19,7 @@ DATASET_NAME_MAPPING = {
     "foorplan": ("image", "text"),
 }
 
+#tokenize input captions and transform the images
 def tokenize_captions(examples, is_train=True):
     global caption_column
     captions = []
@@ -61,6 +62,7 @@ def collate_fn(examples):
 
 def preprocess(accelerator):
     global caption_column, image_column
+    #get the dataset
     if args.dataset_name is not None:
         dataset = load_dataset(
             args.dataset_name,
@@ -77,9 +79,10 @@ def preprocess(accelerator):
             data_files=data_files,
             cache_dir=args.cache_dir,
         )
-
+    #tokenize inputs and targets
     column_names = dataset["train"].column_names
 
+    #get the column names for input/target
     dataset_columns = DATASET_NAME_MAPPING.get(args.dataset_name, None)
     if args.image_column is None:
         image_column = dataset_columns[0] if dataset_columns is not None else column_names[0]
@@ -103,6 +106,8 @@ def preprocess(accelerator):
             dataset["train"] = dataset["train"].shuffle(seed=args.seed).select(range(args.max_train_samples))
         train_dataset = dataset["train"].with_transform(preprocess_train)
 
+
+    #create the dataloader
     train_dataloader = torch.utils.data.DataLoader(
         train_dataset,
         shuffle=True,

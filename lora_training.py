@@ -33,6 +33,7 @@ from diffusers.utils.torch_utils import is_compiled_module
 
 #imported files
 from arguments import parse_args
+from preprocessing import preprocess_data
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.28.0.dev0")
@@ -48,9 +49,14 @@ accelerator = Accelerator(
     project_config=accelerator_project_config,
 )
 
+train_dataloader = preprocess_data(accelerator)
 
 
 def main():
+
+    global accelerator, args, caption_column, image_column, tokenizer, train_dataloader
+    #global accelerator, args,train_dataloader
+    args = parse_args()
 
     if args.report_to == "wandb":
         if not is_wandb_available():
@@ -125,6 +131,11 @@ def main():
         args.learning_rate = (
             args.learning_rate * args.gradient_accumulation_steps * args.train_batch_size * accelerator.num_processes
         )
+    
+    def unwrap_model(model):
+        model = accelerator.unwrap_model(model)
+        model = model._orig_mod if is_compiled_module(model) else model
+        return model
 
     # Initialize the optimizer
     if args.use_8bit_adam:
