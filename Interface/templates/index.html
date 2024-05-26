@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+        <form method="POST" class="flex flex-col space-y-3">
+            <input type="text" name="prompt" placeholder="Enter a prompt" class="form-input mt-1 block w-full p-2.5 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+            <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Generate</button>
+        </form>
+        {% if img_url %}
+            <img src="{{ img_url }}" alt="Generated Image" class="mt-4 rounded">
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+
+
