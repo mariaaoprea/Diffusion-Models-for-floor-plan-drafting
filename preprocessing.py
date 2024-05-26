@@ -13,7 +13,7 @@ tokenizer = CLIPTokenizer.from_pretrained(
 )
 
 DATASET_NAME_MAPPING = {
-    "diffusers/pokemon-gpt4-captions": ("image", "text"),
+    "foorplan": ("image", "text"),
 }
 
 if args.dataset_name is not None:
