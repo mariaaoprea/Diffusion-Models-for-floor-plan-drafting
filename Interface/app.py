@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, render_template_string
+from flask import Flask, render_template, request
 from diffusers import AutoPipelineForText2Image
 import torch
 from io import BytesIO
@@ -15,13 +15,15 @@ pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_
 def index():
     if request.method == 'POST':
         prompt = request.form['prompt']
-        image = generate_image(prompt)
-        img_io = BytesIO()
-        image.save(img_io, 'PNG')
-        img_io.seek(0)
-        img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
-        img_url = f"data:image/png;base64,{img_data}"
-        return render_template('index.html', img_url=img_url)
+        images = [generate_image(prompt) for _ in range(4)]
+        img_urls = []
+        for image in images:
+            img_io = BytesIO()
+            image.save(img_io, 'PNG')
+            img_io.seek(0)
+            img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
+            img_urls.append(f"data:image/png;base64,{img_data}")
+        return render_template('index.html', img_urls=img_urls)
     return render_template('index.html')
 
 def generate_image(prompt):
@@ -30,6 +32,7 @@ def generate_image(prompt):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
 
 
 
