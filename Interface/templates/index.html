@@ -1,21 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Generate Image</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-        <form method="POST" class="flex flex-col space-y-3">
-            <input type="text" name="prompt" placeholder="Enter a prompt" class="form-input mt-1 block w-full p-2.5 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
-            <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Generate</button>
-        </form>
-        {% if img_url %}
-            <img src="{{ img_url }}" alt="Generated Image" class="mt-4 rounded">
-        {% endif %}
+<body class="bg-blue-200 h-screen">
+    <div class="h-full flex">
+        <!-- Left Side: Prompt Input -->
+        <div class="w-1/3 flex flex-col justify-center items-center">
+            <div class="bg-blue-600 p-8 flex flex-col justify-center items-center w-full max-w-md rounded-lg">
+                <form method="POST" class="w-full">
+                    <div class="mb-4">
+                        <input type="text" name="prompt" placeholder="ENTER YOUR PROMPT" class="w-full p-2 rounded-lg text-black">
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-blue-300 p-2 rounded-lg">GENERATE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Right Side: Generated Images -->
+        <div class="bg-white w-2/3 p-8 flex flex-col justify-center items-center">
+            <div class="grid grid-cols-2 gap-4 w-full h-full">
+                {% for img_url in img_urls %}
+                    <div class="w-full h-full flex justify-center items-center">
+                        <img src="{{ img_url }}" alt="Generated Image" class="max-w-full max-h-full rounded-lg">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
 
 
 
