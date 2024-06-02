@@ -22,11 +22,11 @@
             </div>
         </div>
         <!-- Right Side: Generated Images -->
-        <div class="bg-white w-2/3 p-8 flex flex-col justify-center items-center">
+        <div class="bg-white w-2/3 p-8 flex flex-col justify-center items-center overflow-hidden">
             <div class="grid grid-cols-2 gap-4 w-full h-full">
                 {% for img_url in img_urls %}
-                    <div class="w-full h-full flex justify-center items-center">
-                        <img src="{{ img_url }}" alt="Generated Image" class="max-w-full max-h-full rounded-lg">
+                    <div class="w-full h-full flex justify-center items-center overflow-hidden">
+                        <img src="{{ img_url }}" alt="Generated Image" class="max-w-full max-h-full object-contain rounded-lg">
                     </div>
                 {% endfor %}
             </div>
@@ -34,6 +34,7 @@
     </div>
 </body>
 </html>
+
 
 
 
