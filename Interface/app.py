@@ -12,7 +12,7 @@ pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-
 pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/', methods=['GET', 'POST'])
+
 def index():
     prompt = ""
     img_urls = []
