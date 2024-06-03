@@ -14,10 +14,10 @@
             <div class="bg-blue-600 p-8 flex flex-col justify-center items-center w-full max-w-md rounded-lg">
                 <form method="POST" class="w-full" onsubmit="return handleFormSubmit(event)">
                     <div class="mb-4">
-                        <input type="text" name="prompt" placeholder="ENTER YOUR PROMPT" class="w-full p-2 rounded-lg text-black" value="{{ prompt }}">
+                        <input type="text" name="prompt" placeholder="ENTER YOUR PROMPT" class="w-full p-2 rounded-lg text-black" value="{{ prompt }}" oninput="checkInput()">
                     </div>
                     <div class="flex justify-center">
-                        <button id="generateButton" type="submit" class="bg-blue-300 p-2 rounded-lg hover:bg-blue-400 transition">GENERATE</button>
+                        <button id="generateButton" type="submit" class="bg-blue-300 p-2 rounded-lg hover:bg-blue-400 transition" disabled>GENERATE</button>
                     </div>
                 </form>
             </div>
@@ -54,6 +54,12 @@
             event.target.submit();
         }
 
+        function checkInput() {
+            const promptInput = document.querySelector('input[name="prompt"]');
+            const generateButton = document.getElementById('generateButton');
+            generateButton.disabled = promptInput.value.trim() === '';
+        }
+
         function showModal(src) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModal').classList.remove('hidden');
@@ -63,12 +69,15 @@
         function closeModal() {
             document.getElementById('imageModal').classList.add('hidden');
         }
+
+        // Initialize the generate button state on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkInput();
+        });
     </script>
 </body>
 </html>
 
-</body>
-</html>
 
 
 
