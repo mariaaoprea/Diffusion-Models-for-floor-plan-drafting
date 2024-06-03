@@ -7,3 +7,10 @@
     border-top-color: #3498db;
     animation: spin 1s linear infinite;
 }
+textarea {
+    resize: none; /* Prevents resizing of the textarea */
+}
+
+
+
+
