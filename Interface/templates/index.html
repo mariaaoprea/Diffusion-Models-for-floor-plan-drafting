@@ -29,7 +29,7 @@
             </div>
             <div class="grid grid-cols-2 gap-4 w-full h-full">
                 {% for img_url in img_urls %}
-                    <div class="w-full h-full flex justify-center items-center overflow-hidden">
+                    <div class="w-full h-full flex flex-col justify-center items-center overflow-hidden">
                         <img src="{{ img_url }}" alt="Generated Image" class="max-w-full max-h-full object-contain rounded-lg transition hover:opacity-75 cursor-pointer" onclick="showModal('{{ img_url }}')">
                     </div>
                 {% endfor %}
@@ -42,6 +42,7 @@
         <div class="bg-white p-4 rounded-lg relative">
             <span class="absolute top-2 right-2 text-2xl cursor-pointer" onclick="closeModal()">&times;</span>
             <img id="modalImage" src="" alt="Selected Image" class="max-w-full max-h-screen rounded-lg">
+            <a id="downloadButton" href="#" download="generated_image.png" class="mt-2 bg-blue-300 p-2 rounded-lg hover:bg-blue-400 transition">Download</a>
         </div>
     </div>
 
@@ -53,6 +54,7 @@
         function showModal(src) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModal').classList.remove('hidden');
+            document.getElementById('downloadButton').href = src;
         }
 
         function closeModal() {
@@ -61,6 +63,7 @@
     </script>
 </body>
 </html>
+
 
 
 
