@@ -12,19 +12,21 @@ pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-
 pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    prompt = ""
+    img_urls = []
     if request.method == 'POST':
         prompt = request.form['prompt']
         images = [generate_image(prompt) for _ in range(4)]
-        img_urls = []
         for image in images:
             img_io = BytesIO()
             image.save(img_io, 'PNG')
             img_io.seek(0)
             img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
             img_urls.append(f"data:image/png;base64,{img_data}")
-        return render_template('index.html', img_urls=img_urls)
-    return render_template('index.html')
+    return render_template('index.html', img_urls=img_urls, prompt=prompt)
+
 
 def generate_image(prompt):
     result = pipeline(prompt).images[0] 

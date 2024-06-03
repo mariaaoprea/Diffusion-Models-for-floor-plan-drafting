@@ -14,7 +14,7 @@
             <div class="bg-blue-600 p-8 flex flex-col justify-center items-center w-full max-w-md rounded-lg">
                 <form method="POST" class="w-full" onsubmit="showLoading()">
                     <div class="mb-4">
-                        <input type="text" name="prompt" placeholder="ENTER YOUR PROMPT" class="w-full p-2 rounded-lg text-black">
+                        <input type="text" name="prompt" placeholder="ENTER YOUR PROMPT" class="w-full p-2 rounded-lg text-black" value="{{ prompt }}">
                     </div>
                     <div class="flex justify-center">
                         <button type="submit" class="bg-blue-300 p-2 rounded-lg hover:bg-blue-400 transition">GENERATE</button>
