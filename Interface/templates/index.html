@@ -68,10 +68,12 @@
                     checkStatus(data.taskID);
                 } else {
                     alert('Error: ' + (data.error || 'Unknown error'));
+                    enableGenerateButton();
                 }
             })
             .catch(error => {
                 alert('Error: ' + error.message);
+                enableGenerateButton();
             });
         }
 
@@ -85,10 +87,12 @@
                     setTimeout(() => checkStatus(taskID), 2000);
                 } else {
                     alert('Error: Task not found');
+                    enableGenerateButton();
                 }
             })
             .catch(error => {
                 alert('Error: ' + error.message);
+                enableGenerateButton();
             });
         }
 
@@ -107,6 +111,12 @@
                 imageGrid.appendChild(imageContainer);
             });
             document.getElementById('loadingSpinner').classList.add('hidden');
+            enableGenerateButton();
+        }
+
+        function enableGenerateButton() {
+            const generateButton = document.getElementById('generateButton');
+            generateButton.disabled = false;
         }
 
         function checkInput() {
@@ -118,7 +128,8 @@
         function showModal(src) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModal').classList.remove('hidden');
-            document.getElementById('downloadButton').href = src;
+            document.getElementById('downloadButton').href =
+            src;
         }
 
         function closeModal() {
