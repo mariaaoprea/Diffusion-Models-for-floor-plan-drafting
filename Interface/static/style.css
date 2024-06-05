@@ -10,6 +10,9 @@
 textarea {
     resize: none; /* Prevents resizing of the textarea */
 }
+.font-nunito {
+    font-family: 'Nunito', sans-serif;
+}
 
 
 
