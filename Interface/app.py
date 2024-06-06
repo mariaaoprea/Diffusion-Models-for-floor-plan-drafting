@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask_socketio import SocketIO
 from diffusers import AutoPipelineForText2Image
 import torch
 from io import BytesIO
@@ -7,22 +8,34 @@ import time
 import threading
 
 app = Flask(__name__)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to(device)
 pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
-def generate_images(prompt):
-    results = pipeline(prompt, num_images_per_prompt=4).images
-    img_data_list = []
-    for result in results:
+def generate_images(prompt, task_id):
+    # Emit initial progress
+    socketio.emit('progress', {'task_id': task_id, 'progress': 0}, namespace='/generate')
+    
+    num_images = 4
+    images = []
+    progress_per_image = 100 // num_images
+    for i in range(num_images):
+        result = pipeline(prompt, num_images_per_prompt=1).images[0]
         img_io = BytesIO()
         result.save(img_io, 'PNG')
         img_io.seek(0)
         img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
-        img_data_list.append(f"data:image/png;base64,{img_data}")
-    return img_data_list
+        images.append(f"data:image/png;base64,{img_data}")
+        
+        # Update progress for each image generated
+        progress = (i + 1) * progress_per_image
+        socketio.emit('progress', {'task_id': task_id, 'progress': progress}, namespace='/generate')
+    
+    socketio.emit('progress', {'task_id': task_id, 'progress': 100}, namespace='/generate')  # Ensure 100% is sent at the end
+    return images
 
 class Task:
     def __init__(self):
@@ -39,12 +52,12 @@ class Task:
         while True:
             done_tasks = []
             for task_number, prompt in self.tasks.items():
-                image_urls = generate_images(prompt)
+                image_urls = generate_images(prompt, task_number)
                 self.results[task_number] = {"urls": image_urls}
                 done_tasks.append(task_number)
             for task_number in done_tasks:
                 del self.tasks[task_number]
-            time.sleep(5)
+            time.sleep(1)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -69,10 +82,31 @@ def status(task_id):
     else:
         return jsonify({"status": "not found"}), 404
 
+@socketio.on('connect', namespace='/generate')
+def handle_connect():
+    print('Client connected')
+
+@socketio.on('disconnect', namespace='/generate')
+def handle_disconnect():
+    print('Client disconnected')
+
 if __name__ == '__main__':
     task = Task()
     threading.Thread(target=task.run, daemon=True).start()
-    app.run(debug=True, port=5000)
+    socketio.run(app, debug=True, port=5000)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

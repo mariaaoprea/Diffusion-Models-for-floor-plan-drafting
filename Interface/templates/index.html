@@ -7,18 +7,19 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 </head>
 <body class="bg-blue-100 h-screen">
     <div class="h-full flex">
         <!-- Left Side: Prompt Input -->
-        <div class="w-1/3 flex flex-col justify-center items-center">
+        <div class="w-1/3 flex flex-col justify-center items-center p-2">
             <div class="bg-blue-600 p-8 flex flex-col justify-center items-center w-full h-2/3 max-w-xl rounded-lg">
                 <form id="promptForm" class="w-full">
                     <div class="mb-4">
                         <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="w-full h-72 p-2 rounded-lg text-black text-xl font-nunito" oninput="checkInput()"></textarea>
                     </div>
                     <div class="flex justify-center">
-                        <button id="generateButton" type="submit" class="bg-blue-300 w-40 h-40  rounded-full hover:bg-blue-400 transition font-nunito text-2xl" disabled>GENERATE</button>
+                        <button id="generateButton" type="submit" class="bg-blue-300 w-32 h-32 rounded-full hover:bg-blue-400 transition font-nunito text-2xl" disabled>GENERATE</button>
                     </div>
                 </form>
             </div>
@@ -26,8 +27,12 @@
         <!-- Right Side: Generated Images -->
         <div class="w-2/3 flex flex-col justify-center items-center">
             <div class="bg-white w-5/6 h-5/6 p-8 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
-                <div id="loadingSpinner" class="hidden absolute inset-0 flex justify-center items-center bg-white bg-opacity-75 z-50">
-                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
+                <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
+                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                    <div class="w-full h-4 bg-gray-200 rounded-full">
+                        <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
+                    </div>
+                    <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
                 </div>
                 <div id="imageGrid" class="grid grid-cols-2 gap-4 w-full h-full">
                     <!-- Images will be injected here -->
@@ -46,15 +51,40 @@
     </div>
 
     <script>
+        const socket = io.connect('http://' + document.domain + ':' + location.port + '/generate');
+
+        socket.on('connect', () => {
+            console.log('WebSocket connected');
+        });
+
+        socket.on('progress', function(data) {
+            console.log('Progress event received:', data);
+            if (data.task_id === currentTaskID) {
+                const progress = data.progress;
+                const loadingContainer = document.getElementById('loadingContainer');
+                const loadingBar = document.getElementById('loadingBar');
+                const loadingText = document.getElementById('loadingText');
+
+                loadingContainer.classList.remove('hidden');
+                loadingBar.style.width = progress + '%';
+                loadingText.innerText = 'Loading... ' + progress + '%';
+
+                if (progress === 100) {
+                    setTimeout(() => {
+                        loadingContainer.classList.add('hidden');
+                    }, 500);
+                }
+            }
+        });
+
+        let currentTaskID = null;
+
         function handleFormSubmit(event) {
             event.preventDefault();
             const promptInput = document.querySelector('textarea[name="prompt"]');
             const generateButton = document.getElementById('generateButton');
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const imageGrid = document.getElementById('imageGrid');
 
             generateButton.disabled = true;
-            loadingSpinner.classList.remove('hidden');
 
             fetch('/submit', {
                 method: 'POST',
@@ -66,6 +96,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.taskID) {
+                    currentTaskID = data.taskID;
                     checkStatus(data.taskID);
                 } else {
                     alert('Error: ' + (data.error || 'Unknown error'));
@@ -111,9 +142,9 @@
                 imageContainer.appendChild(imgElement);
                 imageGrid.appendChild(imageContainer);
             });
-            document.getElementById('loadingSpinner').classList.add('hidden');
             enableGenerateButton();
         }
+
         // JavaScript to prevent zooming
         document.addEventListener('wheel', function(event) {
             if (event.ctrlKey) {
@@ -135,8 +166,7 @@
         function showModal(src) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModal').classList.remove('hidden');
-            document.getElementById('downloadButton').href =
-            src;
+            document.getElementById('downloadButton').href = src;
         }
 
         function closeModal() {
@@ -147,9 +177,15 @@
             document.getElementById('promptForm').addEventListener('submit', handleFormSubmit);
             checkInput();
         });
+
     </script>
 </body>
 </html>
+
+
+
+
+
 
 
 
