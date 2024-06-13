@@ -1,0 +1,30 @@
+06/13/2024 15:50:01 - INFO - __main__ - Distributed environment: DistributedType.NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda
+Mixed precision type: no
+{'clip_sample_range', 'dynamic_thresholding_ratio', 'variance_type', 'prediction_type', 'thresholding', 'timestep_spacing', 'sample_max_value', 'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+{'latents_std', 'scaling_factor', 'latents_mean', 'force_upcast'} was not found in config. Values will be initialized to default values.
+{'attention_type', 'addition_embed_type', 'time_embedding_dim', 'mid_block_only_cross_attention', 'addition_time_embed_dim', 'dropout', 'addition_embed_type_num_heads', 'upcast_attention', 'conv_out_kernel', 'projection_class_embeddings_input_dim', 'encoder_hid_dim', 'time_embedding_act_fn', 'num_attention_heads', 'only_cross_attention', 'reverse_transformer_layers_per_block', 'timestep_post_act', 'use_linear_projection', 'cross_attention_norm', 'transformer_layers_per_block', 'encoder_hid_dim_type', 'conv_in_kernel', 'time_embedding_type', 'time_cond_proj_dim', 'resnet_out_scale_factor', 'resnet_skip_time_act', 'class_embeddings_concat', 'mid_block_type', 'num_class_embeds', 'dual_cross_attention', 'resnet_time_scale_shift', 'class_embed_type'} was not found in config. Values will be initialized to default values.
+C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+06/13/2024 15:50:04 - INFO - __main__ - ***** Running training *****
+06/13/2024 15:50:04 - INFO - __main__ -   Num Epochs = 215
+06/13/2024 15:50:04 - INFO - __main__ -   Instantaneous batch size per device = 4
+06/13/2024 15:50:04 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 4
+06/13/2024 15:50:04 - INFO - __main__ -   Gradient Accumulation steps = 1
+06/13/2024 15:50:04 - INFO - __main__ -   Total optimization steps = 15000
+Steps:   0%|                                                                                                                                                                                                      | 0/15000 [00:00<?, ?it/s]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Steps:   0%|                                                                                                                                                                                                      | 0/15000 [00:00<?, ?it/s]C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\diffusers\models\attention_processor.py:1406: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\cb\pytorch_1000000000000\work\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:455.)
+  hidden_states = F.scaled_dot_product_attention(
+C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torch\nn\modules\conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at C:\cb\pytorch_1000000000000\work\aten\src\ATen\native\cudnn\Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+
+
+
+
+

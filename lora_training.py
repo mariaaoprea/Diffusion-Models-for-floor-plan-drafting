@@ -43,31 +43,6 @@ from preprocessing import preprocess_data
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.28.0.dev0")
 
-class PerceptualLoss(nn.Module):
-    def __init__(self, feature_layer=8):
-        super(PerceptualLoss, self).__init__()
-        vgg = models.vgg19(pretrained=True).features
-        self.features = nn.Sequential(*list(vgg.children())[:feature_layer]).eval()
-        for param in self.features.parameters():
-            param.requires_grad = False
-
-        # Normalization parameters for VGG19
-        self.mean = torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
-        self.std = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
-
-    def forward(self, generated, target):
-        # Ensure the inputs are 4D tensors
-        if generated.dim() != 4 or target.dim() != 4:
-            raise ValueError("Input images must be 4D tensors [batch_size, channels, height, width]")
-
-        # Normalize the inputs
-        generated = (generated - self.mean.to(generated.device)) / self.std.to(generated.device)
-        target = (target - self.mean.to(target.device)) / self.std.to(target.device)
-
-        gen_features = self.features(generated)
-        target_features = self.features(target)
-        return torch.nn.functional.mse_loss(gen_features, target_features)
-
 def main():
     args = parse_args()
 
@@ -203,9 +178,6 @@ def main():
         unet, optimizer, train_dataloader, lr_scheduler
     )
 
-    # Initialize the perceptual loss function
-    perceptual_loss_fn = PerceptualLoss().to(accelerator.device)
-
     # Initialize LPIPS function
     lpips_fn = lpips.LPIPS(net='alex').to(accelerator.device)
 
@@ -330,39 +302,6 @@ def main():
                     loss = loss.mean(dim=list(range(1, len(loss.shape)))) * mse_loss_weights
                     loss = loss.mean()
 
-                with torch.no_grad():
-                    recon_images = vae.decode(latents).sample
-                    target_images = vae.decode(target).sample
-                    # Ensure these are tensors and have the shape [batch_size, channels, height, width]
-                    if recon_images.dim() != 4 or target_images.dim() != 4:
-                        raise ValueError("Decoded images must be 4D tensors [batch_size, channels, height, width]")
-                    perceptual_loss = perceptual_loss_fn(recon_images, target_images)
-
-                # Convert PyTorch tensors to NumPy arrays for SSIM calculation
-                recon_images_np = recon_images.cpu().numpy().transpose(0, 2, 3, 1)  # Convert to [batch_size, height, width, channels]
-                target_images_np = target_images.cpu().numpy().transpose(0, 2, 3, 1)
-                # Compute SSIM
-                ssim_values = []
-                for i in range(recon_images_np.shape[0]):
-                    ssim_value = ssim(recon_images_np[i], target_images_np[i], multichannel=True, win_size=7, channel_axis=-1, data_range=1.0)
-                    ssim_values.append(ssim_value)
-                ssim_value = np.mean(ssim_values)
-                # Compute LPIPS
-                lpips_value = lpips_fn(recon_images, target_images)
-                if torch.is_tensor(lpips_value):
-                    lpips_value = lpips_value.mean().item()
-
-                # Ensure lpips_value is a float for logging
-                lpips_value = float(lpips_value)
-
-
-
-
-                # Gather the losses across all processes for logging (if we use distributed training).
-                #avg_loss = accelerator.gather(loss.repeat(args.train_batch_size)).mean()
-                #avg_perceptual_loss = accelerator.gather(perceptual_loss.repeat(args.train_batch_size)).mean()
-                #train_loss += avg_loss.item() / args.gradient_accumulation_steps
-
                 # Backpropagate
                 accelerator.backward(loss)
                 if accelerator.sync_gradients:
@@ -378,9 +317,6 @@ def main():
                 global_step += 1
                 accelerator.log({
                     "train_loss": loss,
-                    "perceptual_loss": perceptual_loss,
-                    "ssim": ssim_value,
-                    "lpips": lpips_value
                 }, step=global_step)
 
                 if global_step % args.checkpointing_steps == 0:
@@ -426,6 +362,27 @@ def main():
 
             if global_step >= args.max_train_steps:
                 break
+
+        # Compute SSIM and LPIPS once per epoch
+        unet.eval()
+        with torch.no_grad():
+            recon_images = vae.decode(latents).sample
+            target_images = vae.decode(target).sample
+
+            # Compute SSIM directly on PyTorch tensors using batched operations
+            ssim_value = 0.0
+            for i in range(recon_images.shape[0]):
+                ssim_value += ssim(recon_images[i].permute(1, 2, 0).cpu().numpy(), target_images[i].permute(1, 2, 0).cpu().numpy(), multichannel=True, win_size=7,  channel_axis=-1,data_range=1.0)
+            ssim_value /= recon_images.shape[0]
+
+            # Compute LPIPS directly on GPU
+            lpips_value = lpips_fn(recon_images, target_images).mean().item()
+
+        # Log SSIM and LPIPS values
+        accelerator.log({
+            "ssim": ssim_value,
+            "lpips": lpips_value
+        }, step=epoch)
 
         if accelerator.is_main_process:
             if args.validation_prompt is not None and epoch % args.validation_epochs == 0:
@@ -536,5 +493,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

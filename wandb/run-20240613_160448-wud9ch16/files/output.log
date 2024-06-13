@@ -1,0 +1,198 @@
+06/13/2024 16:04:49 - INFO - __main__ - Distributed environment: DistributedType.NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda
+Mixed precision type: no
+{'timestep_spacing', 'dynamic_thresholding_ratio', 'sample_max_value', 'prediction_type', 'clip_sample_range', 'variance_type', 'rescale_betas_zero_snr', 'thresholding'} was not found in config. Values will be initialized to default values.
+{'latents_std', 'force_upcast', 'scaling_factor', 'latents_mean'} was not found in config. Values will be initialized to default values.
+{'timestep_post_act', 'class_embeddings_concat', 'resnet_skip_time_act', 'transformer_layers_per_block', 'time_embedding_dim', 'conv_in_kernel', 'dropout', 'reverse_transformer_layers_per_block', 'encoder_hid_dim_type', 'time_embedding_type', 'addition_embed_type_num_heads', 'time_cond_proj_dim', 'time_embedding_act_fn', 'dual_cross_attention', 'mid_block_only_cross_attention', 'addition_embed_type', 'use_linear_projection', 'class_embed_type', 'projection_class_embeddings_input_dim', 'encoder_hid_dim', 'addition_time_embed_dim', 'resnet_time_scale_shift', 'cross_attention_norm', 'resnet_out_scale_factor', 'only_cross_attention', 'upcast_attention', 'conv_out_kernel', 'num_class_embeds', 'attention_type', 'num_attention_heads', 'mid_block_type'} was not found in config. Values will be initialized to default values.
+C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+06/13/2024 16:04:52 - INFO - __main__ - ***** Running training *****
+06/13/2024 16:04:52 - INFO - __main__ -   Num Epochs = 215
+06/13/2024 16:04:52 - INFO - __main__ -   Instantaneous batch size per device = 4
+06/13/2024 16:04:52 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 4
+06/13/2024 16:04:52 - INFO - __main__ -   Gradient Accumulation steps = 1
+06/13/2024 16:04:52 - INFO - __main__ -   Total optimization steps = 15000
+Steps:   0%|                                                                                                                                                                                                      | 0/15000 [00:00<?, ?it/s]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Steps:   0%|                                                                                                                                                                                                      | 0/15000 [00:00<?, ?it/s]C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\diffusers\models\attention_processor.py:1406: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\cb\pytorch_1000000000000\work\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:455.)
+  hidden_states = F.scaled_dot_product_attention(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|▋                                                                                                                                                             | 70/15000 [02:05<6:18:20,  1.52s/it, lr=0.0001, step_loss=0.0914]C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torch\nn\modules\conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at C:\cb\pytorch_1000000000000\work\aten\src\ATen\native\cudnn\Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+06/13/2024 16:06:59 - INFO - __main__ - Running validation...
+ Generating 4 images with prompt: 'Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows'.
+{'requires_safety_checker', 'image_encoder'} was not found in config. Values will be initialized to default values.
+                                                                                                                                                                                                                                            Loaded safety_checker as StableDiffusionSafetyChecker from `safety_checker` subfolder of runwayml/stable-diffusion-v1-5.
+Loading pipeline components...:   0%|                                                                                                                                                                                 | 0/7 [00:00<?, ?it/s]Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of runwayml/stable-diffusion-v1-5.
+Loading pipeline components...:  14%|████████████████████████▏                                                                                                                                                | 1/7 [00:00<00:01,  3.78it/s]{'latents_std', 'force_upcast', 'scaling_factor', 'latents_mean'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of runwayml/stable-diffusion-v1-5.██▎                                                                                                                        | 2/7 [00:00<00:01,  4.85it/s]
+Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of runwayml/stable-diffusion-v1-5.
+{'prediction_type', 'timestep_spacing'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as PNDMScheduler from `scheduler` subfolder of runwayml/stable-diffusion-v1-5.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of runwayml/stable-diffusion-v1-5.
+Loading pipeline components...: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:00<00:00, 13.17it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

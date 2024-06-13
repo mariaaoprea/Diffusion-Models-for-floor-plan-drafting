@@ -1,0 +1,32 @@
+06/13/2024 15:45:35 - INFO - __main__ - Distributed environment: DistributedType.NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda
+Mixed precision type: no
+{'timestep_spacing', 'dynamic_thresholding_ratio', 'variance_type', 'prediction_type', 'clip_sample_range', 'rescale_betas_zero_snr', 'thresholding', 'sample_max_value'} was not found in config. Values will be initialized to default values.
+{'force_upcast', 'latents_std', 'scaling_factor', 'latents_mean'} was not found in config. Values will be initialized to default values.
+{'encoder_hid_dim_type', 'attention_type', 'time_embedding_type', 'class_embed_type', 'time_cond_proj_dim', 'resnet_skip_time_act', 'use_linear_projection', 'cross_attention_norm', 'mid_block_type', 'num_attention_heads', 'dropout', 'num_class_embeds', 'time_embedding_act_fn', 'conv_out_kernel', 'conv_in_kernel', 'timestep_post_act', 'class_embeddings_concat', 'mid_block_only_cross_attention', 'addition_embed_type_num_heads', 'projection_class_embeddings_input_dim', 'encoder_hid_dim', 'upcast_attention', 'resnet_out_scale_factor', 'resnet_time_scale_shift', 'only_cross_attention', 'addition_time_embed_dim', 'time_embedding_dim', 'dual_cross_attention', 'addition_embed_type', 'reverse_transformer_layers_per_block', 'transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+06/13/2024 15:45:39 - INFO - __main__ - ***** Running training *****
+06/13/2024 15:45:39 - INFO - __main__ -   Num Epochs = 215
+06/13/2024 15:45:39 - INFO - __main__ -   Instantaneous batch size per device = 4
+06/13/2024 15:45:39 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 4
+06/13/2024 15:45:39 - INFO - __main__ -   Gradient Accumulation steps = 1
+06/13/2024 15:45:39 - INFO - __main__ -   Total optimization steps = 15000
+Steps:   0%|                                                                                                                                                                                                      | 0/15000 [00:00<?, ?it/s]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Steps:   0%|                                                                                                                                                                                                      | 0/15000 [00:00<?, ?it/s]C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\diffusers\models\attention_processor.py:1406: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\cb\pytorch_1000000000000\work\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:455.)
+  hidden_states = F.scaled_dot_product_attention(
+Traceback (most recent call last):
+  File "C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\lora_training.py", line 490, in <module>
+    main()
+  File "C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\lora_training.py", line 313, in main
+    ssim_value += ssim(recon_images[i].permute(1, 2, 0).cpu().numpy(), target_images[i].permute(1, 2, 0).cpu().numpy(), multichannel=True, win_size=7, data_range=1.0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\skimage\metrics\_structural_similarity.py", line 186, in structural_similarity
+    raise ValueError(
+ValueError: win_size exceeds image extent. Either ensure that your images are at least 7x7; or pass win_size explicitly in the function call, with an odd value less than or equal to the smaller side of your images. If your images are multichannel (with color channels), set channel_axis to the axis number corresponding to the channels.

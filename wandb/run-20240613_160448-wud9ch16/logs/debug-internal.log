@@ -1,0 +1,1285 @@
+2024-06-13 16:04:48,118 INFO    StreamThr :22484 [internal.py:wandb_internal():85] W&B internal server running at pid: 22484, started at: 2024-06-13 16:04:48.117225
+2024-06-13 16:04:48,119 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status
+2024-06-13 16:04:48,121 INFO    WriterThread:22484 [datastore.py:open_for_write():87] open: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\run-wud9ch16.wandb
+2024-06-13 16:04:48,122 DEBUG   SenderThread:22484 [sender.py:send():378] send: header
+2024-06-13 16:04:48,150 DEBUG   SenderThread:22484 [sender.py:send():378] send: run
+2024-06-13 16:04:48,774 INFO    SenderThread:22484 [dir_watcher.py:__init__():211] watching files in: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files
+2024-06-13 16:04:48,774 INFO    SenderThread:22484 [sender.py:_start_run_threads():1123] run started: wud9ch16 with start time 1718287488.118226
+2024-06-13 16:04:48,781 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: check_version
+2024-06-13 16:04:48,781 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: check_version
+2024-06-13 16:04:49,109 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: run_start
+2024-06-13 16:04:49,125 DEBUG   HandlerThread:22484 [system_info.py:__init__():26] System info init
+2024-06-13 16:04:49,125 DEBUG   HandlerThread:22484 [system_info.py:__init__():41] System info init done
+2024-06-13 16:04:49,125 INFO    HandlerThread:22484 [system_monitor.py:start():194] Starting system monitor
+2024-06-13 16:04:49,125 INFO    SystemMonitor:22484 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-13 16:04:49,125 INFO    HandlerThread:22484 [system_monitor.py:probe():214] Collecting system info
+2024-06-13 16:04:49,129 INFO    SystemMonitor:22484 [interfaces.py:start():188] Started cpu monitoring
+2024-06-13 16:04:49,129 INFO    SystemMonitor:22484 [interfaces.py:start():188] Started disk monitoring
+2024-06-13 16:04:49,129 INFO    SystemMonitor:22484 [interfaces.py:start():188] Started gpu monitoring
+2024-06-13 16:04:49,134 INFO    SystemMonitor:22484 [interfaces.py:start():188] Started memory monitoring
+2024-06-13 16:04:49,140 INFO    SystemMonitor:22484 [interfaces.py:start():188] Started network monitoring
+2024-06-13 16:04:49,148 DEBUG   HandlerThread:22484 [system_info.py:probe():150] Probing system
+2024-06-13 16:04:49,149 DEBUG   HandlerThread:22484 [system_info.py:_probe_git():135] Probing git
+2024-06-13 16:04:49,198 DEBUG   HandlerThread:22484 [system_info.py:_probe_git():143] Probing git done
+2024-06-13 16:04:49,198 DEBUG   HandlerThread:22484 [system_info.py:probe():198] Probing system done
+2024-06-13 16:04:49,198 DEBUG   HandlerThread:22484 [system_monitor.py:probe():223] {'os': 'Windows-11-10.0.22631-SP0', 'python': '3.12.3', 'heartbeatAt': '2024-06-13T14:04:49.149012', 'startedAt': '2024-06-13T14:04:48.108322', 'docker': None, 'cuda': None, 'args': ('--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5', '--train_data_dir=dataset', '--resolution=512', '--random_flip', '--train_batch_size=4', '--learning_rate=1e-04', '--validation_epochs=10', '--lr_scheduler=cosine', '--lr_warmup_steps=0', '--output_dir=output_5', '--checkpointing_steps=500', "--validation_prompt='Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows'", '--seed=1337', '--rank=4', '--max_train_steps=15000', '--use_8bit_adam'), 'state': 'running', 'program': 'C:\\Users\\see\\Documents\\GitHub\\Diffusion-Models-for-floor-plan-drafting\\lora_training.py', 'codePathLocal': 'lora_training.py', 'codePath': 'lora_training.py', 'git': {'remote': 'https://github.com/mariaaoprea/Diffusion-Models-for-floor-plan-drafting.git', 'commit': '3952f7016313c18a40c0763665046ca5c4332e52'}, 'email': 'marita.oprea@gmail.com', 'root': 'C:/Users/see/Documents/GitHub/Diffusion-Models-for-floor-plan-drafting', 'host': 'DESKTOP-SEFLBJ1', 'username': 'see', 'executable': 'C:\\Users\\see\\anaconda3\\envs\\Bachelor\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2601.0, 'min': 0.0, 'max': 3302.0}, 'cpu_freq_per_core': [{'current': 2601.0, 'min': 0.0, 'max': 3302.0}], 'disk': {'/': {'total': 1886.2646446228027, 'used': 674.6046524047852}}, 'gpu': 'NVIDIA GeForce RTX 3080 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3080 Laptop GPU', 'memory_total': 17179869184}], 'memory': {'total': 31.66913604736328}}
+2024-06-13 16:04:49,198 INFO    HandlerThread:22484 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-13 16:04:49,198 INFO    HandlerThread:22484 [system_monitor.py:probe():227] Publishing system info
+2024-06-13 16:04:49,198 DEBUG   HandlerThread:22484 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-06-13 16:04:49,200 ERROR   HandlerThread:22484 [system_info.py:_save_conda():221] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\wandb\sdk\internal\system\system_info.py", line 214, in _save_conda
+    subprocess.call(
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2024-06-13 16:04:49,201 DEBUG   HandlerThread:22484 [system_info.py:_save_conda():222] Saving conda packages done
+2024-06-13 16:04:49,203 INFO    HandlerThread:22484 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-13 16:04:49,211 DEBUG   SenderThread:22484 [sender.py:send():378] send: files
+2024-06-13 16:04:49,211 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-06-13 16:04:49,314 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: python_packages
+2024-06-13 16:04:49,315 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: python_packages
+2024-06-13 16:04:49,315 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:04:49,315 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:04:49,724 DEBUG   SenderThread:22484 [sender.py:send():378] send: telemetry
+2024-06-13 16:04:49,781 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:04:49,781 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\requirements.txt
+2024-06-13 16:04:49,781 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-metadata.json
+2024-06-13 16:04:49,782 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\conda-environment.yaml
+2024-06-13 16:04:49,996 INFO    wandb-upload_0:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\u2wvaq4f-wandb-metadata.json
+2024-06-13 16:04:51,800 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:04:52,643 DEBUG   SenderThread:22484 [sender.py:send():378] send: telemetry
+2024-06-13 16:04:52,644 DEBUG   SenderThread:22484 [sender.py:send():378] send: config
+2024-06-13 16:04:53,655 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:04:53,809 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:04:54,812 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:04:57,155 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:04:57,155 DEBUG   SenderThread:22484 [sender.py:send():378] send: telemetry
+2024-06-13 16:04:57,840 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:04:58,928 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:04:58,929 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:04:58,929 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:04:58,929 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:04:58,931 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:04:59,862 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:04:59,863 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:00,665 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:00,666 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:00,666 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:00,667 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:00,875 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:01,888 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:02,406 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:02,407 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:02,408 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:02,409 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:02,897 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:03,904 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:04,155 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:04,155 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:04,156 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:04,157 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:04,158 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:04,327 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:05:04,327 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:05:04,914 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:05,897 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:05,898 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:05,898 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:05,898 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:05,922 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:05,922 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:07,640 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:07,641 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:07,641 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:07,642 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:07,941 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:07,942 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:09,381 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:09,381 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:09,382 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:09,382 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:09,384 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:09,956 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:09,957 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:11,128 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:11,129 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:11,129 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:11,130 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:11,979 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:11,979 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:12,878 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:12,879 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:12,879 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:12,880 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:12,989 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:13,996 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:14,637 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:14,637 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:14,637 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:14,638 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:14,638 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:15,007 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:16,018 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:16,387 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:16,387 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:16,387 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:16,388 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:17,033 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:18,044 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:18,146 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:18,147 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:18,147 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:18,147 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:19,051 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:19,349 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:05:19,350 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:05:19,910 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:19,910 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:20,062 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:20,127 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:20,128 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:20,128 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:21,070 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:21,071 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\config.yaml
+2024-06-13 16:05:21,662 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:21,662 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:21,663 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:21,663 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:22,077 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:22,077 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:23,416 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:23,418 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:23,418 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:23,419 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:24,093 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:24,094 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:25,182 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:25,182 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:25,183 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:25,183 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:25,183 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:26,110 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:26,111 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:26,938 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:26,939 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:26,939 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:26,940 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:27,119 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:28,136 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:28,708 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:28,709 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:28,709 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:28,710 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:29,143 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:30,149 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:30,478 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:30,479 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:30,479 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:30,480 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:30,480 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:31,156 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:32,167 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:32,236 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:32,237 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:32,237 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:32,238 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:33,178 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:34,005 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:34,005 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:34,005 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:34,006 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:34,190 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:34,191 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:34,347 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:05:34,347 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:05:35,526 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:35,773 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:35,773 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:35,773 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:35,774 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:36,212 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:36,213 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:37,529 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:37,529 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:37,529 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:37,530 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:38,229 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:38,230 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:39,294 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:39,295 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:39,295 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:39,295 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:40,247 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:40,247 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:41,057 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:41,058 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:41,058 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:41,059 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:41,060 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:41,262 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:42,271 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:42,819 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:42,819 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:42,821 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:42,821 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:43,281 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:44,296 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:44,590 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:44,590 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:44,591 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:44,592 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:45,305 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:46,314 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:46,344 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:46,345 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:46,345 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:46,345 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:46,346 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:47,328 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:48,102 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:48,103 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:48,103 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:48,103 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:48,331 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:48,332 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:49,151 DEBUG   SystemMonitor:22484 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-06-13 16:05:49,152 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:05:49,354 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:05:49,354 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:05:49,868 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:49,868 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:49,868 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:49,869 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:50,353 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:50,354 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:51,626 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:51,626 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:51,626 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:51,626 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:51,627 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:52,370 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:52,371 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:53,388 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:53,391 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:53,391 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:53,391 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:54,393 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:54,393 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:55,156 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:55,158 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:55,159 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:55,159 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:55,403 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:56,409 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:56,923 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:56,923 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:05:56,923 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:56,924 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:56,924 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:57,422 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:05:58,431 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:05:58,683 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:05:58,685 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:05:58,685 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:05:58,686 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:05:59,441 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:00,454 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:00,456 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:00,456 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:00,456 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:00,457 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:00,457 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:02,221 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:02,221 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:02,221 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:02,222 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:02,222 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:02,473 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:02,474 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:03,990 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:03,991 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:03,991 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:03,992 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:04,372 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:06:04,373 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:06:04,496 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:04,496 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:05,753 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:05,753 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:05,754 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:05,754 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:06,517 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:06,518 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:07,518 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:07,518 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:07,518 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:07,518 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:07,520 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:07,529 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:08,536 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:09,278 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:09,279 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:09,279 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:09,279 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:09,543 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:10,547 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:11,041 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:11,042 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:11,042 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:11,042 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:11,560 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:12,567 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:12,806 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:12,806 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:12,807 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:12,807 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:12,807 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:13,578 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:14,571 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:14,572 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:14,572 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:14,573 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:14,584 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:14,585 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:16,344 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:16,345 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:16,345 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:16,346 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:16,599 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:16,601 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:18,112 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:18,112 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:18,112 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:18,112 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:18,113 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:18,618 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:18,619 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:19,164 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:06:19,379 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:06:19,380 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:06:19,879 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:19,881 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:19,881 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:19,881 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:20,637 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:20,638 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:21,655 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:21,656 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:21,656 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:21,657 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:22,658 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:22,659 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:23,427 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:23,427 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:23,428 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:23,428 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:23,429 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:23,667 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:24,679 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:25,205 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:25,205 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:25,205 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:25,205 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:25,690 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:26,698 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:26,985 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:26,985 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:26,986 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:26,986 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:27,709 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:28,714 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:28,756 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:28,756 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:28,758 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:28,758 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:28,758 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:29,731 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:30,532 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:30,533 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:30,533 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:30,534 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:30,743 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:30,743 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:32,304 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:32,304 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:32,305 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:32,305 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:32,757 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:32,757 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:34,076 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:34,076 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:34,077 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:34,077 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:34,078 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:34,392 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:06:34,392 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:06:34,780 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:34,781 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:35,852 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:35,859 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:35,860 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:35,861 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:36,805 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:36,805 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:37,631 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:37,632 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:37,632 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:37,633 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:37,816 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:38,824 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:39,408 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:39,408 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:39,409 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:39,409 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:39,409 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:39,836 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:39,836 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:41,190 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:41,191 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:41,191 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:41,192 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:41,854 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:41,854 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:42,968 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:42,969 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:42,969 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:42,970 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:43,871 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:43,872 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:44,752 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:44,752 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:44,752 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:44,753 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:44,753 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:44,879 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:45,885 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:46,537 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:46,538 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:46,538 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:46,539 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:46,894 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:47,899 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:48,322 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:48,323 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:48,323 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:48,323 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:48,912 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:49,174 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:06:49,409 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:06:49,409 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:06:49,923 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:50,097 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:50,097 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:50,098 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:50,098 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:50,098 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:50,934 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:51,880 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:51,880 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:51,880 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:51,881 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:51,941 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:51,941 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:53,665 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:53,665 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:53,665 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:53,666 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:53,971 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:53,971 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:55,441 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:55,442 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:06:55,442 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:55,442 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:55,443 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:55,988 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:55,988 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:57,211 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:57,211 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:57,211 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:57,211 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:58,003 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:06:58,004 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:58,132 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:06:58,132 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:06:58,132 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:06:58,134 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:06:59,016 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:06:59,199 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:00,022 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:00,998 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:02,041 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:04,450 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:07:04,452 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:07:06,700 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:11,756 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:16,800 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:19,184 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:07:19,420 DEBUG   SenderThread:22484 [sender.py:send():378] send: files
+2024-06-13 16:07:19,420 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file media\images\validation_70_ba2824608bdc91b409d5.png with policy now
+2024-06-13 16:07:19,425 DEBUG   SenderThread:22484 [sender.py:send():378] send: files
+2024-06-13 16:07:19,425 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file media\images\validation_70_b25512f2c9e8be1655d0.png with policy now
+2024-06-13 16:07:19,429 DEBUG   SenderThread:22484 [sender.py:send():378] send: files
+2024-06-13 16:07:19,429 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file media\images\validation_70_7f9a6b45c87da5508674.png with policy now
+2024-06-13 16:07:19,430 DEBUG   SenderThread:22484 [sender.py:send():378] send: files
+2024-06-13 16:07:19,431 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file media\images\validation_70_3de70d789437805ff0d2.png with policy now
+2024-06-13 16:07:19,455 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:19,455 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:19,455 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:19,456 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:19,461 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:07:19,461 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:07:20,225 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:20,225 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\media\images\validation_70_ba2824608bdc91b409d5.png
+2024-06-13 16:07:20,225 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\media\images\validation_70_3de70d789437805ff0d2.png
+2024-06-13 16:07:20,226 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\media\images\validation_70_b25512f2c9e8be1655d0.png
+2024-06-13 16:07:20,226 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\media\images\validation_70_7f9a6b45c87da5508674.png
+2024-06-13 16:07:20,226 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\media\images
+2024-06-13 16:07:20,226 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\media
+2024-06-13 16:07:20,391 INFO    wandb-upload_1:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\hwx19o03-media/images/validation_70_b25512f2c9e8be1655d0.png
+2024-06-13 16:07:20,629 INFO    wandb-upload_0:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\yocxy7te-media/images/validation_70_ba2824608bdc91b409d5.png
+2024-06-13 16:07:20,967 INFO    wandb-upload_2:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\ba9mrel9-media/images/validation_70_7f9a6b45c87da5508674.png
+2024-06-13 16:07:21,061 INFO    wandb-upload_3:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\muar8ilr-media/images/validation_70_3de70d789437805ff0d2.png
+2024-06-13 16:07:21,370 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:21,960 INFO    wandb-upload_2:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\9tybmpky-media/images/validation_70_7f9a6b45c87da5508674.png
+2024-06-13 16:07:21,962 INFO    wandb-upload_1:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\0abvhmjj-media/images/validation_70_b25512f2c9e8be1655d0.png
+2024-06-13 16:07:22,240 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:22,381 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:22,844 INFO    wandb-upload_3:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\fmzrv8my-media/images/validation_70_ba2824608bdc91b409d5.png
+2024-06-13 16:07:22,898 INFO    wandb-upload_2:22484 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmpqmz8uq65wandb\nv470rph-media/images/validation_70_3de70d789437805ff0d2.png
+2024-06-13 16:07:23,145 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:23,145 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:23,146 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:23,146 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:23,248 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:24,269 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:24,924 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:24,925 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:24,925 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:24,926 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:25,283 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:26,294 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:26,718 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:26,719 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:26,719 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:26,719 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:27,304 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:27,723 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:28,315 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:28,512 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:28,512 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:28,512 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:28,513 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:29,325 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:30,294 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:30,295 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:30,295 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:30,296 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:30,337 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:30,337 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:32,076 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:32,076 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:32,076 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:32,078 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:32,353 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:32,353 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:33,081 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:33,860 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:33,861 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:33,861 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:33,861 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:34,370 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:34,371 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:34,461 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:07:34,461 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:07:35,642 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:35,643 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:35,643 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:35,643 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:36,389 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:36,389 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:37,429 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:37,430 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:37,430 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:37,431 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:38,412 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:38,414 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:38,440 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:39,220 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:39,221 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:39,221 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:39,222 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:39,423 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:40,434 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:41,004 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:41,005 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:41,005 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:41,006 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:41,442 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:42,454 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:42,795 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:42,797 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:42,797 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:42,798 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:43,461 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:43,803 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:44,469 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:44,585 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:44,586 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:44,586 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:44,587 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:45,481 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:46,369 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:46,370 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:46,370 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:46,371 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:46,488 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:46,489 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:48,161 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:48,162 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:48,162 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:48,163 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:48,509 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:48,509 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:49,172 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:49,188 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:07:49,464 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:07:49,465 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:07:49,940 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:49,940 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:49,940 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:49,941 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:50,523 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:50,523 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:51,720 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:51,721 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:51,721 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:51,722 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:52,543 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:52,543 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:53,509 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:53,510 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:53,510 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:53,512 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:53,548 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:54,521 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:07:54,553 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:55,298 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:55,298 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:55,298 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:55,299 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:55,564 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:56,573 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:57,079 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:57,080 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:57,080 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:57,081 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:57,583 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:58,591 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:07:58,866 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:07:58,867 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:07:58,868 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:07:58,869 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:07:59,599 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:07:59,878 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:00,608 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:00,655 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:00,655 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:00,656 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:00,656 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:01,617 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:02,435 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:02,436 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:02,436 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:02,437 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:02,633 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:02,635 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:04,219 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:04,219 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:04,220 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:04,220 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:04,477 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:08:04,477 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:08:04,647 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:04,647 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:05,704 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:05,997 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:05,998 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:06,000 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:06,000 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:06,664 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:06,664 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:07,781 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:07,782 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:07,783 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:07,784 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:08,685 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:08,685 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:09,575 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:09,575 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:09,576 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:09,576 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:09,692 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:10,697 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:11,366 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:11,366 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:11,366 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:11,368 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:11,368 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:11,710 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:12,720 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:13,152 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:13,152 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:13,152 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:13,153 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:13,728 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:14,738 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:14,940 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:14,941 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:14,941 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:14,942 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:15,742 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:16,725 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:16,726 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:16,727 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:16,727 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:16,727 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:16,757 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:16,757 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:18,515 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:18,518 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:18,518 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:18,519 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:18,779 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:18,779 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:19,201 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:08:19,464 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:08:19,465 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:08:20,313 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:20,313 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:20,314 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:20,314 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:20,797 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:20,797 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:22,097 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:22,097 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:22,098 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:22,098 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:22,099 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:22,817 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:22,817 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:23,893 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:23,893 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:23,893 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:23,895 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:24,829 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:24,829 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:25,693 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:25,694 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:25,694 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:25,695 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:25,836 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:26,848 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:27,490 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:27,490 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:27,491 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:27,491 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:27,492 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:27,857 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:28,867 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:29,282 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:29,282 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:29,283 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:29,283 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:29,877 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:30,881 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:31,076 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:31,077 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:31,077 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:31,078 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:31,883 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:32,877 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:32,877 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:32,878 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:32,878 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:32,879 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:32,885 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:32,885 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:34,481 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:08:34,481 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:08:34,669 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:34,670 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:34,670 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:34,671 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:34,897 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:34,898 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:36,474 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:36,474 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:36,474 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:36,475 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:36,908 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:36,908 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:37,916 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:38,280 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:38,281 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:38,283 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:38,283 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:38,284 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:38,919 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:39,922 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:40,074 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:40,074 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:40,074 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:40,075 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:40,925 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:41,871 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:41,871 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:41,872 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:41,873 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:41,932 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:41,932 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:43,667 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:43,667 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:43,667 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:43,667 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:43,668 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:43,950 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:43,950 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:45,469 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:45,469 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:45,470 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:45,471 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:45,972 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:45,972 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:47,281 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:47,282 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:47,282 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:47,283 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:47,985 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:47,985 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:49,084 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:49,084 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:49,085 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:49,085 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:49,086 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:49,203 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:08:49,483 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:08:49,484 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:08:50,012 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:50,012 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:50,866 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:50,866 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:50,866 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:50,867 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:51,029 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:52,043 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:52,663 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:52,663 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:52,663 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:52,664 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:53,044 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:54,050 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:54,457 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:54,458 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:54,458 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:54,459 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:54,459 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:55,060 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:56,072 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:56,246 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:56,247 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:56,247 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:56,247 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:57,088 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:58,044 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:58,045 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:58,045 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:58,046 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:08:58,094 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:08:58,094 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:08:59,842 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:08:59,842 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:08:59,843 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:08:59,843 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:08:59,843 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:00,116 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:00,118 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:01,629 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:01,630 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:01,630 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:01,631 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:02,130 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:02,131 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:03,412 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:03,412 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:03,413 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:03,413 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:04,156 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:04,157 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:04,498 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:09:04,498 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:09:05,193 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:05,193 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:05,194 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:05,194 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:05,195 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:06,171 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:06,172 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:06,982 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:06,982 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:06,983 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:06,985 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:07,177 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:08,191 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:08,770 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:08,771 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:08,771 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:08,771 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:09,202 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:10,210 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:10,556 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:10,556 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:10,557 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:10,557 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:10,558 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:11,219 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:12,223 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:12,346 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:12,346 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:12,347 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:12,347 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:13,230 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:14,147 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:14,148 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:14,148 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:14,149 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:14,237 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:14,238 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:15,936 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:15,936 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:15,937 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:15,937 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:15,938 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:16,259 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:16,260 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:17,746 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:17,747 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:17,747 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:17,749 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:18,276 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:18,276 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:19,217 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:09:19,487 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:09:19,487 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:09:19,531 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:19,747 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:19,748 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:19,750 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:20,296 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:20,296 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:21,315 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:21,316 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:21,316 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:21,316 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:21,320 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:22,346 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:22,346 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:23,093 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:23,093 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:23,093 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:23,094 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:23,357 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:24,015 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:24,015 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:24,015 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:24,016 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:24,362 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:24,362 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:25,066 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:26,386 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:26,886 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:26,887 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:26,887 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:26,888 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:26,888 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:27,400 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:28,408 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:28,668 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:28,668 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:28,669 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:28,669 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:29,420 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:30,427 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:30,451 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:30,451 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:30,452 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:30,452 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:31,443 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:32,245 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:32,245 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:32,245 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:32,246 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:32,246 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:32,455 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:32,457 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:34,025 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:34,025 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:34,025 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:34,026 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:34,472 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:34,473 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:34,489 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:09:34,490 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:09:35,805 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:35,805 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:35,806 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:35,806 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:36,492 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:36,492 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:37,598 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:37,598 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:37,599 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:37,599 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:37,600 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:38,506 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:38,506 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:39,394 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:39,394 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:39,394 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:39,395 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:39,513 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:40,521 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:41,184 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:41,184 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:41,185 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:41,185 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:41,528 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:42,535 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:42,974 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:42,974 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:42,975 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:42,975 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:42,976 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:43,546 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:44,560 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:44,772 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:44,772 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:44,772 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:44,773 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:45,574 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:46,565 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:46,565 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:46,566 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:46,567 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:46,576 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:46,576 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:48,353 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:48,353 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:48,353 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:48,354 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:48,355 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:48,605 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:48,605 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:49,233 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:09:49,505 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:09:49,505 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:09:50,141 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:50,142 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:50,142 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:50,143 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:50,622 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:50,622 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:51,935 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:51,936 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:51,936 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:51,937 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:52,637 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:52,637 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:53,729 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:53,729 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:53,729 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:53,730 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:53,730 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:54,662 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:54,662 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:55,516 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:55,517 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:55,517 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:55,518 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:55,668 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:56,681 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:57,302 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:57,302 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:57,303 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:57,303 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:57,692 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:09:58,700 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:09:59,093 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:09:59,094 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:09:59,094 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:09:59,094 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:09:59,095 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:09:59,711 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:00,716 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:00,880 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:00,881 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:00,881 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:00,882 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:01,728 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:02,661 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:02,661 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:02,663 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:02,663 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:02,734 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:02,735 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:04,449 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:04,449 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:04,450 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:04,450 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:04,450 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:04,500 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:10:04,500 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:10:04,746 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:04,746 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:06,241 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:06,242 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:06,242 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:06,243 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:06,763 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:06,763 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:08,031 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:08,032 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:08,032 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:08,033 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:08,779 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:08,779 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:09,826 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:09,827 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:09,828 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:09,828 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:09,829 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:10,791 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:10,792 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:11,627 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:11,628 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:11,628 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:11,629 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:11,795 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:12,800 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:13,426 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:13,427 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:13,427 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:13,428 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:13,814 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:14,823 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:15,225 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:15,225 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:15,226 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:15,226 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:15,226 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:15,831 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:16,837 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:17,013 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:17,014 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:17,014 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:17,015 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:17,844 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:18,804 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:18,805 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:18,805 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:18,806 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:18,854 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:18,856 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:19,241 DEBUG   SenderThread:22484 [sender.py:send():378] send: stats
+2024-06-13 16:10:19,506 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:10:19,506 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:10:20,589 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:20,589 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:20,590 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:20,590 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:20,591 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:20,869 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:20,869 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:22,372 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:22,374 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:22,374 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:22,374 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:22,886 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:22,886 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:24,155 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:24,156 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:24,156 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:24,156 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:24,908 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:24,908 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:25,940 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:25,940 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:25,941 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:25,941 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:25,942 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:26,925 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:26,925 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:27,735 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:27,736 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:27,736 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:27,737 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:27,933 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:28,936 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:29,529 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:29,529 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:29,529 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:29,530 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:29,939 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:30,941 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:31,324 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:31,324 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:31,324 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:31,325 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:31,325 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:31,943 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:32,946 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:33,112 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:33,113 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:33,113 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:33,114 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:33,949 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:34,506 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 16:10:34,506 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 16:10:34,914 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:34,915 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:34,915 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:34,916 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:34,958 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:34,958 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:36,702 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:36,703 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:36,704 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:36,704 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:36,704 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:36,976 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:36,976 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:38,494 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:38,494 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:38,495 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:38,495 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:38,991 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:38,991 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:40,288 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:40,288 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:40,289 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:40,289 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:41,016 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:41,018 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json
+2024-06-13 16:10:42,072 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 16:10:42,073 DEBUG   HandlerThread:22484 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-13 16:10:42,073 DEBUG   SenderThread:22484 [sender.py:send():378] send: history
+2024-06-13 16:10:42,074 DEBUG   SenderThread:22484 [sender.py:send_request():405] send_request: summary_record
+2024-06-13 16:10:42,075 INFO    SenderThread:22484 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 16:10:43,034 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\output.log
+2024-06-13 16:10:43,034 INFO    Thread-16 :22484 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_160448-wud9ch16\files\wandb-summary.json

@@ -1,0 +1,208 @@
+2024-06-13 15:45:34,695 INFO    StreamThr :2736 [internal.py:wandb_internal():85] W&B internal server running at pid: 2736, started at: 2024-06-13 15:45:34.694843
+2024-06-13 15:45:34,696 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: status
+2024-06-13 15:45:34,698 INFO    WriterThread:2736 [datastore.py:open_for_write():87] open: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\run-1babm3bg.wandb
+2024-06-13 15:45:34,698 DEBUG   SenderThread:2736 [sender.py:send():378] send: header
+2024-06-13 15:45:34,729 DEBUG   SenderThread:2736 [sender.py:send():378] send: run
+2024-06-13 15:45:35,296 INFO    SenderThread:2736 [dir_watcher.py:__init__():211] watching files in: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files
+2024-06-13 15:45:35,296 INFO    SenderThread:2736 [sender.py:_start_run_threads():1123] run started: 1babm3bg with start time 1718286334.695913
+2024-06-13 15:45:35,304 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: check_version
+2024-06-13 15:45:35,304 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: check_version
+2024-06-13 15:45:35,625 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: run_start
+2024-06-13 15:45:35,641 DEBUG   HandlerThread:2736 [system_info.py:__init__():26] System info init
+2024-06-13 15:45:35,641 DEBUG   HandlerThread:2736 [system_info.py:__init__():41] System info init done
+2024-06-13 15:45:35,641 INFO    HandlerThread:2736 [system_monitor.py:start():194] Starting system monitor
+2024-06-13 15:45:35,642 INFO    SystemMonitor:2736 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-13 15:45:35,642 INFO    HandlerThread:2736 [system_monitor.py:probe():214] Collecting system info
+2024-06-13 15:45:35,645 INFO    SystemMonitor:2736 [interfaces.py:start():188] Started cpu monitoring
+2024-06-13 15:45:35,646 INFO    SystemMonitor:2736 [interfaces.py:start():188] Started disk monitoring
+2024-06-13 15:45:35,646 INFO    SystemMonitor:2736 [interfaces.py:start():188] Started gpu monitoring
+2024-06-13 15:45:35,651 INFO    SystemMonitor:2736 [interfaces.py:start():188] Started memory monitoring
+2024-06-13 15:45:35,656 INFO    SystemMonitor:2736 [interfaces.py:start():188] Started network monitoring
+2024-06-13 15:45:35,663 DEBUG   HandlerThread:2736 [system_info.py:probe():150] Probing system
+2024-06-13 15:45:35,663 DEBUG   HandlerThread:2736 [system_info.py:_probe_git():135] Probing git
+2024-06-13 15:45:35,713 DEBUG   HandlerThread:2736 [system_info.py:_probe_git():143] Probing git done
+2024-06-13 15:45:35,713 DEBUG   HandlerThread:2736 [system_info.py:probe():198] Probing system done
+2024-06-13 15:45:35,713 DEBUG   HandlerThread:2736 [system_monitor.py:probe():223] {'os': 'Windows-11-10.0.22631-SP0', 'python': '3.12.3', 'heartbeatAt': '2024-06-13T13:45:35.663599', 'startedAt': '2024-06-13T13:45:34.688356', 'docker': None, 'cuda': None, 'args': ('--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5', '--train_data_dir=dataset', '--resolution=512', '--random_flip', '--train_batch_size=4', '--learning_rate=1e-04', '--validation_epochs=10', '--lr_scheduler=cosine', '--lr_warmup_steps=0', '--output_dir=output_5', '--checkpointing_steps=500', "--validation_prompt='Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows'", '--seed=1337', '--rank=4', '--max_train_steps=15000', '--use_8bit_adam'), 'state': 'running', 'program': 'C:\\Users\\see\\Documents\\GitHub\\Diffusion-Models-for-floor-plan-drafting\\lora_training.py', 'codePathLocal': 'lora_training.py', 'codePath': 'lora_training.py', 'git': {'remote': 'https://github.com/mariaaoprea/Diffusion-Models-for-floor-plan-drafting.git', 'commit': '3952f7016313c18a40c0763665046ca5c4332e52'}, 'email': 'marita.oprea@gmail.com', 'root': 'C:/Users/see/Documents/GitHub/Diffusion-Models-for-floor-plan-drafting', 'host': 'DESKTOP-SEFLBJ1', 'username': 'see', 'executable': 'C:\\Users\\see\\anaconda3\\envs\\Bachelor\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2601.0, 'min': 0.0, 'max': 3302.0}, 'cpu_freq_per_core': [{'current': 2601.0, 'min': 0.0, 'max': 3302.0}], 'disk': {'/': {'total': 1886.2646446228027, 'used': 674.607795715332}}, 'gpu': 'NVIDIA GeForce RTX 3080 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3080 Laptop GPU', 'memory_total': 17179869184}], 'memory': {'total': 31.66913604736328}}
+2024-06-13 15:45:35,713 INFO    HandlerThread:2736 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-13 15:45:35,713 INFO    HandlerThread:2736 [system_monitor.py:probe():227] Publishing system info
+2024-06-13 15:45:35,713 DEBUG   HandlerThread:2736 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-06-13 15:45:35,715 ERROR   HandlerThread:2736 [system_info.py:_save_conda():221] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\site-packages\wandb\sdk\internal\system\system_info.py", line 214, in _save_conda
+    subprocess.call(
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\see\anaconda3\envs\Bachelor\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2024-06-13 15:45:35,717 DEBUG   HandlerThread:2736 [system_info.py:_save_conda():222] Saving conda packages done
+2024-06-13 15:45:35,718 INFO    HandlerThread:2736 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-13 15:45:35,725 DEBUG   SenderThread:2736 [sender.py:send():378] send: files
+2024-06-13 15:45:35,725 INFO    SenderThread:2736 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-06-13 15:45:35,828 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: python_packages
+2024-06-13 15:45:35,828 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: python_packages
+2024-06-13 15:45:35,828 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-13 15:45:35,829 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: stop_status
+2024-06-13 15:45:36,268 DEBUG   SenderThread:2736 [sender.py:send():378] send: telemetry
+2024-06-13 15:45:36,310 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:36,310 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\conda-environment.yaml
+2024-06-13 15:45:36,310 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\requirements.txt
+2024-06-13 15:45:36,311 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\wandb-metadata.json
+2024-06-13 15:45:36,506 INFO    wandb-upload_0:2736 [upload_job.py:push():130] Uploaded file C:\Users\see\AppData\Local\Temp\tmp79w_4512wandb\z9o33qvw-wandb-metadata.json
+2024-06-13 15:45:38,325 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:39,288 DEBUG   SenderThread:2736 [sender.py:send():378] send: telemetry
+2024-06-13 15:45:39,289 DEBUG   SenderThread:2736 [sender.py:send():378] send: config
+2024-06-13 15:45:40,302 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 15:45:40,332 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:41,334 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:44,367 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:46,108 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 15:45:46,908 DEBUG   SenderThread:2736 [sender.py:send():378] send: exit
+2024-06-13 15:45:46,908 INFO    SenderThread:2736 [sender.py:send_exit():585] handling exit code: 1
+2024-06-13 15:45:46,908 INFO    SenderThread:2736 [sender.py:send_exit():587] handling runtime: 11
+2024-06-13 15:45:46,908 INFO    SenderThread:2736 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 15:45:46,909 INFO    SenderThread:2736 [sender.py:send_exit():593] send defer
+2024-06-13 15:45:46,909 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:46,909 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 0
+2024-06-13 15:45:46,909 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:46,909 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-06-13 15:45:46,909 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 1
+2024-06-13 15:45:46,909 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:46,909 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 1
+2024-06-13 15:45:46,909 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:46,910 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-06-13 15:45:46,910 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 2
+2024-06-13 15:45:46,910 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:46,910 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 2
+2024-06-13 15:45:46,910 INFO    HandlerThread:2736 [system_monitor.py:finish():203] Stopping system monitor
+2024-06-13 15:45:46,910 DEBUG   SystemMonitor:2736 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-06-13 15:45:46,910 INFO    HandlerThread:2736 [interfaces.py:finish():200] Joined cpu monitor
+2024-06-13 15:45:46,915 DEBUG   SystemMonitor:2736 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-06-13 15:45:46,916 INFO    HandlerThread:2736 [interfaces.py:finish():200] Joined disk monitor
+2024-06-13 15:45:46,916 DEBUG   SystemMonitor:2736 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-06-13 15:45:46,957 INFO    HandlerThread:2736 [interfaces.py:finish():200] Joined gpu monitor
+2024-06-13 15:45:46,957 INFO    HandlerThread:2736 [interfaces.py:finish():200] Joined memory monitor
+2024-06-13 15:45:46,957 INFO    HandlerThread:2736 [interfaces.py:finish():200] Joined network monitor
+2024-06-13 15:45:46,957 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:46,957 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-06-13 15:45:46,957 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 3
+2024-06-13 15:45:46,957 DEBUG   SenderThread:2736 [sender.py:send():378] send: stats
+2024-06-13 15:45:46,957 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:46,958 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 3
+2024-06-13 15:45:46,958 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:46,958 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-06-13 15:45:46,958 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 4
+2024-06-13 15:45:46,958 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:46,958 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 4
+2024-06-13 15:45:46,958 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:46,958 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-06-13 15:45:46,958 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 5
+2024-06-13 15:45:46,958 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:46,958 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 5
+2024-06-13 15:45:46,959 DEBUG   SenderThread:2736 [sender.py:send():378] send: summary
+2024-06-13 15:45:46,959 INFO    SenderThread:2736 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-13 15:45:46,959 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:46,959 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-06-13 15:45:46,959 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 6
+2024-06-13 15:45:46,960 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:46,960 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 6
+2024-06-13 15:45:46,960 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:46,960 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-06-13 15:45:46,963 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: status_report
+2024-06-13 15:45:47,140 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 7
+2024-06-13 15:45:47,141 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:47,141 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 7
+2024-06-13 15:45:47,141 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:47,141 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-06-13 15:45:47,395 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\config.yaml
+2024-06-13 15:45:47,396 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\wandb-summary.json
+2024-06-13 15:45:47,908 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-13 15:45:48,407 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:48,975 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 8
+2024-06-13 15:45:48,975 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: poll_exit
+2024-06-13 15:45:48,975 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:48,976 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 8
+2024-06-13 15:45:48,976 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:48,976 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-06-13 15:45:48,976 INFO    SenderThread:2736 [job_builder.py:build():432] Attempting to build job artifact
+2024-06-13 15:45:48,977 INFO    SenderThread:2736 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-06-13 15:45:49,003 INFO    SenderThread:2736 [job_builder.py:build():541] adding wandb-job metadata file
+2024-06-13 15:45:49,014 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 9
+2024-06-13 15:45:49,014 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:49,014 DEBUG   SenderThread:2736 [sender.py:send():378] send: artifact
+2024-06-13 15:45:49,014 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 9
+2024-06-13 15:45:49,418 INFO    Thread-16 :2736 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:49,931 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-13 15:45:50,089 INFO    wandb-upload_0:2736 [upload_job.py:push():85] Skipped uploading C:\Users\see\AppData\Local\wandb\wandb\artifacts\staging\tmp7_gjwmr_
+2024-06-13 15:45:50,292 INFO    wandb-upload_1:2736 [upload_job.py:push():88] Uploaded file C:\Users\see\AppData\Local\Temp\tmp1a5cxxh0\wandb-job.json
+2024-06-13 15:45:51,415 INFO    SenderThread:2736 [sender.py:send_artifact():1467] sent artifact job-https___github.com_mariaaoprea_Diffusion-Models-for-floor-plan-drafting.git_lora_training.py - {'id': 'QXJ0aWZhY3Q6ODczMTk0NTA4', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE4NjIzNTc1Nw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODczMTc0NzMx', 'versionIndex': 1}}}
+2024-06-13 15:45:51,415 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:51,415 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-06-13 15:45:51,415 INFO    SenderThread:2736 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-06-13 15:45:51,439 INFO    SenderThread:2736 [dir_watcher.py:finish():388] scan: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files
+2024-06-13 15:45:51,440 INFO    SenderThread:2736 [dir_watcher.py:finish():402] scan save: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\conda-environment.yaml conda-environment.yaml
+2024-06-13 15:45:51,440 INFO    SenderThread:2736 [dir_watcher.py:finish():402] scan save: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\config.yaml config.yaml
+2024-06-13 15:45:51,441 INFO    SenderThread:2736 [dir_watcher.py:finish():402] scan save: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log output.log
+2024-06-13 15:45:51,442 INFO    SenderThread:2736 [dir_watcher.py:finish():402] scan save: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\requirements.txt requirements.txt
+2024-06-13 15:45:51,443 INFO    SenderThread:2736 [dir_watcher.py:finish():402] scan save: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\wandb-metadata.json wandb-metadata.json
+2024-06-13 15:45:51,443 INFO    SenderThread:2736 [dir_watcher.py:finish():402] scan save: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\wandb-summary.json wandb-summary.json
+2024-06-13 15:45:51,444 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 10
+2024-06-13 15:45:51,444 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: poll_exit
+2024-06-13 15:45:51,444 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:51,444 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 10
+2024-06-13 15:45:51,445 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:51,445 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-06-13 15:45:51,445 INFO    SenderThread:2736 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-13 15:45:51,884 INFO    wandb-upload_0:2736 [upload_job.py:push():130] Uploaded file C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\config.yaml
+2024-06-13 15:45:51,964 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-13 15:45:51,966 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: poll_exit
+2024-06-13 15:45:52,147 INFO    wandb-upload_1:2736 [upload_job.py:push():130] Uploaded file C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\output.log
+2024-06-13 15:45:52,217 INFO    wandb-upload_2:2736 [upload_job.py:push():130] Uploaded file C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\requirements.txt
+2024-06-13 15:45:52,447 INFO    wandb-upload_3:2736 [upload_job.py:push():130] Uploaded file C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\files\wandb-summary.json
+2024-06-13 15:45:52,660 INFO    Thread-15 (_thread_body):2736 [sender.py:transition_state():613] send defer: 11
+2024-06-13 15:45:52,661 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:52,661 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 11
+2024-06-13 15:45:52,663 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:52,663 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-06-13 15:45:52,664 INFO    SenderThread:2736 [file_pusher.py:join():175] waiting for file pusher
+2024-06-13 15:45:52,664 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 12
+2024-06-13 15:45:52,664 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:52,664 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 12
+2024-06-13 15:45:52,664 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:52,664 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-06-13 15:45:52,664 INFO    SenderThread:2736 [file_stream.py:finish():601] file stream finish called
+2024-06-13 15:45:52,835 INFO    SenderThread:2736 [file_stream.py:finish():605] file stream finish is done
+2024-06-13 15:45:52,835 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 13
+2024-06-13 15:45:52,836 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:52,836 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 13
+2024-06-13 15:45:52,837 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:52,837 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-06-13 15:45:52,838 INFO    SenderThread:2736 [sender.py:transition_state():613] send defer: 14
+2024-06-13 15:45:52,838 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: defer
+2024-06-13 15:45:52,839 INFO    HandlerThread:2736 [handler.py:handle_request_defer():184] handle defer: 14
+2024-06-13 15:45:52,839 DEBUG   SenderThread:2736 [sender.py:send():378] send: final
+2024-06-13 15:45:52,840 DEBUG   SenderThread:2736 [sender.py:send():378] send: footer
+2024-06-13 15:45:52,840 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: defer
+2024-06-13 15:45:52,840 INFO    SenderThread:2736 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-06-13 15:45:52,841 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-13 15:45:52,843 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: poll_exit
+2024-06-13 15:45:52,843 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-13 15:45:52,843 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: server_info
+2024-06-13 15:45:52,843 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: get_summary
+2024-06-13 15:45:52,843 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: sampled_history
+2024-06-13 15:45:52,843 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: internal_messages
+2024-06-13 15:45:52,844 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: poll_exit
+2024-06-13 15:45:52,844 DEBUG   SenderThread:2736 [sender.py:send_request():405] send_request: server_info
+2024-06-13 15:45:52,994 INFO    MainThread:2736 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-06-13 15:45:52,994 INFO    MainThread:2736 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-06-13 15:45:52,994 INFO    MainThread:2736 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-06-13 15:45:52,997 DEBUG   HandlerThread:2736 [handler.py:handle_request():158] handle_request: shutdown
+2024-06-13 15:45:52,998 INFO    HandlerThread:2736 [handler.py:finish():882] shutting down handler
+2024-06-13 15:45:53,852 INFO    WriterThread:2736 [datastore.py:close():296] close: C:\Users\see\Documents\GitHub\Diffusion-Models-for-floor-plan-drafting\wandb\run-20240613_154534-1babm3bg\run-1babm3bg.wandb
+2024-06-13 15:45:54,007 INFO    SenderThread:2736 [sender.py:finish():1545] shutting down sender
+2024-06-13 15:45:54,007 INFO    SenderThread:2736 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-13 15:45:54,007 INFO    SenderThread:2736 [file_pusher.py:join():175] waiting for file pusher
