@@ -1,6 +1,8 @@
+import argparse
 import logging
 import math
 import os
+import random
 import shutil
 from contextlib import nullcontext
 from pathlib import Path
@@ -8,31 +10,63 @@ from pathlib import Path
 import datasets
 import numpy as np
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint
 import transformers
 from accelerate import Accelerator
 from accelerate.logging import get_logger
 from accelerate.utils import ProjectConfiguration, set_seed
+from datasets import load_dataset
+from packaging import version
 from peft import LoraConfig
 from peft.utils import get_peft_model_state_dict
+from torchvision import transforms, models
 from tqdm.auto import tqdm
-from transformers import CLIPTextModel
+from transformers import CLIPTextModel, CLIPTokenizer
 
 import diffusers
 from diffusers import AutoencoderKL, DDPMScheduler, DiffusionPipeline, StableDiffusionPipeline, UNet2DConditionModel
 from diffusers.optimization import get_scheduler
-from diffusers.training_utils import  compute_snr
+from diffusers.training_utils import compute_snr
 from diffusers.utils import check_min_version, convert_state_dict_to_diffusers, is_wandb_available
 from diffusers.utils.torch_utils import is_compiled_module
 
-#imported files
+# Additional imports for SSIM and LPIPS
+from skimage.metrics import structural_similarity as ssim
+import lpips
+
+# Imported files
 from arguments import parse_args
 from preprocessing import preprocess_data
-import wandb
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.28.0.dev0")
+
+class PerceptualLoss(nn.Module):
+    def __init__(self, feature_layer=8):
+        super(PerceptualLoss, self).__init__()
+        vgg = models.vgg19(pretrained=True).features
+        self.features = nn.Sequential(*list(vgg.children())[:feature_layer]).eval()
+        for param in self.features.parameters():
+            param.requires_grad = False
+
+        # Normalization parameters for VGG19
+        self.mean = torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
+        self.std = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
+
+    def forward(self, generated, target):
+        # Ensure the inputs are 4D tensors
+        if generated.dim() != 4 or target.dim() != 4:
+            raise ValueError("Input images must be 4D tensors [batch_size, channels, height, width]")
+
+        # Normalize the inputs
+        generated = (generated - self.mean.to(generated.device)) / self.std.to(generated.device)
+        target = (target - self.mean.to(target.device)) / self.std.to(target.device)
+
+        gen_features = self.features(generated)
+        target_features = self.features(target)
+        return torch.nn.functional.mse_loss(gen_features, target_features)
 
 def main():
     args = parse_args()
@@ -53,6 +87,7 @@ def main():
         if not is_wandb_available():
             raise ImportError("Make sure to install wandb if you want to use it for logging during training.")
         import wandb
+        wandb.init(project="stable-diffusion-lora")
 
     # Make one log on every process with the configuration for debugging.
     logging.basicConfig(
@@ -61,6 +96,7 @@ def main():
         level=logging.INFO,
     )
     logger.info(accelerator.state, main_process_only=False)
+    #logging settings
     datasets.utils.logging.set_verbosity_warning()
     transformers.utils.logging.set_verbosity_warning()
     diffusers.utils.logging.set_verbosity_info()
@@ -86,7 +122,7 @@ def main():
     unet = UNet2DConditionModel.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="unet"
     )
-    # Freeze parameters of models to save more memory
+    # freeze parameters of models to save more memory
     unet.requires_grad_(False)
     vae.requires_grad_(False)
     text_encoder.requires_grad_(False)
@@ -167,14 +203,21 @@ def main():
         unet, optimizer, train_dataloader, lr_scheduler
     )
 
-    # Recalculate our total training steps as the size of the training dataloader may have changed.
+    # Initialize the perceptual loss function
+    perceptual_loss_fn = PerceptualLoss().to(accelerator.device)
+
+    # Initialize LPIPS function
+    lpips_fn = lpips.LPIPS(net='alex').to(accelerator.device)
+
+    # We need to recalculate our total training steps as the size of the training dataloader may have changed.
     num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
     if overrode_max_train_steps:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
-    # Recalculate our number of training epochs
+    # Afterwards we recalculate our number of training epochs
     args.num_train_epochs = math.ceil(args.max_train_steps / num_update_steps_per_epoch)
 
-    # Initialize the trackers we use, and also store our configuration.
+    # We need to initialize the trackers we use, and also store our configuration.
+    # The trackers initializes automatically on the main process.
     if accelerator.is_main_process:
         accelerator.init_trackers("floorplan-fine-tune", config=vars(args))
 
@@ -221,23 +264,12 @@ def main():
         range(0, args.max_train_steps),
         initial=initial_global_step,
         desc="Steps",
+        # Only show the progress bar once on each machine.
         disable=not accelerator.is_local_main_process,
     )
 
-    # Initialize the pipeline once
-    pipeline = None
-    if args.validation_prompt is not None and accelerator.is_main_process:
-        pipeline = DiffusionPipeline.from_pretrained(
-            args.pretrained_model_name_or_path,
-            unet=unwrap_model(unet),
-            torch_dtype=weight_dtype,
-        )
-        pipeline = pipeline.to(accelerator.device)
-        pipeline.set_progress_bar_config(disable=True)
-
     for epoch in range(first_epoch, args.num_train_epochs):
         unet.train()
-        train_loss = 0.0
         for step, batch in enumerate(train_dataloader):
             with accelerator.accumulate(unet):
                 # Convert images to latent space
@@ -247,6 +279,7 @@ def main():
                 # Sample noise that we'll add to the latents
                 noise = torch.randn_like(latents)
                 if args.noise_offset:
+                    # https://www.crosslabs.org//blog/diffusion-with-offset-noise
                     noise += args.noise_offset * torch.randn(
                         (latents.shape[0], latents.shape[1], 1, 1), device=latents.device
                     )
@@ -257,6 +290,7 @@ def main():
                 timesteps = timesteps.long()
 
                 # Add noise to the latents according to the noise magnitude at each timestep
+                # (this is the forward diffusion process)
                 noisy_latents = noise_scheduler.add_noise(latents, noise, timesteps)
 
                 # Get the text embedding for conditioning
@@ -264,6 +298,7 @@ def main():
 
                 # Get the target for loss depending on the prediction type
                 if args.prediction_type is not None:
+                    # set prediction_type of scheduler if defined
                     noise_scheduler.register_to_config(prediction_type=args.prediction_type)
 
                 if noise_scheduler.config.prediction_type == "epsilon":
@@ -279,6 +314,9 @@ def main():
                 if args.snr_gamma is None:
                     loss = F.mse_loss(model_pred.float(), target.float(), reduction="mean")
                 else:
+                    # Compute loss-weights as per Section 3.4 of https://arxiv.org/abs/2303.09556.
+                    # Since we predict the noise instead of x_0, the original formulation is slightly changed.
+                    # This is discussed in Section 4.2 of the same paper.
                     snr = compute_snr(noise_scheduler, timesteps)
                     mse_loss_weights = torch.stack([snr, args.snr_gamma * torch.ones_like(timesteps)], dim=1).min(
                         dim=1
@@ -292,9 +330,38 @@ def main():
                     loss = loss.mean(dim=list(range(1, len(loss.shape)))) * mse_loss_weights
                     loss = loss.mean()
 
-                # Gather the losses across all processes for logging.
-                avg_loss = accelerator.gather(loss.repeat(args.train_batch_size)).mean()
-                train_loss += avg_loss.item() / args.gradient_accumulation_steps
+                with torch.no_grad():
+                    recon_images = vae.decode(latents).sample
+                    target_images = vae.decode(target).sample
+                    # Ensure these are tensors and have the shape [batch_size, channels, height, width]
+                    if recon_images.dim() != 4 or target_images.dim() != 4:
+                        raise ValueError("Decoded images must be 4D tensors [batch_size, channels, height, width]")
+                    perceptual_loss = perceptual_loss_fn(recon_images, target_images)
+
+                # Convert PyTorch tensors to NumPy arrays for SSIM calculation
+                recon_images_np = recon_images.cpu().numpy().transpose(0, 2, 3, 1)  # Convert to [batch_size, height, width, channels]
+                target_images_np = target_images.cpu().numpy().transpose(0, 2, 3, 1)
+                # Compute SSIM
+                ssim_values = []
+                for i in range(recon_images_np.shape[0]):
+                    ssim_value = ssim(recon_images_np[i], target_images_np[i], multichannel=True, win_size=7, channel_axis=-1, data_range=1.0)
+                    ssim_values.append(ssim_value)
+                ssim_value = np.mean(ssim_values)
+                # Compute LPIPS
+                lpips_value = lpips_fn(recon_images, target_images)
+                if torch.is_tensor(lpips_value):
+                    lpips_value = lpips_value.mean().item()
+
+                # Ensure lpips_value is a float for logging
+                lpips_value = float(lpips_value)
+
+
+
+
+                # Gather the losses across all processes for logging (if we use distributed training).
+                #avg_loss = accelerator.gather(loss.repeat(args.train_batch_size)).mean()
+                #avg_perceptual_loss = accelerator.gather(perceptual_loss.repeat(args.train_batch_size)).mean()
+                #train_loss += avg_loss.item() / args.gradient_accumulation_steps
 
                 # Backpropagate
                 accelerator.backward(loss)
@@ -305,20 +372,26 @@ def main():
                 lr_scheduler.step()
                 optimizer.zero_grad()
 
+            # Checks if the accelerator has performed an optimization step behind the scenes
             if accelerator.sync_gradients:
                 progress_bar.update(1)
                 global_step += 1
-                accelerator.log({"train_loss": train_loss}, step=global_step)
-                train_loss = 0.0
+                accelerator.log({
+                    "train_loss": loss,
+                    "perceptual_loss": perceptual_loss,
+                    "ssim": ssim_value,
+                    "lpips": lpips_value
+                }, step=global_step)
 
                 if global_step % args.checkpointing_steps == 0:
                     if accelerator.is_main_process:
+                        # _before_ saving state, check if this save would set us over the `checkpoints_total_limit`
                         if args.checkpoints_total_limit is not None:
                             checkpoints = os.listdir(args.output_dir)
                             checkpoints = [d for d in checkpoints if d.startswith("checkpoint")]
-                            #checkpoints are sorted by the checkpoint number.
                             checkpoints = sorted(checkpoints, key=lambda x: int(x.split("-")[1]))
 
+                            # before we save the new checkpoint, we need to have at _most_ `checkpoints_total_limit - 1` checkpoints
                             if len(checkpoints) >= args.checkpoints_total_limit:
                                 num_to_remove = len(checkpoints) - args.checkpoints_total_limit + 1
                                 removing_checkpoints = checkpoints[0:num_to_remove]
@@ -354,16 +427,84 @@ def main():
             if global_step >= args.max_train_steps:
                 break
 
-        if accelerator.is_main_process and args.validation_prompt is not None and epoch % args.validation_epochs == 0:
-            logger.info(
-                f"Running validation... \n Generating {args.num_validation_images} images with prompt:"
-                f" {args.validation_prompt}."
+        if accelerator.is_main_process:
+            if args.validation_prompt is not None and epoch % args.validation_epochs == 0:
+                logger.info(
+                    f"Running validation... \n Generating {args.num_validation_images} images with prompt:"
+                    f" {args.validation_prompt}."
+                )
+                # create pipeline
+                pipeline = DiffusionPipeline.from_pretrained(
+                    args.pretrained_model_name_or_path,
+                    unet=unwrap_model(unet),
+                    torch_dtype=weight_dtype,
+                )
+                pipeline = pipeline.to(accelerator.device)
+                pipeline.set_progress_bar_config(disable=True)
+
+                # run inference
+                generator = torch.Generator(device=accelerator.device)
+                if args.seed is not None:
+                    generator = generator.manual_seed(args.seed)
+                images = []
+                if torch.backends.mps.is_available():
+                    autocast_ctx = nullcontext()
+                else:
+                    autocast_ctx = torch.autocast(accelerator.device.type)
+
+                with autocast_ctx:
+                    for _ in range(args.num_validation_images):
+                        images.append(
+                            pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0]
+                        )
+
+                for tracker in accelerator.trackers:
+                    if tracker.name == "tensorboard":
+                        np_images = np.stack([np.asarray(img) for img in images])
+                        tracker.writer.add_images("validation", np_images, epoch, dataformats="NHWC")
+                    if tracker.name == "wandb":
+                        tracker.log(
+                            {
+                                "validation": [
+                                    wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
+                                    for i, image in enumerate(images)
+                                ]
+                            }
+                        )
+
+                del pipeline
+                torch.cuda.empty_cache()
+
+    # Save the lora layers
+    accelerator.wait_for_everyone()
+    if accelerator.is_main_process:
+        unet = unet.to(torch.float32)
+
+        unwrapped_unet = unwrap_model(unet)
+        unet_lora_state_dict = convert_state_dict_to_diffusers(get_peft_model_state_dict(unwrapped_unet))
+        StableDiffusionPipeline.save_lora_weights(
+            save_directory=args.output_dir,
+            unet_lora_layers=unet_lora_state_dict,
+            safe_serialization=True,
+        )
+
+
+        # Final inference
+        # Load previous pipeline
+        if args.validation_prompt is not None:
+            pipeline = DiffusionPipeline.from_pretrained(
+                args.pretrained_model_name_or_path,
+                torch_dtype=weight_dtype,
             )
-            # Use the initialized pipeline for validation
+            pipeline = pipeline.to(accelerator.device)
+
+            # load attention processors
+            pipeline.load_lora_weights(args.output_dir)
+
+            # run inference
             generator = torch.Generator(device=accelerator.device)
             if args.seed is not None:
                 generator = generator.manual_seed(args.seed)
-            #images are generated and logged.
             images = []
             if torch.backends.mps.is_available():
                 autocast_ctx = nullcontext()
@@ -376,67 +517,6 @@ def main():
                         pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0]
                     )
 
-            for tracker in accelerator.trackers:
-                if tracker.name == "tensorboard":
-                    np_images = np.stack([np.asarray(img) for img in images])
-                    tracker.writer.add_images("validation", np_images, epoch, dataformats="NHWC")
-                if tracker.name == "wandb":
-                    tracker.log(
-                        {
-                            "validation": [
-                                wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
-                                for i, image in enumerate(images)
-                            ]
-                        }
-                    )
-
-            torch.cuda.empty_cache()
-
-    accelerator.wait_for_everyone()
-    if accelerator.is_main_process:
-        #unet is converted to `torch.float32`.
-        unet = unet.to(torch.float32)
-
-        #unwrapped_unet is obtained and the state dict is converted to the format compatible with Diffusers.
-        unwrapped_unet = unwrap_model(unet)
-        unet_lora_state_dict = convert_state_dict_to_diffusers(get_peft_model_state_dict(unwrapped_unet))
-        #StableDiffusionPipeline saves the lora weights.
-        StableDiffusionPipeline.save_lora_weights(
-            save_directory=args.output_dir,
-            unet_lora_layers=unet_lora_state_dict,
-            safe_serialization=True,
-        )
-
-        if args.validation_prompt is not None:
-           # the pipeline is created again and used to load weights and generate images.
-            pipeline = DiffusionPipeline.from_pretrained(
-                args.pretrained_model_name_or_path,
-                torch_dtype=weight_dtype,
-            )
-            #pipeline is transferred to the same device.
-            pipeline = pipeline.to(accelerator.device)
-
-            #pipeline loads lora weights.
-            pipeline.load_lora_weights(args.output_dir)
-
-            #generator = created and used to generate images based on the seed.
-            generator = torch.Generator(device=accelerator.device)
-            if args.seed is not None:
-                generator = generator.manual_seed(args.seed)
-            #images are generated.
-            images = []
-            if torch.backends.mps.is_available:
-                autocast_ctx = nullcontext()
-            else:
-                autocast_ctx = torch.autocast(accelerator.device.type)
-
-            with autocast_ctx:
-                for _ in range(args.num_validation_images):
-                    images.append(
-                        pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0]
-                    )
-
-            #images are logged.
             for tracker in accelerator.trackers:
                 if len(images) != 0:
                     if tracker.name == "tensorboard":
@@ -456,7 +536,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 
 
