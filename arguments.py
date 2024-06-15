@@ -58,7 +58,7 @@ def parse_args():
         help="whether to randomly flip images horizontally",
     )
     parser.add_argument(
-        "--train_batch_size", type=int, default=16, help="Batch size (per device) for the training dataloader."
+        "--train_batch_size", type=int, default=4, help="Batch size (per device) for the training dataloader."
     )
     parser.add_argument("--num_train_epochs", type=int, default=100)
 
@@ -117,9 +117,9 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--checkpointing_steps",
+        "--checkpointing_frequency",
         type=int,
-        default=500,
+        default=1,
         help=(
             "Save a checkpoint of the training state every X updates. These checkpoints are only suitable for resuming"
             " training using `--resume_from_checkpoint`."

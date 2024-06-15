@@ -1,35 +1,24 @@
-import argparse
 import logging
-import math
 import os
-import random
-import shutil
-from contextlib import nullcontext
 from pathlib import Path
-
 import datasets
-import numpy as np
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint
 import transformers
 from accelerate import Accelerator
 from accelerate.logging import get_logger
 from accelerate.utils import ProjectConfiguration, set_seed
-from datasets import load_dataset
-from packaging import version
 from peft import LoraConfig
 from peft.utils import get_peft_model_state_dict
-from torchvision import transforms, models
 from tqdm.auto import tqdm
-from transformers import CLIPTextModel, CLIPTokenizer
+from transformers import CLIPTextModel
 
 import diffusers
 from diffusers import AutoencoderKL, DDPMScheduler, DiffusionPipeline, StableDiffusionPipeline, UNet2DConditionModel
 from diffusers.optimization import get_scheduler
 from diffusers.training_utils import compute_snr
-from diffusers.utils import check_min_version, convert_state_dict_to_diffusers, is_wandb_available
+from diffusers.utils import check_min_version, convert_state_dict_to_diffusers
 from diffusers.utils.torch_utils import is_compiled_module
 import wandb
 
@@ -160,7 +149,7 @@ def main():
 
     # Initialize the trackers
     if accelerator.is_main_process:
-        accelerator.init_trackers("floorplan-fine-tune", config=vars(args))
+        accelerator.init_trackers("floorplan-LoRA", config=vars(args))
 
     # Initialize the training loop
     logger.info("***** Running training *****")
@@ -168,7 +157,7 @@ def main():
     logger.info(f"  Batch size = {args.train_batch_size}")
     logger.info(f"  Total optimization steps = {train_steps}")
     global_step = 0
-    first_epoch = 0
+    first_epoch = 1
 
     # Potentially load in the weights and states from a previous save
     if args.resume_from_checkpoint:
@@ -231,23 +220,19 @@ def main():
                 pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0]
             )
 
-    for tracker in accelerator.trackers:
-        print(tracker.name)
-        if tracker.name == "wandb":
-            tracker.log(
-                {
-                    "validation": [
-                        wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
-                        for i, image in enumerate(images)
-                    ]
-                }
-            )
+    accelerator.log(
+        {
+            "validation": [
+                wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
+                for i, image in enumerate(images)
+            ]
+        }
+    )
 
     del pipeline
 
-
     # Training loop
-    for epoch in range(first_epoch, args.num_train_epochs):
+    for epoch in range(first_epoch, args.num_train_epochs+1):
         unet.train()
         for step, batch in enumerate(train_dataloader):
             with accelerator.accumulate(unet):
@@ -317,10 +302,11 @@ def main():
                 }, step=global_step)
 
             logs = {"step_loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
-            progress_bar.set_postfix(**logs)
+            progress_bar.set_postfix(**logs)                
 
-        # Compute SSIM and LPIPS once per epoch
+        #evaluation mode  
         unet.eval()
+
         with torch.no_grad():
             recon_images = vae.decode(latents).sample
             target_images = vae.decode(target).sample
@@ -389,34 +375,21 @@ def main():
                             pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0]
                         )
 
-                for tracker in accelerator.trackers:
-                    if tracker.name == "wandb":
-                        tracker.log(
-                            {
-                                "validation": [
-                                    wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
-                                    for i, image in enumerate(images)
-                                ]
-                            }
-                        )
+                accelerator.log(
+                    {
+                        "validation": [
+                            wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
+                            for i, image in enumerate(images)
+                        ]
+                    }
+                )
 
                 del pipeline
                 torch.cuda.empty_cache()
 
-    # Save the lora layers
+    # Wait for all processes to be done
     accelerator.wait_for_everyone()
-    if accelerator.is_main_process:
-        unet = unet.to(torch.float32)
-
-        unwrapped_unet = unwrap_model(unet)
-        unet_lora_state_dict = convert_state_dict_to_diffusers(get_peft_model_state_dict(unwrapped_unet))
-        StableDiffusionPipeline.save_lora_weights(
-            save_directory=args.output_dir,
-            unet_lora_layers=unet_lora_state_dict,
-            safe_serialization=True,
-        )
-
-
+    # Close the progress bar
     accelerator.end_training()
 
 if __name__ == "__main__":
