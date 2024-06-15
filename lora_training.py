@@ -190,10 +190,8 @@ def main():
         else:
             accelerator.print(f"Resuming from checkpoint {path}")
             accelerator.load_state(os.path.join(args.output_dir, path))
-            global_step = int(path.split("-")[1])
-
-            initial_global_step = global_step
-            first_epoch = global_step // num_update_steps_per_epoch
+            first_epoch = int(path.split("-")[1])
+            global_step = first_epoch * num_update_steps_per_epoch
     else:
         initial_global_step = 0
 
@@ -274,24 +272,6 @@ def main():
                     "train_loss": loss,
                 }, step=global_step)
 
-                if global_step % args.checkpointing_steps == 0:
-                    if accelerator.is_main_process:
-                        save_path = os.path.join(args.output_dir, f"checkpoint-{global_step}")
-                        accelerator.save_state(save_path)
-
-                        unwrapped_unet = unwrap_model(unet)
-                        unet_lora_state_dict = convert_state_dict_to_diffusers(
-                            get_peft_model_state_dict(unwrapped_unet)
-                        )
-
-                        StableDiffusionPipeline.save_lora_weights(
-                            save_directory=save_path,
-                            unet_lora_layers=unet_lora_state_dict,
-                            safe_serialization=True,
-                        )
-
-                        logger.info(f"Saved state to {save_path}")
-
             logs = {"step_loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
             progress_bar.set_postfix(**logs)
 
@@ -315,6 +295,25 @@ def main():
             "lpips": lpips_value,
             "epoch": epoch
         }, step=global_step)
+
+        # Save the model checkpoint once per epoch
+        if global_step % args.checkpointing_frequency == 0:
+            if accelerator.is_main_process:
+                save_path = os.path.join(args.output_dir, f"checkpoint-{epoch}")
+                accelerator.save_state(save_path)
+
+                unwrapped_unet = unwrap_model(unet)
+                unet_lora_state_dict = convert_state_dict_to_diffusers(
+                    get_peft_model_state_dict(unwrapped_unet)
+                )
+
+                StableDiffusionPipeline.save_lora_weights(
+                    save_directory=save_path,
+                    unet_lora_layers=unet_lora_state_dict,
+                    safe_serialization=True,
+                )
+
+        logger.info(f"Saved state to {save_path}")
 
         if accelerator.is_main_process:
             if args.validation_prompt is not None and epoch % args.validation_epochs == 0:
