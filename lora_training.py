@@ -202,6 +202,50 @@ def main():
         desc="Steps"
     )
 
+    #generate images before training
+    logger.info(
+    f"Running first inference... \n Generating {args.num_validation_images} images with prompt:"
+    f" {args.validation_prompt}."
+    )
+    # create pipeline
+    pipeline = DiffusionPipeline.from_pretrained(
+        args.pretrained_model_name_or_path,
+        unet=unwrap_model(unet),
+        torch_dtype=weight_dtype,
+    )
+    pipeline = pipeline.to(accelerator.device)
+    pipeline.set_progress_bar_config(disable=True)
+
+    # run inference
+    generator = torch.Generator(device=accelerator.device)
+    if args.seed is not None:
+        generator = generator.manual_seed(args.seed)
+    images = []
+    
+    autocast_ctx = torch.autocast(accelerator.device.type)
+
+    # Generate images
+    with autocast_ctx:
+        for _ in range(args.num_validation_images):
+            images.append(
+                pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0]
+            )
+
+    for tracker in accelerator.trackers:
+        print(tracker.name)
+        if tracker.name == "wandb":
+            tracker.log(
+                {
+                    "validation": [
+                        wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
+                        for i, image in enumerate(images)
+                    ]
+                }
+            )
+
+    del pipeline
+
+
     # Training loop
     for epoch in range(first_epoch, args.num_train_epochs):
         unet.train()
@@ -346,9 +390,6 @@ def main():
                         )
 
                 for tracker in accelerator.trackers:
-                    if tracker.name == "tensorboard":
-                        np_images = np.stack([np.asarray(img) for img in images])
-                        tracker.writer.add_images("validation", np_images, epoch, dataformats="NHWC")
                     if tracker.name == "wandb":
                         tracker.log(
                             {
@@ -375,49 +416,6 @@ def main():
             safe_serialization=True,
         )
 
-
-        # Final inference
-        # Load previous pipeline
-        if args.validation_prompt is not None:
-            pipeline = DiffusionPipeline.from_pretrained(
-                args.pretrained_model_name_or_path,
-                torch_dtype=weight_dtype,
-            )
-            pipeline = pipeline.to(accelerator.device)
-
-            # load attention processors
-            pipeline.load_lora_weights(args.output_dir)
-
-            # run inference
-            generator = torch.Generator(device=accelerator.device)
-            if args.seed is not None:
-                generator = generator.manual_seed(args.seed)
-            images = []
-            if torch.backends.mps.is_available():
-                autocast_ctx = nullcontext()
-            else:
-                autocast_ctx = torch.autocast(accelerator.device.type)
-
-            with autocast_ctx:
-                for _ in range(args.num_validation_images):
-                    images.append(
-                        pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0]
-                    )
-
-            for tracker in accelerator.trackers:
-                if len(images) != 0:
-                    if tracker.name == "tensorboard":
-                        np_images = np.stack([np.asarray(img) for img in images])
-                        tracker.writer.add_images("test", np_images, epoch, dataformats="NHWC")
-                    if tracker.name == "wandb":
-                        tracker.log(
-                            {
-                                "test": [
-                                    wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
-                                    for i, image in enumerate(images)
-                                ]
-                            }
-                        )
 
     accelerator.end_training()
 
