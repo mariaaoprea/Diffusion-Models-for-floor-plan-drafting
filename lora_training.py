@@ -158,7 +158,8 @@ def main():
     logger.info(f"  Total optimization steps = {train_steps}")
     global_step = 0
     first_epoch = 1
-
+    previous_epochs = 0
+    
     # Potentially load in the weights and states from a previous save
     if args.resume_from_checkpoint:
         if args.resume_from_checkpoint != "latest":
@@ -175,21 +176,18 @@ def main():
                 f"Checkpoint '{args.resume_from_checkpoint}' does not exist. Starting a new training run."
             )
             args.resume_from_checkpoint = None
-            initial_global_step = 0
         else:
             accelerator.print(f"Resuming from checkpoint {path}")
             accelerator.load_state(os.path.join(args.output_dir, path))
-            first_epoch = int(path.split("-")[1])
-            global_step = first_epoch * num_update_steps_per_epoch
-    else:
-        initial_global_step = 0
+            first_epoch = int(path.split("-")[1])+1
+            previous_epochs = int(path.split("-")[1])
 
     # Initialize the progress bar
     progress_bar = tqdm(
-        range(0, train_steps),
-        initial=initial_global_step,
-        desc="Steps"
-    )
+            range(0, train_steps),
+            initial=0,
+            desc="Steps"
+        )
 
     #generate images before training
     logger.info(
@@ -232,7 +230,7 @@ def main():
     del pipeline
 
     # Training loop
-    for epoch in range(first_epoch, args.num_train_epochs+1):
+    for epoch in range(first_epoch, args.num_train_epochs + 1 + previous_epochs):
         unet.train()
         for step, batch in enumerate(train_dataloader):
             with accelerator.accumulate(unet):
