@@ -14,23 +14,21 @@
     <header class="bg-blue-700 text-white text-center py-4 h-32">
         <h1 class="text-2xl">Main Header</h1>
     </header>
-    <!-- Split Screen Content -->
     <div class="flex flex-grow">
         <!-- Left Side -->
-        <div class="w-1/2 flex flex-col p-4">
+        <div class="w-1/2 flex flex-col p-4 relative">
             <header class="bg-white text-black text-center py-4 mb-4 border-b border-black">
                 <h2 class="text-xl">Input</h2>
             </header>
 
-            <form id="promptForm" class="w-full">
-                <div class="mb-4">
+            <form id="promptForm" class="w-full flex-grow">
+                <div class="mb-4 flex-grow">
                     <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="w-full h-72 p-4 text-black text-xl font-nunito border border-black mb-4" oninput="checkInput()"></textarea>
                 </div>
-                <div class="flex justify-center">
+                <div class="absolute bottom right-4">
                     <button id="resetButton" type="button" class="bg-red-300 text-white w-32 h-16 hover:bg-red-400 transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
                     <button id="generateButton" type="submit" class="bg-black text-white w-32 h-16 hover:bg-gray-500 transition font-nunito text-2xl mb-4" disabled>RUN</button>
                 </div>
-                
             </form>
         </div>
         <!-- Right Side: Generated Images -->
