@@ -18,7 +18,7 @@
     <div class="flex flex-grow">
         <!-- Left Side -->
         <div class="w-1/2 flex flex-col p-4">
-            <header class="bg-blue-500 text-white text-center py-4 mb-4 border-b border-black">
+            <header class="bg-white text-black text-center py-4 mb-4 border-b border-black">
                 <h2 class="text-xl">Input</h2>
             </header>
 
@@ -27,13 +27,15 @@
                     <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="w-full h-72 p-4 text-black text-xl font-nunito border border-black mb-4" oninput="checkInput()"></textarea>
                 </div>
                 <div class="flex justify-center">
-                    <button id="generateButton" type="submit" class="bg-blue-300 w-32 h-32 rounded-full hover:bg-blue-400 transition font-nunito text-2xl" disabled>GENERATE</button>
+                    <button id="resetButton" type="button" class="bg-red-300 text-white w-32 h-16 hover:bg-red-400 transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
+                    <button id="generateButton" type="submit" class="bg-black text-white w-32 h-16 hover:bg-gray-500 transition font-nunito text-2xl mb-4" disabled>RUN</button>
                 </div>
+                
             </form>
         </div>
         <!-- Right Side: Generated Images -->
         <div class="w-1/2 flex flex-col p-4">
-            <header class="bg-blue-500 text-white text-center py-4 mb-4 border-b border-black">
+            <header class="g-white text-black text-center py-4 mb-4 border-b border-black">
                 <h2 class="text-xl">Output</h2>
             </header>
             <div class="bg-white w-5/6 h-5/6 p-8 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
@@ -117,6 +119,12 @@
                 alert('Error: ' + error.message);
                 enableGenerateButton();
             });
+        }
+
+        function resetPrompt() {
+        const promptInput = document.querySelector('textarea[name="prompt"]');
+        promptInput.value = '';
+        checkInput();
         }
 
         function checkStatus(taskID) {
