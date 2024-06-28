@@ -25,6 +25,10 @@
                 <div class="mb-4 flex-grow">
                     <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="w-full h-72 p-4 text-black text-xl font-nunito border border-black mb-4" oninput="checkInput()"></textarea>
                 </div>
+                <div class="mb-4">
+                    <label for="numImages" class="block text-xl font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
+                    <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
+                </div>
                 <div class="absolute bottom right-4">
                     <button id="resetButton" type="button" class="bg-red-300 text-white w-32 h-16 hover:bg-red-400 transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
                     <button id="generateButton" type="submit" class="bg-black text-white w-32 h-16 hover:bg-gray-500 transition font-nunito text-2xl mb-4" disabled>RUN</button>
@@ -92,6 +96,7 @@
         function handleFormSubmit(event) {
             event.preventDefault();
             const promptInput = document.querySelector('textarea[name="prompt"]');
+            const numImagesInput = document.querySelector('input[name="num_images"]');
             const generateButton = document.getElementById('generateButton');
 
             generateButton.disabled = true;
@@ -101,7 +106,7 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ prompt: promptInput.value.trim() }),
+                body: JSON.stringify({ prompt: promptInput.value.trim(), num_images: numImagesInput.value }),
             })
             .then(response => response.json())
             .then(data => {
@@ -120,9 +125,9 @@
         }
 
         function resetPrompt() {
-        const promptInput = document.querySelector('textarea[name="prompt"]');
-        promptInput.value = '';
-        checkInput();
+            const promptInput = document.querySelector('textarea[name="prompt"]');
+            promptInput.value = '';
+            checkInput();
         }
 
         function checkStatus(taskID) {
@@ -177,6 +182,10 @@
             const promptInput = document.querySelector('textarea[name="prompt"]');
             const generateButton = document.getElementById('generateButton');
             generateButton.disabled = promptInput.value.trim() === '';
+        }
+
+        function updateNumImagesLabel(value) {
+            document.getElementById('numImagesLabel').textContent = value;
         }
 
         function showModal(src) {
