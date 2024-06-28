@@ -11,13 +11,13 @@
 </head>
 <body class="flex flex-col h-screen">
     <!-- Main Header -->
-    <header class="bg-blue-700 text-white text-center py-4 h-32">
-        <h1 class="text-2xl">Main Header</h1>
+    <header class="bg-blue-700 text-white text-center py-4 h-32 flex-shrink-0 ">
+        <h1 class="text-2xl font-nunito">Floor Plan Genertor</h1>
     </header>
     <div class="flex flex-grow">
         <!-- Left Side -->
         <div class="w-1/2 flex flex-col p-4 relative">
-            <header class="bg-white text-black text-center py-4 mb-4 border-b border-black">
+            <header class="bg-white text-black text-center py-4 mb-4 border-b border-black flex-shrink-0">
                 <h2 class="text-xl">Input</h2>
             </header>
 
@@ -37,10 +37,10 @@
         </div>
         <!-- Right Side: Generated Images -->
         <div class="w-1/2 flex flex-col p-4">
-            <header class="g-white text-black text-center py-4 mb-4 border-b border-black">
+            <header class="bg-white text-black text-center py-4 mb-4 border-b border-black flex-shrink-0">
                 <h2 class="text-xl">Output</h2>
             </header>
-            <div class="bg-white w-5/6 h-5/6 p-8 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
+            <div class="bg-white w-full h-full p-8 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
                 <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
                     <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
                     <div class="w-full h-4 bg-gray-200 rounded-full">
@@ -48,7 +48,7 @@
                     </div>
                     <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
                 </div>
-                <div id="imageGrid" class="flex flex-col gap-4 w-full h-full">
+                <div id="imageGrid" class="flex flex-col gap-4 w-full h-full justify-center items-center">
                     <!-- Images will be injected here -->
                 </div>
             </div>
@@ -153,7 +153,7 @@
             const imageGrid = document.getElementById('imageGrid');
             imageGrid.innerHTML = '';
             imageGrid.className = urls.length === 1 ? 'flex flex-col justify-center items-center w-full h-full' : 'flex flex-col gap-4 w-full';
-            urls.forEach(url => {
+            urls.forEach((url, index) => {
                 const imageContainer = document.createElement('div');
                 imageContainer.className = 'w-full flex flex-col justify-center items-center overflow-hidden';
                 imageContainer.style.flexGrow = '1';
@@ -161,11 +161,28 @@
                 imgElement.src = url;
                 imgElement.alt = 'Generated Image';
                 imgElement.className = 'w-full h-full object-contain rounded-lg transition hover:opacity-75 cursor-pointer';
+                imgElement.onload = () => resizeImageToFit(imgElement);
                 imgElement.onclick = () => showModal(url);
                 imageContainer.appendChild(imgElement);
                 imageGrid.appendChild(imageContainer);
             });
             enableGenerateButton();
+        }
+
+        function resizeImageToFit(img) {
+            const viewportHeight = window.innerHeight;
+            const viewportWidth = window.innerWidth;
+
+            const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+            const viewportAspectRatio = viewportWidth / viewportHeight;
+
+            if (imgAspectRatio > viewportAspectRatio) {
+                img.style.width = '100%';
+                img.style.height = 'auto';
+            } else {
+                img.style.width = 'auto';
+                img.style.height = '100%';
+            }
         }
 
         // JavaScript to prevent zooming
@@ -208,4 +225,3 @@
     </script>
 </body>
 </html>
-
