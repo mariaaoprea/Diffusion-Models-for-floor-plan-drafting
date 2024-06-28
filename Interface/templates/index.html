@@ -48,7 +48,7 @@
                     </div>
                     <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
                 </div>
-                <div id="imageGrid" class="grid grid-cols-2 gap-4 w-full h-full">
+                <div id="imageGrid" class="flex flex-col gap-4 w-full h-full">
                     <!-- Images will be injected here -->
                 </div>
             </div>
@@ -152,13 +152,15 @@
         function showGeneratedImages(urls) {
             const imageGrid = document.getElementById('imageGrid');
             imageGrid.innerHTML = '';
+            imageGrid.className = urls.length === 1 ? 'flex flex-col justify-center items-center w-full h-full' : 'flex flex-col gap-4 w-full';
             urls.forEach(url => {
                 const imageContainer = document.createElement('div');
-                imageContainer.className = 'w-full h-full flex flex-col justify-center items-center overflow-hidden';
+                imageContainer.className = 'w-full flex flex-col justify-center items-center overflow-hidden';
+                imageContainer.style.flexGrow = '1';
                 const imgElement = document.createElement('img');
                 imgElement.src = url;
                 imgElement.alt = 'Generated Image';
-                imgElement.className = 'max-w-full max-h-full object-contain rounded-lg transition hover:opacity-75 cursor-pointer';
+                imgElement.className = 'w-full h-full object-contain rounded-lg transition hover:opacity-75 cursor-pointer';
                 imgElement.onclick = () => showModal(url);
                 imageContainer.appendChild(imgElement);
                 imageGrid.appendChild(imageContainer);
@@ -206,3 +208,4 @@
     </script>
 </body>
 </html>
+
