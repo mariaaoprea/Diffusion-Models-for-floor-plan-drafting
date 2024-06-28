@@ -13,17 +13,16 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to(device)
-pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("Checkpoints_L1/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
 
-def generate_images(prompt, task_id):
+def generate_images(prompt, num_images, task_id):
     # Emit initial progress
     socketio.emit('progress', {'task_id': task_id, 'progress': 0}, namespace='/generate')
     
-    num_images = 4
     images = []
-    progress_per_image = 100 // num_images
-    for i in range(num_images):
-        result = pipeline(prompt, num_images_per_prompt=1).images[0] # num_inference_steps can be added
+    progress_per_image = 100 // int(num_images)
+    for i in range(int(num_images)):
+        result = pipeline(prompt, num_images_per_prompt=1).images[0]  # num_inference_steps can be added
         img_io = BytesIO()
         result.save(img_io, 'PNG')
         img_io.seek(0)
@@ -43,16 +42,16 @@ class Task:
         self.results = {}
         self.task_number = 0
 
-    def add_task(self, prompt):
+    def add_task(self, prompt, num_images):
         self.task_number += 1
-        self.tasks[self.task_number] = prompt
+        self.tasks[self.task_number] = (prompt, num_images)
         return self.task_number
 
     def run(self):
         while True:
             done_tasks = []
-            for task_number, prompt in self.tasks.items():
-                image_urls = generate_images(prompt, task_number)
+            for task_number, (prompt, num_images) in self.tasks.items():
+                image_urls = generate_images(prompt, num_images, task_number)
                 self.results[task_number] = {"urls": image_urls}
                 done_tasks.append(task_number)
             for task_number in done_tasks:
@@ -66,11 +65,11 @@ def home():
 @app.route('/submit', methods=['POST'])
 def submit():
     data = request.json
-    if 'prompt' in data:
-        task_id = task.add_task(data['prompt'])
+    if 'prompt' in data and 'num_images' in data:
+        task_id = task.add_task(data['prompt'], data['num_images'])
         return jsonify({"taskID": task_id}), 202
     else:
-        return jsonify({"error": "Missing prompt in request"}), 400
+        return jsonify({"error": "Missing prompt or num_images in request"}), 400
 
 @app.route('/status/<task_id>')
 def status(task_id):
