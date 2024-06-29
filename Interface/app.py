@@ -22,7 +22,7 @@ def generate_images(prompt, num_images, task_id):
     images = []
     progress_per_image = 100 // int(num_images)
     for i in range(int(num_images)):
-        result = pipeline(prompt, num_images_per_prompt=1).images[0]  # num_inference_steps can be added
+        result = pipeline(prompt).images[0]  # num_inference_steps can be added
         img_io = BytesIO()
         result.save(img_io, 'PNG')
         img_io.seek(0)
