@@ -11,8 +11,10 @@
 </head>
 <body class="flex flex-col h-screen">
     <!-- Main Header -->
-    <header class="bg-blue-700 text-white text-center py-4 h-32 flex-shrink-0 ">
-        <h1 class="text-2xl font-nunito">Floor Plan Genertor</h1>
+    <header class="bg-blue-700 text-white text-center py-4 h-32 flex-shrink-0">
+        <div class="header-text">
+            <h1 class="text-2xl font-nunito">Floor Plan Generator</h1>
+        </div>
     </header>
     <div class="flex flex-grow">
         <!-- Left Side -->
@@ -40,15 +42,15 @@
             <header class="bg-white text-black text-center py-4 mb-4 border-b border-black flex-shrink-0">
                 <h2 class="text-xl">Output</h2>
             </header>
-            <div class="bg-white w-full h-full p-8 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
+            <div class="bg-white w-full h-full p-2 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
                 <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
                     <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-                    <div class="w-full h-4 bg-gray-200 rounded-full">
+                    <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
                         <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
                     </div>
                     <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
                 </div>
-                <div id="imageGrid" class="flex flex-col gap-4 w-full h-full justify-center items-center">
+                <div id="imageGrid" class="flex flex-col gap-4 w-full h-max-full justify-center items-center">
                     <!-- Images will be injected here -->
                 </div>
             </div>
@@ -79,13 +81,13 @@
                 const loadingBar = document.getElementById('loadingBar');
                 const loadingText = document.getElementById('loadingText');
 
-                loadingContainer.classList.remove('hidden');
+                loadingContainer.style.display = 'flex';
                 loadingBar.style.width = progress + '%';
                 loadingText.innerText = 'Loading... ' + progress + '%';
 
                 if (progress === 100) {
                     setTimeout(() => {
-                        loadingContainer.classList.add('hidden');
+                        loadingContainer.style.display = 'none';
                     }, 500);
                 }
             }
@@ -160,8 +162,7 @@
                 const imgElement = document.createElement('img');
                 imgElement.src = url;
                 imgElement.alt = 'Generated Image';
-                imgElement.className = 'w-full h-full object-contain rounded-lg transition hover:opacity-75 cursor-pointer';
-                imgElement.onload = () => resizeImageToFit(imgElement);
+                imgElement.className = 'rounded-lg transition hover:opacity-75 cursor-pointer';
                 imgElement.onclick = () => showModal(url);
                 imageContainer.appendChild(imgElement);
                 imageGrid.appendChild(imageContainer);
@@ -169,21 +170,6 @@
             enableGenerateButton();
         }
 
-        function resizeImageToFit(img) {
-            const viewportHeight = window.innerHeight;
-            const viewportWidth = window.innerWidth;
-
-            const imgAspectRatio = img.naturalWidth / img.naturalHeight;
-            const viewportAspectRatio = viewportWidth / viewportHeight;
-
-            if (imgAspectRatio > viewportAspectRatio) {
-                img.style.width = '100%';
-                img.style.height = 'auto';
-            } else {
-                img.style.width = 'auto';
-                img.style.height = '100%';
-            }
-        }
 
         // JavaScript to prevent zooming
         document.addEventListener('wheel', function(event) {
@@ -225,3 +211,4 @@
     </script>
 </body>
 </html>
+
