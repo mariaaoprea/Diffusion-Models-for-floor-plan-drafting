@@ -9,52 +9,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 </head>
-<body class="flex flex-col h-screen">
+<body class="flex flex-col h-screen justify-center items-center bg-gradient-to-r from-blue-500 to-pink-200">
     <!-- Main Header -->
-    <header class="bg-blue-700 text-white text-center py-4 h-32 flex-shrink-0">
+    <header class=" text-white text-center justify-center py-12 h-32 flex-shrink-0">
         <div class="header-text">
-            <h1 class="text-2xl font-nunito">Floor Plan Generator</h1>
+            <h1 class="text-4xl font-nunito">Floor Plan Generator</h1>
         </div>
     </header>
-    <div class="flex flex-grow">
-        <!-- Left Side -->
-        <div class="w-1/2 flex flex-col p-4 relative">
-            <header class="bg-white text-black text-center py-4 mb-4 border-b border-black flex-shrink-0">
-                <h2 class="text-xl">Input</h2>
-            </header>
-
-            <form id="promptForm" class="w-full flex-grow">
-                <div class="mb-4 flex-grow">
-                    <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="w-full h-72 p-4 text-black text-xl font-nunito border border-black mb-4" oninput="checkInput()"></textarea>
-                </div>
-                <div class="mb-4">
-                    <label for="numImages" class="block text-xl font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
-                    <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
-                </div>
-                <div class="absolute bottom right-4">
-                    <button id="resetButton" type="button" class="bg-red-300 text-white w-32 h-16 hover:bg-red-400 transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
-                    <button id="generateButton" type="submit" class="bg-black text-white w-32 h-16 hover:bg-gray-500 transition font-nunito text-2xl mb-4" disabled>RUN</button>
-                </div>
-            </form>
-        </div>
-        <!-- Right Side: Generated Images -->
-        <div class="w-1/2 flex flex-col p-4">
-            <header class="bg-white text-black text-center py-4 mb-4 border-b border-black flex-shrink-0">
-                <h2 class="text-xl">Output</h2>
-            </header>
-            <div class="bg-white w-full h-full p-2 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
-                <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
-                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-                    <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
-                        <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
+    <div class="bg-white w-5/6 h-5/6 flex flex-grow">
+        <div class="flex flex-grow">
+            <!-- Left Side -->
+            <div class="w-1/2 flex flex-col p-4 relative">
+                <header class=" bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
+                    <h2 class="text-2xl font-nunito">Input</h2>
+                </header>
+    
+                <form id="promptForm" class="w-full flex-grow">
+                    <div class="mb-4 flex-grow">
+                        <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="shadow-inner w-full h-72 p-4 text-gray-600 text-xl font-nunito border border-gray-100 mb-4 focus:outline-none focus:ring-0 focus:border-gray-300" oninput="checkInput()"></textarea>
                     </div>
-                    <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
-                </div>
-                <div id="imageGrid" class="flex flex-col gap-4 w-full h-max-full justify-center items-center">
-                    <!-- Images will be injected here -->
+                    <div class="mb-4">
+                        <label for="numImages" class="block text-xl text-gray-600 font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
+                        <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
+                    </div>
+                    <div class="absolute bottom right-4">
+                        <button id="resetButton" type="button" class="bg-pink-200 text-white shadow-md w-32 h-16 hover:bg-pink-400 hover:shadow-inner transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
+                        <button id="generateButton" type="submit" class="bg-blue-300 text-white shadow-md w-32 h-16 hover:bg-blue-500 hover:shadow-inner transition font-nunito text-2xl mb-4" disabled>RUN</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Right Side: Generated Images -->
+            <div class="w-1/2 flex flex-col p-4">
+                <header class="bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
+                    <h2 class="text-2xl font-nunito">Output</h2>
+                </header>
+                <div class="shadow-inner w-full h-full p-2 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
+                    <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
+                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                        <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
+                            <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
+                        </div>
+                        <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
+                    </div>
+                    <div id="imageGrid" class="flex flex-col gap-4 w-full h-max-full justify-center items-center">
+                        <!-- Images will be injected here -->
+                    </div>
                 </div>
             </div>
-        </div>
+    
+    </div>
     </div>
 
     <!-- Modal -->
