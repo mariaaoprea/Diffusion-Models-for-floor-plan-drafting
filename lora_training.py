@@ -22,9 +22,6 @@ from diffusers.utils import check_min_version, convert_state_dict_to_diffusers
 from diffusers.utils.torch_utils import is_compiled_module
 import wandb
 
-# Additional imports for SSIM and LPIPS
-from skimage.metrics import structural_similarity as ssim
-import lpips
 
 # Imported files
 from arguments import parse_args
@@ -144,9 +141,6 @@ def main():
         unet, optimizer, train_dataloader, lr_scheduler
     )
 
-    # Initialize LPIPS function
-    lpips_fn = lpips.LPIPS(net='alex').to(accelerator.device)
-
     # Initialize the trackers
     if accelerator.is_main_process:
         accelerator.init_trackers("floorplan-LoRA", config=vars(args))
@@ -263,9 +257,11 @@ def main():
                 # Predict the noise residual and compute loss
                 model_pred = unet(noisy_latents, timesteps, encoder_hidden_states, return_dict=False)[0]
 
-                if args.snr_gamma is None:
+                if args.loss_function == "MSE":
                     loss = F.mse_loss(model_pred.float(), target.float(), reduction="mean")
-                else:
+                elif args.loss_function == "L1":
+                    loss = F.l1_loss(model_pred.float(), target.float(), reduction="mean")
+                elif args.loss_function == "SNR":
                     # Compute loss-weights as per Section 3.4 of https://arxiv.org/abs/2303.09556.
                     # Since we predict the noise instead of x_0, the original formulation is slightly changed.
                     # This is discussed in Section 4.2 of the same paper.
@@ -305,27 +301,9 @@ def main():
         #evaluation mode  
         unet.eval()
 
-        with torch.no_grad():
-            recon_images = vae.decode(latents).sample
-            target_images = vae.decode(target).sample
-
-            # Compute SSIM 
-            ssim_value = 0.0
-            for i in range(recon_images.shape[0]):
-                ssim_value += ssim(recon_images[i].permute(1, 2, 0).cpu().numpy(), target_images[i].permute(1, 2, 0).cpu().numpy(), multichannel=True, win_size=7,  channel_axis=-1,data_range=1.0)
-            ssim_value /= recon_images.shape[0]
-
-            # Compute LPIPS
-            lpips_value = lpips_fn(recon_images, target_images).mean().item()
-
-        accelerator.log({
-            "ssim": ssim_value,
-            "lpips": lpips_value,
-            "epoch": epoch
-        }, step=global_step)
 
         # Save the model checkpoint once per epoch
-        if global_step % args.checkpointing_frequency == 0:
+        if epoch % args.checkpointing_frequency == 0:
             if accelerator.is_main_process:
                 save_path = os.path.join(args.output_dir, f"checkpoint-{epoch}")
                 accelerator.save_state(save_path)
@@ -341,7 +319,7 @@ def main():
                     safe_serialization=True,
                 )
 
-        logger.info(f"Saved state to {save_path}")
+            logger.info(f"Saved state to {save_path}")
 
         if accelerator.is_main_process:
             if args.validation_prompt is not None and epoch % args.validation_epochs == 0:
