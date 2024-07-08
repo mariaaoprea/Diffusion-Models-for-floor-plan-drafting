@@ -11,7 +11,7 @@
 </head>
 <body class="flex flex-col h-screen justify-center items-center bg-gradient-to-r from-blue-500 to-pink-200">
     <!-- Main Header -->
-    <header class=" text-white text-center justify-center py-12 h-32 flex-shrink-0">
+    <header class="text-white text-center justify-center py-12 h-32 flex-shrink-0">
         <div class="header-text">
             <h1 class="text-4xl font-nunito">Floor Plan Generator</h1>
         </div>
@@ -20,21 +20,44 @@
         <div class="flex flex-grow">
             <!-- Left Side -->
             <div class="w-1/2 flex flex-col p-4 relative">
-                <header class=" bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
+                <header class="bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
                     <h2 class="text-2xl font-nunito">Input</h2>
                 </header>
     
                 <form id="promptForm" class="w-full flex-grow">
                     <div class="mb-4 flex-grow">
-                        <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="shadow-inner w-full h-72 p-4 text-gray-600 text-xl font-nunito border border-gray-100 mb-4 focus:outline-none focus:ring-0 focus:border-gray-300" oninput="checkInput()"></textarea>
+                        <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="shadow-inner w-full h-52 p-4 text-gray-600 text-xl font-nunito border border-gray-100 mb-4 focus:outline-none focus:ring-0 focus:border-gray-300" oninput="checkInput()"></textarea>
                     </div>
                     <div class="mb-4">
                         <label for="numImages" class="block text-xl text-gray-600 font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
                         <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
                     </div>
-                    <div class="absolute bottom right-4">
-                        <button id="resetButton" type="button" class="bg-pink-200 text-white shadow-md w-32 h-16 hover:bg-pink-400 hover:shadow-inner transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
-                        <button id="generateButton" type="submit" class="bg-blue-300 text-white shadow-md w-32 h-16 hover:bg-blue-500 hover:shadow-inner transition font-nunito text-2xl mb-4" disabled>RUN</button>
+                    <div class="absolute bottom left flex flex-col items-end">
+                        <button id="advancedButton" type="button" class="bg-gray-300 text-white shadow-md w-32 h-12 hover:bg-gray-400 hover:shadow-inner transition font-nunito text-xl mb-2" onclick="toggleAdvancedMenu()">ADVANCED</button>
+                        <div id="advancedMenu" class="hidden flex flex-col items-end bg-white shadow-lg p-4 border border-gray-200 rounded-lg mb-2">
+                            <div class="mb-4">
+                                <label for="scheduler" class="block text-xl text-gray-600 font-nunito mb-2">Scheduler:</label>
+                                <select id="scheduler" name="scheduler" class="shadow-inner w-full p-2 text-gray-600 text-xl font-nunito border border-gray-100 focus:outline-none focus:ring-0 focus:border-gray-300">
+                                    <option value="default">DDIM</option>
+                                    <option value="scheduler1">PNDM</option>
+                                    <option value="scheduler2">K_EULER</option>
+                                    <option value="scheduler2">DPMSolverMultistep</option>
+                                    <option value="scheduler2">HeunDiscrete</option>
+                                    <option value="scheduler2">K_EULER_ANCESTRAL</option>
+                                    <!-- Add more options as needed -->
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="inferenceSteps" class="block text-xl text-gray-600 font-nunito mb-2">Inference Steps:</label>
+                                <input type="number" id="inferenceSteps" name="inference_steps" min="1" max="100" value="50" class="shadow-inner w-full p-2 text-gray-600 text-xl font-nunito border border-gray-100 focus:outline-none focus:ring-0 focus:border-gray-300">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom right-4 bottom-8 flex flex-col items-end">
+                        <div>
+                            <button id="resetButton" type="button" class="bg-pink-200 text-white shadow-md w-32 h-16 hover:bg-pink-400 hover:shadow-inner transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
+                            <button id="generateButton" type="submit" class="bg-blue-300 text-white shadow-md w-32 h-16 hover:bg-blue-500 hover:shadow-inner transition font-nunito text-2xl mb-4" disabled>RUN</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -43,7 +66,7 @@
                 <header class="bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
                     <h2 class="text-2xl font-nunito">Output</h2>
                 </header>
-                <div class="shadow-inner w-full h-full p-2 flex flex-col justify-center items-center overflow-hidden relative rounded-lg">
+                <div class="shadow-inner w-full h-full p-2 flex flex-col justify-center items-center overflow-hidden relative">
                     <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
                         <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
                         <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
@@ -57,7 +80,7 @@
                 </div>
             </div>
     
-    </div>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -102,6 +125,8 @@
             event.preventDefault();
             const promptInput = document.querySelector('textarea[name="prompt"]');
             const numImagesInput = document.querySelector('input[name="num_images"]');
+            const schedulerInput = document.querySelector('select[name="scheduler"]');
+            const inferenceStepsInput = document.querySelector('input[name="inference_steps"]');
             const generateButton = document.getElementById('generateButton');
 
             generateButton.disabled = true;
@@ -111,7 +136,12 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ prompt: promptInput.value.trim(), num_images: numImagesInput.value }),
+                body: JSON.stringify({ 
+                    prompt: promptInput.value.trim(), 
+                    num_images: numImagesInput.value,
+                    scheduler: schedulerInput.value,
+                    inference_steps: inferenceStepsInput.value 
+                }),
             })
             .then(response => response.json())
             .then(data => {
@@ -206,6 +236,11 @@
             document.getElementById('imageModal').classList.add('hidden');
         }
 
+        function toggleAdvancedMenu() {
+            const advancedMenu = document.getElementById('advancedMenu');
+            advancedMenu.classList.toggle('hidden');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('promptForm').addEventListener('submit', handleFormSubmit);
             checkInput();
@@ -214,4 +249,5 @@
     </script>
 </body>
 </html>
+
 

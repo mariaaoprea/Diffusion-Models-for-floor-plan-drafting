@@ -6,6 +6,8 @@ from io import BytesIO
 import base64
 import time
 import threading
+from diffusers import DDIMScheduler, PNDMScheduler, EulerDiscreteScheduler, DPMSolverMultistepScheduler, HeunDiscreteScheduler, EulerAncestralDiscreteScheduler
+
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -13,16 +15,30 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to(device)
-pipeline.load_lora_weights("Checkpoints_L1/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
-def generate_images(prompt, num_images, task_id):
+def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
+    # Set scheduler 
+    if scheduler == "DDIM":
+        pipeline.scheduler = DDIMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")  # You might need to map the scheduler name to the actual scheduler class
+    elif scheduler == "PNDM":
+        pipeline.scheduler = PNDMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+    elif scheduler == "EulerDiscrete":
+        pipeline.scheduler = EulerDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+    elif scheduler == "DPMSolverMultistep":
+        pipeline.scheduler = DPMSolverMultistepScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+    elif scheduler == "HeunDiscrete":
+        pipeline.scheduler = HeunDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+    elif scheduler == "EulerAncestralDiscrete":
+        pipeline.scheduler = EulerAncestralDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+
     # Emit initial progress
     socketio.emit('progress', {'task_id': task_id, 'progress': 0}, namespace='/generate')
     
     images = []
     progress_per_image = 100 // int(num_images)
     for i in range(int(num_images)):
-        result = pipeline(prompt).images[0]  # num_inference_steps can be added
+        result = pipeline(prompt, num_inference_steps=inference_steps).images[0]
         img_io = BytesIO()
         result.save(img_io, 'PNG')
         img_io.seek(0)
@@ -42,16 +58,16 @@ class Task:
         self.results = {}
         self.task_number = 0
 
-    def add_task(self, prompt, num_images):
+    def add_task(self, prompt, num_images, scheduler, inference_steps):
         self.task_number += 1
-        self.tasks[self.task_number] = (prompt, num_images)
+        self.tasks[self.task_number] = (prompt, num_images, scheduler, inference_steps)
         return self.task_number
 
     def run(self):
         while True:
             done_tasks = []
-            for task_number, (prompt, num_images) in self.tasks.items():
-                image_urls = generate_images(prompt, num_images, task_number)
+            for task_number, (prompt, num_images, scheduler, inference_steps) in self.tasks.items():
+                image_urls = generate_images(prompt, num_images, scheduler, inference_steps, task_number)
                 self.results[task_number] = {"urls": image_urls}
                 done_tasks.append(task_number)
             for task_number in done_tasks:
@@ -65,11 +81,11 @@ def home():
 @app.route('/submit', methods=['POST'])
 def submit():
     data = request.json
-    if 'prompt' in data and 'num_images' in data:
-        task_id = task.add_task(data['prompt'], data['num_images'])
+    if 'prompt' in data and 'num_images' in data and 'scheduler' in data and 'inference_steps' in data:
+        task_id = task.add_task(data['prompt'], data['num_images'], data['scheduler'], data['inference_steps'])
         return jsonify({"taskID": task_id}), 202
     else:
-        return jsonify({"error": "Missing prompt or num_images in request"}), 400
+        return jsonify({"error": "Missing prompt, num_images, scheduler, or inference_steps in request"}), 400
 
 @app.route('/status/<task_id>')
 def status(task_id):
@@ -93,6 +109,7 @@ if __name__ == '__main__':
     task = Task()
     threading.Thread(target=task.run, daemon=True).start()
     socketio.run(app, debug=True, port=5000)
+
 
 
 
