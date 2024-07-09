@@ -34,7 +34,7 @@
                     </div>
                     <div class="absolute bottom left flex flex-col items-end">
                         <button id="advancedButton" type="button" class="bg-gray-300 text-white shadow-md w-32 h-12 hover:bg-gray-400 hover:shadow-inner transition font-nunito text-xl mb-2" onclick="toggleAdvancedMenu()">ADVANCED</button>
-                        <div id="advancedMenu" class="hidden flex flex-col items-end bg-white shadow-lg p-4 border border-gray-200 rounded-lg mb-2">
+                        <div id="advancedMenu" class="hidden absolute top-full left-0 flex flex-col items-start bg-white shadow-lg p-4 border border-gray-200 rounded-lg mt-2 w-72">
                             <div class="mb-4">
                                 <label for="scheduler" class="block text-xl text-gray-600 font-nunito mb-2">Scheduler:</label>
                                 <select id="scheduler" name="scheduler" class="shadow-inner w-full p-2 text-gray-600 text-xl font-nunito border border-gray-100 focus:outline-none focus:ring-0 focus:border-gray-300">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="absolute bottom right-4 bottom-8 flex flex-col items-end">
+                    <div class="absolute bottom-4 right-4 flex flex-col items-end">
                         <div>
                             <button id="resetButton" type="button" class="bg-pink-200 text-white shadow-md w-32 h-16 hover:bg-pink-400 hover:shadow-inner transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
                             <button id="generateButton" type="submit" class="bg-blue-300 text-white shadow-md w-32 h-16 hover:bg-blue-500 hover:shadow-inner transition font-nunito text-2xl mb-4" disabled>RUN</button>
@@ -62,23 +62,23 @@
                 </form>
             </div>
             <!-- Right Side: Generated Images -->
-            <div class="w-1/2 flex flex-col p-4">
-                <header class="bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
-                    <h2 class="text-2xl font-nunito">Output</h2>
-                </header>
-                <div class="shadow-inner w-full h-full p-2 flex flex-col justify-center items-center overflow-hidden relative">
-                    <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
-                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-                        <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
-                            <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
-                        </div>
-                        <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
+        <div class="w-1/2 flex flex-col p-4">
+            <header class="bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
+                <h2 class="text-2xl font-nunito">Output</h2>
+            </header>
+            <div class="shadow-inner w-full h-full p-2 flex flex-col justify-start items-center overflow-y-auto relative" style="max-height: 80vh;">
+                <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
+                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                    <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
+                        <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
                     </div>
-                    <div id="imageGrid" class="flex flex-col gap-4 w-full h-max-full justify-center items-center">
-                        <!-- Images will be injected here -->
-                    </div>
+                    <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
+                </div>
+                <div id="imageGrid" class="flex flex-col gap-4 w-full justify-start items-center">
+                    <!-- Images will be injected here -->
                 </div>
             </div>
+        </div>
     
         </div>
     </div>

@@ -14,7 +14,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to(device)
+pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
 pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
 def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
@@ -38,7 +38,7 @@ def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     images = []
     progress_per_image = 100 // int(num_images)
     for i in range(int(num_images)):
-        result = pipeline(prompt, num_inference_steps=inference_steps).images[0]
+        result = pipeline(prompt, num_inference_steps=int(inference_steps)).images[0]
         img_io = BytesIO()
         result.save(img_io, 'PNG')
         img_io.seek(0)
