@@ -25,9 +25,42 @@
                 </header>
     
                 <form id="promptForm" class="w-full flex-grow">
-                    <div class="mb-4 flex-grow">
-                        <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="shadow-inner w-full h-52 p-4 text-gray-600 text-xl font-nunito border border-gray-100 mb-4 focus:outline-none focus:ring-0 focus:border-gray-300" oninput="checkInput()"></textarea>
+                    <div class="mb-4">
+                        <label class="block text-xl text-gray-600 font-nunito mb-2">Size:</label>
+                        <div class="flex space-x-4">
+                            <button type="button" class="option-button" data-category="size" data-value="small">Small</button>
+                            <button type="button" class="option-button" data-category="size" data-value="big">Big</button>
+                        </div>
                     </div>
+                    <div class="mb-4">
+                        <label class="block text-xl text-gray-600 font-nunito mb-2">Rooms:</label>
+                        <div class="flex space-x-4">
+                            <button type="button" class="option-button" data-category="rooms" data-value="few">Few</button>
+                            <button type="button" class="option-button" data-category="rooms" data-value="many">Many</button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-xl text-gray-600 font-nunito mb-2">Bathrooms:</label>
+                        <div class="flex space-x-4">
+                            <button type="button" class="option-button" data-category="bathrooms" data-value="one">One</button>
+                            <button type="button" class="option-button" data-category="bathrooms" data-value="multiple">Multiple</button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-xl text-gray-600 font-nunito mb-2">Kitchen:</label>
+                        <div class="flex space-x-4">
+                            <button type="button" class="option-button" data-category="kitchen" data-value="small">Small</button>
+                            <button type="button" class="option-button" data-category="kitchen" data-value="big">Big</button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-xl text-gray-600 font-nunito mb-2">Windows:</label>
+                        <div class="flex space-x-4">
+                            <button type="button" class="option-button" data-category="windows" data-value="few">Few</button>
+                            <button type="button" class="option-button" data-category="windows" data-value="many">Many</button>
+                        </div>
+                    </div>
+                
                     <div class="mb-4">
                         <label for="numImages" class="block text-xl text-gray-600 font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
                         <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
@@ -120,24 +153,75 @@
         });
 
         let currentTaskID = null;
-
+        let options = {
+            size: null,
+            rooms: null,
+            bathrooms: null,
+            kitchen: null,
+            windows: null
+        };
+    
+        document.querySelectorAll('.option-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.dataset.category;
+                const value = this.dataset.value;
+    
+                // Unselect previously selected button in the same category
+                document.querySelectorAll(`.option-button[data-category="${category}"]`).forEach(btn => {
+                    btn.classList.remove('bg-blue-300', 'text-white');
+                });
+    
+                // Select the clicked button
+                this.classList.add('bg-blue-300', 'text-white');
+    
+                // Update options
+                options[category] = value;
+    
+                // Check if all options are selected
+                checkInput();
+            });
+        });
+    
+        function checkInput() {
+            const allSelected = Object.values(options).every(value => value !== null);
+            document.getElementById('generateButton').disabled = !allSelected;
+        }
+    
+        function resetPrompt() {
+            options = {
+                size: null,
+                rooms: null,
+                bathrooms: null,
+                kitchen: null,
+                windows: null
+            };
+    
+            document.querySelectorAll('.option-button').forEach(button => {
+                button.classList.remove('bg-blue-300', 'text-white');
+            });
+    
+            checkInput();
+        }
+    
         function handleFormSubmit(event) {
             event.preventDefault();
-            const promptInput = document.querySelector('textarea[name="prompt"]');
+    
+            const prompt = `Floor plan of a ${options.size} apartment, ${options.rooms} rooms, ${options.bathrooms} bathroom(s), ${options.kitchen} kitchen, ${options.windows} windows`;
+    
             const numImagesInput = document.querySelector('input[name="num_images"]');
             const schedulerInput = document.querySelector('select[name="scheduler"]');
             const inferenceStepsInput = document.querySelector('input[name="inference_steps"]');
             const generateButton = document.getElementById('generateButton');
-
+    
             generateButton.disabled = true;
-
+    
             fetch('/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ 
-                    prompt: promptInput.value.trim(), 
+                    prompt: prompt, 
                     num_images: numImagesInput.value,
                     scheduler: schedulerInput.value,
                     inference_steps: inferenceStepsInput.value 
@@ -158,32 +242,31 @@
                 enableGenerateButton();
             });
         }
-
-        function resetPrompt() {
-            const promptInput = document.querySelector('textarea[name="prompt"]');
-            promptInput.value = '';
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('promptForm').addEventListener('submit', handleFormSubmit);
             checkInput();
-        }
-
+        });
+    
         function checkStatus(taskID) {
             fetch('/status/' + taskID)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'done') {
-                    showGeneratedImages(data.urls);
-                } else if (data.status === 'processing') {
-                    setTimeout(() => checkStatus(taskID), 2000);
-                } else {
-                    alert('Error: Task not found');
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'done') {
+                        showGeneratedImages(data.urls);
+                    } else if (data.status === 'processing') {
+                        setTimeout(() => checkStatus(taskID), 2000);
+                    } else {
+                        alert('Error: Task not found');
+                        enableGenerateButton();
+                    }
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
                     enableGenerateButton();
-                }
-            })
-            .catch(error => {
-                alert('Error: ' + error.message);
-                enableGenerateButton();
-            });
+                });
         }
-
+    
         function showGeneratedImages(urls) {
             const imageGrid = document.getElementById('imageGrid');
             imageGrid.innerHTML = '';
@@ -203,50 +286,38 @@
             enableGenerateButton();
         }
 
-
         // JavaScript to prevent zooming
         document.addEventListener('wheel', function(event) {
-            if (event.ctrlKey) {
-                event.preventDefault();
-            }
+        if (event.ctrlKey) {
+            event.preventDefault();
+        }
         }, { passive: false });
-
+    
         function enableGenerateButton() {
             const generateButton = document.getElementById('generateButton');
             generateButton.disabled = false;
         }
-
-        function checkInput() {
-            const promptInput = document.querySelector('textarea[name="prompt"]');
-            const generateButton = document.getElementById('generateButton');
-            generateButton.disabled = promptInput.value.trim() === '';
-        }
-
-        function updateNumImagesLabel(value) {
-            document.getElementById('numImagesLabel').textContent = value;
-        }
-
+    
         function showModal(src) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModal').classList.remove('hidden');
             document.getElementById('downloadButton').href = src;
         }
-
+    
         function closeModal() {
             document.getElementById('imageModal').classList.add('hidden');
         }
-
+    
+        function updateNumImagesLabel(value) {
+            document.getElementById('numImagesLabel').textContent = value;
+        }
+    
         function toggleAdvancedMenu() {
             const advancedMenu = document.getElementById('advancedMenu');
             advancedMenu.classList.toggle('hidden');
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('promptForm').addEventListener('submit', handleFormSubmit);
-            checkInput();
-        });
-
     </script>
+    
 </body>
 </html>
 
