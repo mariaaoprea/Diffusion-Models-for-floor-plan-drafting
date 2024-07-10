@@ -21,7 +21,7 @@ def load_image_for_ssim(filepath):
 # Load LPIPS model
 loss_fn = lpips.LPIPS(net='alex')
 
-models = ["L1_8"]
+models = ["L1_r8, L1_r6, L1, MSE, SNR"]
 labels = ["BFMBM", "BFOBM", "BMMBM", "BMOBM", "SFMBM", "SFOBM", "SFOBF", "SFOSM", "SFOSF"]
 
 results = {model: [] for model in models}
