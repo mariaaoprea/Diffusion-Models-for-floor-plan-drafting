@@ -8,7 +8,6 @@ import time
 import threading
 from diffusers import DDIMScheduler, PNDMScheduler, EulerDiscreteScheduler, DPMSolverMultistepScheduler, HeunDiscreteScheduler, EulerAncestralDiscreteScheduler
 
-
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
@@ -76,7 +75,7 @@ class Task:
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    return render_template('index_2.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -109,3 +108,4 @@ if __name__ == '__main__':
     task = Task()
     threading.Thread(target=task.run, daemon=True).start()
     socketio.run(app, debug=True, port=5000)
+
