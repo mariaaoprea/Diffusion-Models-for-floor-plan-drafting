@@ -1,70 +1,75 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load the CSV files
-loss_l1_4 = pd.read_csv('losses/Loss_L1.csv', header=None)
-loss_l1_6 = pd.read_csv('losses/Loss_L1_6.csv', header=None)
-loss_l1_8 = pd.read_csv('losses/Loss_L1_8.csv', header=None)
+# Define loss types and corresponding file paths
+loss_types = {
+    'MSE': 'Evaluation/Training Loss/Loss_MSE.csv',
+    'SNR': 'Evaluation/Training Loss/Loss_SNR.csv',
+    'L1': 'Evaluation/Training Loss/Loss_L1.csv',
+    'L1_r6': 'Evaluation/Training Loss/Loss_L1_r6.csv',
+    'L1_r8': 'Evaluation/Training Loss/Loss_L1_r8.csv'
+}
 
-# Remove the header row and convert columns to appropriate data types
-loss_l1_6 = loss_l1_6.drop(0).reset_index(drop=True)
-loss_l1_8 = loss_l1_8.drop(0).reset_index(drop=True)
-loss_l1_4 = loss_l1_4.drop(0).reset_index(drop=True)
-
-loss_l1_6.columns = ['Step', 'L1_6_loss']
-loss_l1_8.columns = ['Step', 'L1_8_loss']
-loss_l1_4.columns = ['Step', 'L1_4_loss']
-
-loss_l1_6['Step'] = loss_l1_6['Step'].astype(int)
-loss_l1_6['L1_6_loss'] = loss_l1_6['L1_6_loss'].astype(float)
-
-loss_l1_8['Step'] = loss_l1_8['Step'].astype(int)
-loss_l1_8['L1_8_loss'] = loss_l1_8['L1_8_loss'].astype(float)
-
-loss_l1_4['Step'] = loss_l1_4['Step'].astype(int)
-loss_l1_4['L1_4_loss'] = loss_l1_4['L1_4_loss'].astype(float)
+# Function to load and preprocess loss data
+def load_and_preprocess_loss(file_path, loss_name):
+    df = pd.read_csv(file_path, header=None)
+    df = df.drop(0).reset_index(drop=True)
+    df.columns = ['Step', f'{loss_name}_loss']
+    df['Step'] = df['Step'].astype(int)
+    df[f'{loss_name}_loss'] = df[f'{loss_name}_loss'].astype(float)
+    return df
 
 # Function to calculate mean loss per epoch (70 steps)
 def calculate_mean_loss_per_epoch(df, loss_column):
     return df.groupby(df.index // 70)[loss_column].mean().reset_index(drop=True)
 
-# Calculate mean loss per epoch
-l1_6_mean_loss_per_epoch = calculate_mean_loss_per_epoch(loss_l1_6, 'L1_6_loss')
-l1_4_mean_loss_per_epoch = calculate_mean_loss_per_epoch(loss_l1_4, 'L1_4_loss')
-l1_8_mean_loss_per_epoch = calculate_mean_loss_per_epoch(loss_l1_8, 'L1_8_loss')
+# Load and preprocess all loss data
+loss_data = {loss_name: load_and_preprocess_loss(file_path, loss_name) for loss_name, file_path in loss_types.items()}
 
-'''# Plotting L1 Loss per Epoch
+# Calculate mean loss per epoch for each loss type
+mean_loss_per_epoch = {loss_name: calculate_mean_loss_per_epoch(df, f'{loss_name}_loss') for loss_name, df in loss_data.items()}
+
+# Plotting function for individual loss types
+def plot_loss_per_epoch(mean_loss, loss_name, color):
+    plt.figure(figsize=(10, 6))
+    plt.plot(mean_loss, label=f'{loss_name} Loss', color=color)
+    plt.title(f'{loss_name} Loss per Epoch')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend()
+    plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+    plt.savefig(f'Evaluation/Training Loss/{loss_name}_Loss_per_Epoch.png')
+    plt.close()
+
+# Plot each individual loss
+colors = ['blue', 'orange', 'green', 'red', 'purple']
+for i, (loss_name, mean_loss) in enumerate(mean_loss_per_epoch.items()):
+    plot_loss_per_epoch(mean_loss, loss_name, colors[i % len(colors)])
+
+# Plot combined MSE, SNR, L1
 plt.figure(figsize=(10, 6))
-plt.plot(l1_6_mean_loss_per_epoch, label='L1_6 Loss', color='blue')
-plt.title('L1_6 Loss per Epoch')
+for loss_name in ['MSE', 'SNR', 'L1']:
+    if loss_name in mean_loss_per_epoch:
+        plt.plot(mean_loss_per_epoch[loss_name], label=loss_name, color=colors.pop(0))
+plt.title('Combined MSE, SNR, L1 Loss per Epoch')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend()
 plt.grid(True, which='both', linestyle='--', linewidth=0.5)
-plt.savefig('losses/L1_6_Loss_per_Epoch.png')
+plt.savefig('Evaluation/Training Loss/Combined_MSE_SNR_L1_Loss_per_Epoch.png')
 plt.close()
 
-# Plotting L1 Loss per Epoch
+colors = ['blue', 'orange', 'green', 'red', 'purple']
+
+# Plot combined L1 with different ranks
 plt.figure(figsize=(10, 6))
-plt.plot(l1_8_mean_loss_per_epoch, label='L1_8 Loss', color='blue')
-plt.title('L1_8 Loss per Epoch')
+for loss_name in ['L1', 'L1_r6', 'L1_r8']:
+    if loss_name in mean_loss_per_epoch:
+        plt.plot(mean_loss_per_epoch[loss_name], label=loss_name, color=colors.pop(0))
+plt.title('L1 Loss per Epoch with Different Ranks ')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
-plt.legend()
+plt.legend(['rank4', 'rank6', 'rank8'])
 plt.grid(True, which='both', linestyle='--', linewidth=0.5)
-plt.savefig('losses/L1_8_Loss_per_Epoch.png')
-plt.close()'''
-
-
-# Plotting Combined Loss per Epoch
-plt.figure(figsize=(10, 6))
-plt.plot(l1_4_mean_loss_per_epoch, label='Rank 4', color='blue')
-plt.plot(l1_6_mean_loss_per_epoch, label='Rank 6', color='green')
-plt.plot(l1_8_mean_loss_per_epoch, label='Rank 8', color='red')
-plt.title('L1 Loss with different ranks')
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.legend()
-plt.grid(True, which='both', linestyle='--', linewidth=0.5)
-plt.savefig('losses/L1_different_ranks.png')
+plt.savefig('Evaluation/Training Loss/Combined_L1_Ranks_Loss_per_Epoch.png')
 plt.close()
