@@ -24,8 +24,8 @@ import wandb
 
 
 # Imported files
-from arguments import parse_args
-from preprocessing import preprocess_data
+from Training.arguments import parse_args
+from Training.preprocessing import preprocess_data
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.28.0.dev0")

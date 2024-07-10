@@ -3,7 +3,7 @@ import os
 import torch
 from transformers import CLIPTokenizer
 from torchvision import transforms
-from arguments import parse_args
+from Training.arguments import parse_args
 
 args = parse_args()
 tokenizer = CLIPTokenizer.from_pretrained(
