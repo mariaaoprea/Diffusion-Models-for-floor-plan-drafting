@@ -18,8 +18,8 @@ from diffusers.training_utils import compute_snr
 from diffusers.utils import check_min_version, convert_state_dict_to_diffusers
 from diffusers.utils.torch_utils import is_compiled_module
 import wandb
-from Training.arguments import parse_args
-from Training.preprocessing import preprocess_data
+from arguments import parse_args
+from preprocessing import preprocess_data
 
 import torch.nn.functional as F
 import torch.utils.checkpoint

@@ -8,14 +8,14 @@ def main():
     # Build the command
     command = [
         "accelerate", "launch", 
-        "lora_training.py",
+        "Training/lora_training.py",
         "--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5",
         "--train_data_dir=dataset",
-        "--output_dir=output_rank8",
+        "--output_dir=output",
         "--cache_dir=cache",
         "--random_flip",
         "--train_batch_size=4",
-        "--num_train_epochs=50",
+        "--num_train_epochs=250",
         "--learning_rate=1e-04",
         "--validation_epochs=50",
         "--lr_scheduler=cosine",
@@ -25,7 +25,6 @@ def main():
         "--rank=8",
         "--num_validation_images=4",
         "--checkpointing_frequency=50",
-        "--resume_from_checkpoint=output_rank8/checkpoint-200",
         "--loss_function=L1"
     ]
 
