@@ -1,7 +1,10 @@
 import subprocess
 
 def main():
-
+    """
+    Main function to execute the training script.
+    """
+    
     # Build the command
     command = [
         "accelerate", "launch", 
@@ -24,7 +27,6 @@ def main():
         "--checkpointing_frequency=50",
         "--resume_from_checkpoint=output_rank8/checkpoint-200",
         "--loss_function=L1"
-        
     ]
 
     # Execute the command

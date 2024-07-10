@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Generator</title>
+    <!-- External CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <!-- External Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <!-- External JavaScript -->
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 </head>
 <body class="flex flex-col h-screen justify-center items-center bg-gradient-to-r from-blue-500 to-pink-200">
@@ -26,16 +29,20 @@
     
                 <form id="promptForm" class="w-full flex-grow">
                     <div class="mb-4 flex-grow">
+                        <!-- Input Prompt -->
                         <textarea name="prompt" placeholder="ENTER YOUR PROMPT..." class="shadow-inner w-full h-52 p-4 text-gray-600 text-xl font-nunito border border-gray-100 mb-4 focus:outline-none focus:ring-0 focus:border-gray-300" oninput="checkInput()"></textarea>
                     </div>
                     <div class="mb-4">
+                        <!-- Number of Images Slider -->
                         <label for="numImages" class="block text-xl text-gray-600 font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
                         <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
                     </div>
                     <div class="absolute bottom left flex flex-col items-end">
+                        <!-- Advanced Button -->
                         <button id="advancedButton" type="button" class="bg-gray-300 text-white shadow-md w-32 h-12 hover:bg-gray-400 hover:shadow-inner transition font-nunito text-xl mb-2" onclick="toggleAdvancedMenu()">ADVANCED</button>
                         <div id="advancedMenu" class="hidden absolute top-full left-0 flex flex-col items-start bg-white shadow-lg p-4 border border-gray-200 rounded-lg mt-2 w-72">
                             <div class="mb-4">
+                                <!-- Scheduler Selection -->
                                 <label for="scheduler" class="block text-xl text-gray-600 font-nunito mb-2">Scheduler:</label>
                                 <select id="scheduler" name="scheduler" class="shadow-inner w-full p-2 text-gray-600 text-xl font-nunito border border-gray-100 focus:outline-none focus:ring-0 focus:border-gray-300">
                                     <option value="default">DDIM</option>
@@ -48,6 +55,7 @@
                                 </select>
                             </div>
                             <div class="mb-4">
+                                <!-- Inference Steps Input -->
                                 <label for="inferenceSteps" class="block text-xl text-gray-600 font-nunito mb-2">Inference Steps:</label>
                                 <input type="number" id="inferenceSteps" name="inference_steps" min="1" max="100" value="50" class="shadow-inner w-full p-2 text-gray-600 text-xl font-nunito border border-gray-100 focus:outline-none focus:ring-0 focus:border-gray-300">
                             </div>
@@ -55,7 +63,9 @@
                     </div>
                     <div class="absolute bottom-4 right-4 flex flex-col items-end">
                         <div>
+                            <!-- Reset Button -->
                             <button id="resetButton" type="button" class="bg-pink-200 text-white shadow-md w-32 h-16 hover:bg-pink-400 hover:shadow-inner transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
+                            <!-- Generate Button -->
                             <button id="generateButton" type="submit" class="bg-blue-300 text-white shadow-md w-32 h-16 hover:bg-blue-500 hover:shadow-inner transition font-nunito text-2xl mb-4" disabled>RUN</button>
                         </div>
                     </div>
@@ -93,12 +103,15 @@
     </div>
 
     <script>
+        // Establish WebSocket connection
         const socket = io.connect('http://' + document.domain + ':' + location.port + '/generate');
 
+        // WebSocket connection event
         socket.on('connect', () => {
             console.log('WebSocket connected');
         });
 
+        // Progress event handler
         socket.on('progress', function(data) {
             console.log('Progress event received:', data);
             if (data.task_id === currentTaskID) {
@@ -121,6 +134,7 @@
 
         let currentTaskID = null;
 
+        // Form submit event handler
         function handleFormSubmit(event) {
             event.preventDefault();
             const promptInput = document.querySelector('textarea[name="prompt"]');
@@ -131,6 +145,7 @@
 
             generateButton.disabled = true;
 
+            // Send form data to server
             fetch('/submit', {
                 method: 'POST',
                 headers: {
@@ -159,12 +174,14 @@
             });
         }
 
+        // Reset prompt input
         function resetPrompt() {
             const promptInput = document.querySelector('textarea[name="prompt"]');
             promptInput.value = '';
             checkInput();
         }
 
+        // Check task status
         function checkStatus(taskID) {
             fetch('/status/' + taskID)
             .then(response => response.json())
@@ -184,6 +201,7 @@
             });
         }
 
+        // Display generated images
         function showGeneratedImages(urls) {
             const imageGrid = document.getElementById('imageGrid');
             imageGrid.innerHTML = '';
@@ -211,36 +229,43 @@
             }
         }, { passive: false });
 
+        // Enable generate button
         function enableGenerateButton() {
             const generateButton = document.getElementById('generateButton');
             generateButton.disabled = false;
         }
 
+        // Check input validity
         function checkInput() {
             const promptInput = document.querySelector('textarea[name="prompt"]');
             const generateButton = document.getElementById('generateButton');
             generateButton.disabled = promptInput.value.trim() === '';
         }
 
+        // Update number of images label
         function updateNumImagesLabel(value) {
             document.getElementById('numImagesLabel').textContent = value;
         }
 
+        // Show image modal
         function showModal(src) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModal').classList.remove('hidden');
             document.getElementById('downloadButton').href = src;
         }
 
+        // Close image modal
         function closeModal() {
             document.getElementById('imageModal').classList.add('hidden');
         }
 
+        // Toggle advanced menu
         function toggleAdvancedMenu() {
             const advancedMenu = document.getElementById('advancedMenu');
             advancedMenu.classList.toggle('hidden');
         }
 
+        // DOMContentLoaded event handler
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('promptForm').addEventListener('submit', handleFormSubmit);
             checkInput();

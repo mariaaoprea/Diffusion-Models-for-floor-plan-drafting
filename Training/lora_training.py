@@ -3,8 +3,6 @@ import os
 from pathlib import Path
 import datasets
 import torch
-import torch.nn.functional as F
-import torch.utils.checkpoint
 import transformers
 from accelerate import Accelerator
 from accelerate.logging import get_logger
@@ -13,7 +11,6 @@ from peft import LoraConfig
 from peft.utils import get_peft_model_state_dict
 from tqdm.auto import tqdm
 from transformers import CLIPTextModel
-
 import diffusers
 from diffusers import AutoencoderKL, DDPMScheduler, DiffusionPipeline, StableDiffusionPipeline, UNet2DConditionModel
 from diffusers.optimization import get_scheduler
@@ -21,16 +18,23 @@ from diffusers.training_utils import compute_snr
 from diffusers.utils import check_min_version, convert_state_dict_to_diffusers
 from diffusers.utils.torch_utils import is_compiled_module
 import wandb
+from Training.arguments import parse_args
+from Training.preprocessing import preprocess_data
+
+import torch.nn.functional as F
+import torch.utils.checkpoint
+
 
 
 # Imported files
-from Training.arguments import parse_args
-from Training.preprocessing import preprocess_data
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.28.0.dev0")
 
 def main():
+    """
+    Main function to run the training process.
+    """
     # Parse the arguments
     args = parse_args()
     # Initialize the logger

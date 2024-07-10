@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 # Load the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to(device)
-pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
+pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
+pipeline.load_lora_weights("checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
 @app.route('/', methods=['GET', 'POST'])
 
@@ -25,7 +25,7 @@ def index():
             img_io.seek(0)
             img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
             img_urls.append(f"data:image/png;base64,{img_data}")
-    return render_template('index.html', img_urls=img_urls, prompt=prompt)
+    return render_template('index_old.html', img_urls=img_urls, prompt=prompt)
 
 
 def generate_image(prompt):

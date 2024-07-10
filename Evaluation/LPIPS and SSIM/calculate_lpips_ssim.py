@@ -7,6 +7,15 @@ import pandas as pd
 
 # Function to load an image for LPIPS and convert to tensor
 def load_image_for_lpips(filepath):
+    """
+    Load an image for LPIPS and convert it to a tensor.
+
+    Args:
+        filepath (str): The path to the image file.
+
+    Returns:
+        torch.Tensor: The image tensor.
+    """
     img = Image.open(filepath).convert('RGB')  # Ensures image is in RGB format
     img = np.array(img).astype(np.float32) / 255.0
     img = torch.tensor(img).permute(2, 0, 1).unsqueeze(0)
@@ -14,6 +23,15 @@ def load_image_for_lpips(filepath):
 
 # Function to load an image for SSIM and convert to RGB numpy array
 def load_image_for_ssim(filepath):
+    """
+    Load an image for SSIM and convert it to a RGB numpy array.
+
+    Args:
+        filepath (str): The path to the image file.
+
+    Returns:
+        numpy.ndarray: The RGB image array.
+    """
     img = Image.open(filepath).convert('RGB')  # Ensures image is in RGB format
     img = np.array(img).astype(np.float32) / 255.0
     return img

@@ -1,4 +1,5 @@
 import pandas as pd
+
 import matplotlib.pyplot as plt
 
 # Define loss types and corresponding file paths
@@ -12,6 +13,16 @@ loss_types = {
 
 # Function to load and preprocess loss data
 def load_and_preprocess_loss(file_path, loss_name):
+    """
+    Load and preprocess loss data from a CSV file.
+
+    Args:
+        file_path (str): Path to the CSV file.
+        loss_name (str): Name of the loss.
+
+    Returns:
+        pd.DataFrame: Preprocessed loss data.
+    """
     df = pd.read_csv(file_path, header=None)
     df = df.drop(0).reset_index(drop=True)
     df.columns = ['Step', f'{loss_name}_loss']
@@ -21,6 +32,16 @@ def load_and_preprocess_loss(file_path, loss_name):
 
 # Function to calculate mean loss per epoch (70 steps)
 def calculate_mean_loss_per_epoch(df, loss_column):
+    """
+    Calculate the mean loss per epoch.
+
+    Args:
+        df (pd.DataFrame): Loss data.
+        loss_column (str): Name of the loss column.
+
+    Returns:
+        pd.Series: Mean loss per epoch.
+    """
     return df.groupby(df.index // 70)[loss_column].mean().reset_index(drop=True)
 
 # Load and preprocess all loss data
@@ -31,6 +52,14 @@ mean_loss_per_epoch = {loss_name: calculate_mean_loss_per_epoch(df, f'{loss_name
 
 # Plotting function for individual loss types
 def plot_loss_per_epoch(mean_loss, loss_name, color):
+    """
+    Plot the loss per epoch.
+
+    Args:
+        mean_loss (pd.Series): Mean loss per epoch.
+        loss_name (str): Name of the loss.
+        color (str): Color for the plot.
+    """
     plt.figure(figsize=(10, 6))
     plt.plot(mean_loss, label=f'{loss_name} Loss', color=color)
     plt.title(f'{loss_name} Loss per Epoch')

@@ -15,7 +15,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
-pipeline.load_lora_weights("output/checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
 def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     # Set scheduler 
@@ -76,7 +76,7 @@ class Task:
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index_2.html')
+    return render_template('index.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
