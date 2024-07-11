@@ -1,5 +1,4 @@
 import logging
-import threading
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO
 from diffusers import AutoPipelineForText2Image
@@ -7,7 +6,7 @@ import torch
 from io import BytesIO
 import base64
 import time
-import multiprocessing
+import threading
 from diffusers import (DDIMScheduler, PNDMScheduler, EulerDiscreteScheduler, 
                        DPMSolverMultistepScheduler, HeunDiscreteScheduler, 
                        EulerAncestralDiscreteScheduler)
@@ -17,61 +16,66 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 logging.basicConfig(level=logging.INFO)
 
-# Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
-pipeline.load_lora_weights("Checkpoints_L1_r6/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
 
-def generate_images(args):
-    """
-    Generate a specified number of images based on a given prompt using a diffusion model.
+class ImageGenerator:
+    def __init__(self):
+        self.pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
+        self.pipeline.load_lora_weights("Checkpoints_L1_r6/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
 
-    Args:
-        args (tuple): A tuple containing (prompt, num_images, scheduler, inference_steps, task_id)
+    def generate_images(self, prompt, num_images, scheduler, inference_steps, task_id):
+        """
+        Generate a specified number of images based on a given prompt using a diffusion model.
 
-    Returns:
-        dict: A dictionary containing task_id and list of generated images in base64-encoded PNG format.
-    """
-    prompt, num_images, scheduler, inference_steps, task_id = args
-    logging.info(f"Starting image generation for task: {task_id}")
-    start_time = time.time()
-    
-    # Set scheduler 
-    if scheduler == "DDIM":
-        pipeline.scheduler = DDIMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
-    elif scheduler == "PNDM":
-        pipeline.scheduler = PNDMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
-    elif scheduler == "EulerDiscrete":
-        pipeline.scheduler = EulerDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
-    elif scheduler == "DPMSolverMultistep":
-        pipeline.scheduler = DPMSolverMultistepScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
-    elif scheduler == "HeunDiscrete":
-        pipeline.scheduler = HeunDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
-    elif scheduler == "EulerAncestralDiscrete":
-        pipeline.scheduler = EulerAncestralDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+        Args:
+            prompt (str): The text prompt used to generate the images.
+            num_images (int): The number of images to generate.
+            scheduler (str): The name of the scheduler to use for the diffusion model.
+            inference_steps (int): The number of inference steps to perform for each image.
+            task_id (str): The ID of the task associated with the image generation.
 
-    # Emit initial progress
-    socketio.emit('progress', {'task_id': task_id, 'progress': 0}, namespace='/generate')
-    
-    images = []
-    progress_per_image = 100 // int(num_images)
-    for i in range(int(num_images)):
-        result = pipeline(prompt, num_inference_steps=int(inference_steps)).images[0]
-        img_io = BytesIO()
-        result.save(img_io, 'PNG')
-        img_io.seek(0)
-        img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
-        images.append(f"data:image/png;base64,{img_data}")
+        Returns:
+            list: A list of generated images in base64-encoded PNG format.
+        """
+        logging.info(f"Starting image generation for task: {task_id}")
+        start_time = time.time()
         
-        # Update progress for each image generated
-        progress = (i + 1) * progress_per_image
-        socketio.emit('progress', {'task_id': task_id, 'progress': progress}, namespace='/generate')
-    
-    socketio.emit('progress', {'task_id': task_id, 'progress': 100}, namespace='/generate')  # Ensure 100% is sent at the end
-    
-    end_time = time.time()
-    logging.info(f"Completed image generation for task: {task_id} in {end_time - start_time} seconds")
-    return {'task_id': task_id, 'images': images}
+        # Set scheduler 
+        if scheduler == "DDIM":
+            self.pipeline.scheduler = DDIMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+        elif scheduler == "PNDM":
+            self.pipeline.scheduler = PNDMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+        elif scheduler == "EulerDiscrete":
+            self.pipeline.scheduler = EulerDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+        elif scheduler == "DPMSolverMultistep":
+            self.pipeline.scheduler = DPMSolverMultistepScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+        elif scheduler == "HeunDiscrete":
+            self.pipeline.scheduler = HeunDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+        elif scheduler == "EulerAncestralDiscrete":
+            self.pipeline.scheduler = EulerAncestralDiscreteScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
+
+        # Emit initial progress
+        socketio.emit('progress', {'task_id': task_id, 'progress': 0}, namespace='/generate')
+        
+        images = []
+        progress_per_image = 100 // int(num_images)
+        for i in range(int(num_images)):
+            result = self.pipeline(prompt, num_inference_steps=int(inference_steps)).images[0]
+            img_io = BytesIO()
+            result.save(img_io, 'PNG')
+            img_io.seek(0)
+            img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
+            images.append(f"data:image/png;base64,{img_data}")
+            
+            # Update progress for each image generated
+            progress = (i + 1) * progress_per_image
+            socketio.emit('progress', {'task_id': task_id, 'progress': progress}, namespace='/generate')
+        
+        socketio.emit('progress', {'task_id': task_id, 'progress': 100}, namespace='/generate')  # Ensure 100% is sent at the end
+        
+        end_time = time.time()
+        logging.info(f"Completed image generation for task: {task_id} in {end_time - start_time} seconds")
+        return {'task_id': task_id, 'images': images}
 
 class Task:
     """
@@ -91,7 +95,7 @@ class Task:
         self.tasks = {}
         self.results = {}
         self.task_number = 0
-        self.pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+        self.lock = threading.Lock()
 
     def add_task(self, prompt, num_images, scheduler, inference_steps):
         """
@@ -106,10 +110,19 @@ class Task:
         Returns:
             int: The task number assigned to the new task.
         """
-        self.task_number += 1
-        self.tasks[self.task_number] = (prompt, num_images, scheduler, inference_steps, self.task_number)
-        logging.info(f"Task added: {self.task_number}")
-        return self.task_number
+        with self.lock:
+            self.task_number += 1
+            self.tasks[self.task_number] = (prompt, num_images, scheduler, inference_steps)
+            logging.info(f"Task added: {self.task_number}")
+            return self.task_number
+
+    def run_task(self, task_number):
+        prompt, num_images, scheduler, inference_steps = self.tasks[task_number]
+        generator = ImageGenerator()
+        result = generator.generate_images(prompt, num_images, scheduler, inference_steps, task_number)
+        self.save_result(result)
+        with self.lock:
+            del self.tasks[task_number]
 
     def run(self):
         """
@@ -117,9 +130,10 @@ class Task:
         """
         while True:
             if self.tasks:
-                for task_number, task_details in list(self.tasks.items()):
-                    self.pool.apply_async(generate_images, args=(task_details,), callback=self.save_result)
-                    del self.tasks[task_number]
+                with self.lock:
+                    task_numbers = list(self.tasks.keys())
+                for task_number in task_numbers:
+                    threading.Thread(target=self.run_task, args=(task_number,)).start()
             time.sleep(1)
 
     def save_result(self, result):
