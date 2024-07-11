@@ -1,3 +1,4 @@
+import logging
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO
 from diffusers import AutoPipelineForText2Image
@@ -9,10 +10,12 @@ import threading
 from diffusers import (DDIMScheduler, PNDMScheduler, EulerDiscreteScheduler, 
                        DPMSolverMultistepScheduler, HeunDiscreteScheduler, 
                        EulerAncestralDiscreteScheduler)
-import ssl
 
+# Initialize the Flask application and logging
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
+
+logging.basicConfig(level=logging.INFO)
 
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -36,7 +39,7 @@ def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     """
     # Set scheduler 
     if scheduler == "DDIM":
-        pipeline.scheduler = DDIMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")  # You might need to map the scheduler name to the actual scheduler class
+        pipeline.scheduler = DDIMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
     elif scheduler == "PNDM":
         pipeline.scheduler = PNDMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
     elif scheduler == "EulerDiscrete":
@@ -102,6 +105,7 @@ class Task:
         """
         self.task_number += 1
         self.tasks[self.task_number] = (prompt, num_images, scheduler, inference_steps)
+        logging.info(f"Task added: {self.task_number}")
         return self.task_number
 
     def run(self):
@@ -111,9 +115,11 @@ class Task:
         while True:
             done_tasks = []
             for task_number, (prompt, num_images, scheduler, inference_steps) in self.tasks.items():
+                logging.info(f"Generating images for task: {task_number}")
                 image_urls = generate_images(prompt, num_images, scheduler, inference_steps, task_number)
                 self.results[task_number] = {"urls": image_urls}
                 done_tasks.append(task_number)
+                logging.info(f"Task completed: {task_number}")
             for task_number in done_tasks:
                 del self.tasks[task_number]
             time.sleep(1)
@@ -182,7 +188,7 @@ def handle_connect():
     This function is called when a client connects to the server. It prints a message indicating that a client has connected.
 
     """
-    print('Client connected')
+    logging.info('Client connected')
 
 @socketio.on('disconnect', namespace='/generate')
 def handle_disconnect():
@@ -192,12 +198,13 @@ def handle_disconnect():
     This function is called when a client disconnects from the server. It prints a message indicating that the client has disconnected.
 
     """
-    print('Client disconnected')
+    logging.info('Client disconnected')
     
 if __name__ == '__main__':
     task = Task()
     threading.Thread(target=task.run, daemon=True).start()
     socketio.run(app, debug=True, port=5000)
+
 
 
 

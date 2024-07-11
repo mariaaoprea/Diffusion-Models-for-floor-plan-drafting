@@ -9,7 +9,7 @@ url = "http://127.0.0.1:5000/submit"
 
 # Sample data to be sent in the requests
 data_template = {
-    "prompt": "Generate a landscape image",
+    "prompt": "Floor plan of a small apartment, few rooms, one bathroom, big kitchen, many windows",
     "num_images": 1,
     "scheduler": "DDIM",
     "inference_steps": 50
@@ -17,7 +17,7 @@ data_template = {
 
 def send_request(prompt_num):
     """
-    Sends a POST request to the Flask server with a modified prompt and measures the response time.
+    Sends a POST request to the Flask server and measures the response time.
     
     Args:
         prompt_num (int): The number to append to the prompt for uniqueness.
@@ -26,7 +26,6 @@ def send_request(prompt_num):
         dict: A dictionary containing the JSON response from the server and the response time.
     """
     data = data_template.copy()
-    data["prompt"] = f"Generate a landscape image {prompt_num}"
     
     start_time = time.time()
     try:
@@ -34,10 +33,15 @@ def send_request(prompt_num):
         response.raise_for_status()  # Raise an error for bad status codes
         end_time = time.time()
         response_time = end_time - start_time
+
+        # Log response content for debugging
+        print(f"Response content for prompt {prompt_num}: {response.text}")
+        
         return {"response": response.json(), "response_time": response_time}
     except requests.exceptions.RequestException as e:
         end_time = time.time()
         response_time = end_time - start_time
+        print(f"Request failed for prompt {prompt_num}: {e}")
         return {"response": {"error": str(e)}, "response_time": response_time}
 
 def main():
@@ -66,9 +70,12 @@ def main():
                 response_times = []
                 
                 for future in concurrent.futures.as_completed(futures):
-                    result = future.result()
-                    results.append(result["response"])
-                    response_times.append(result["response_time"])
+                    try:
+                        result = future.result()
+                        results.append(result["response"])
+                        response_times.append(result["response_time"])
+                    except Exception as e:
+                        print(f"An error occurred: {e}")
                 
                 # Calculate metrics
                 if response_times:
