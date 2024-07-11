@@ -4,8 +4,9 @@ import csv
 import time
 import os
 
-# URL for the submit endpoint
-url = "http://127.0.0.1:5000/submit"
+# URL for the submit and status endpoints
+submit_url = "http://127.0.0.1:5000/submit"
+status_url = "http://127.0.0.1:5000/status"
 
 # Sample data to be sent in the requests
 data_template = {
@@ -26,23 +27,43 @@ def send_request(prompt_num):
         dict: A dictionary containing the JSON response from the server and the response time.
     """
     data = data_template.copy()
-    
+    data["prompt"] = f"Floor plan of a small apartment {prompt_num}"
+
     start_time = time.time()
     try:
-        response = requests.post(url, json=data)
+        response = requests.post(submit_url, json=data)
         response.raise_for_status()  # Raise an error for bad status codes
+        response_data = response.json()
         end_time = time.time()
         response_time = end_time - start_time
 
         # Log response content for debugging
-        print(f"Response content for prompt {prompt_num}: {response.text}")
+        print(f"Response content for prompt {prompt_num}: {response_data}")
         
-        return {"response": response.json(), "response_time": response_time}
+        return {"response": response_data, "response_time": response_time, "start_time": start_time}
     except requests.exceptions.RequestException as e:
         end_time = time.time()
         response_time = end_time - start_time
         print(f"Request failed for prompt {prompt_num}: {e}")
-        return {"response": {"error": str(e)}, "response_time": response_time}
+        return {"response": {"error": str(e)}, "response_time": response_time, "start_time": start_time}
+
+def check_task_status(task_id):
+    """
+    Checks the status of a given task until it is completed.
+    
+    Args:
+        task_id (int): The task ID to check the status for.
+        
+    Returns:
+        float: The total time taken for the task to complete.
+    """
+    while True:
+        response = requests.get(f"{status_url}/{task_id}")
+        if response.status_code == 200:
+            status_data = response.json()
+            if status_data["status"] == "done":
+                return time.time()
+        time.sleep(1)
 
 def main():
     """
@@ -70,19 +91,25 @@ def main():
                 response_times = []
                 
                 for future in concurrent.futures.as_completed(futures):
-                    try:
-                        result = future.result()
-                        results.append(result["response"])
-                        response_times.append(result["response_time"])
-                    except Exception as e:
-                        print(f"An error occurred: {e}")
-                
+                    result = future.result()
+                    results.append(result)
+                    response_times.append(result["response_time"])
+
+                # Wait for all tasks to complete
+                task_completion_times = []
+                for result in results:
+                    if "taskID" in result["response"]:
+                        task_id = result["response"]["taskID"]
+                        completion_time = check_task_status(task_id)
+                        total_time = completion_time - result["start_time"]
+                        task_completion_times.append(total_time)
+
                 # Calculate metrics
-                if response_times:
-                    avg_response_time = sum(response_times) / len(response_times)
-                    max_response_time = max(response_times)
-                    min_response_time = min(response_times)
-                    total_response_time = sum(response_times)
+                if task_completion_times:
+                    avg_response_time = sum(task_completion_times) / len(task_completion_times)
+                    max_response_time = max(task_completion_times)
+                    min_response_time = min(task_completion_times)
+                    total_response_time = sum(task_completion_times)
                 else:
                     avg_response_time = max_response_time = min_response_time = total_response_time = 0
                 
@@ -93,6 +120,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
