@@ -11,7 +11,6 @@ from diffusers import (DDIMScheduler, PNDMScheduler, EulerDiscreteScheduler,
                        DPMSolverMultistepScheduler, HeunDiscreteScheduler, 
                        EulerAncestralDiscreteScheduler)
 
-# Initialize the Flask application and logging
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
@@ -20,7 +19,7 @@ logging.basicConfig(level=logging.INFO)
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
-pipeline.load_lora_weights("Checkpoints_L1/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("Checkpoints_L1_r6/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
 
 def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     """
@@ -35,8 +34,10 @@ def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
 
     Returns:
         list: A list of generated images in base64-encoded PNG format.
-
     """
+    logging.info(f"Starting image generation for task: {task_id}")
+    start_time = time.time()
+    
     # Set scheduler 
     if scheduler == "DDIM":
         pipeline.scheduler = DDIMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
@@ -69,6 +70,9 @@ def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
         socketio.emit('progress', {'task_id': task_id, 'progress': progress}, namespace='/generate')
     
     socketio.emit('progress', {'task_id': task_id, 'progress': 100}, namespace='/generate')  # Ensure 100% is sent at the end
+    
+    end_time = time.time()
+    logging.info(f"Completed image generation for task: {task_id} in {end_time - start_time} seconds")
     return images
 
 class Task:
@@ -149,13 +153,14 @@ def submit():
     Returns:
         response (json): A JSON response containing the task ID if the task was successfully added,
         or an error message if any of the required data is missing.
-
     """
     data = request.json
     if 'prompt' in data and 'num_images' in data and 'scheduler' in data and 'inference_steps' in data:
         task_id = task.add_task(data['prompt'], data['num_images'], data['scheduler'], data['inference_steps'])
+        logging.info(f"Task submitted: {task_id}")
         return jsonify({"taskID": task_id}), 202
     else:
+        logging.error("Missing prompt, num_images, scheduler, or inference_steps in request")
         return jsonify({"error": "Missing prompt, num_images, scheduler, or inference_steps in request"}), 400
 
 @app.route('/status/<task_id>')
@@ -178,6 +183,7 @@ def status(task_id):
     elif task_id in task.results:
         return jsonify({"status": "done", "urls": task.results[task_id]['urls']})
     else:
+        logging.error(f"Task not found: {task_id}")
         return jsonify({"status": "not found"}), 404
 
 @socketio.on('connect', namespace='/generate')
@@ -186,7 +192,6 @@ def handle_connect():
     Handles the connection of a client.
 
     This function is called when a client connects to the server. It prints a message indicating that a client has connected.
-
     """
     logging.info('Client connected')
 
@@ -196,7 +201,6 @@ def handle_disconnect():
     Handles the disconnection of a client.
 
     This function is called when a client disconnects from the server. It prints a message indicating that the client has disconnected.
-
     """
     logging.info('Client disconnected')
     
@@ -204,6 +208,7 @@ if __name__ == '__main__':
     task = Task()
     threading.Thread(target=task.run, daemon=True).start()
     socketio.run(app, debug=True, port=5000)
+
 
 
 
