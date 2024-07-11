@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Generator</title>
+    <!-- External CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <!-- External Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <!-- External JavaScript -->
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 </head>
 <body class="flex flex-col h-screen justify-center items-center bg-gradient-to-r from-blue-500 to-pink-200">
@@ -15,7 +18,6 @@
         <div class="header-text">
             <h1 class="text-4xl font-nunito">Floor Plan Generator</h1>
         </div>
-
     </header>
     <div class="bg-white w-5/6 h-5/6 flex flex-grow">
         <div class="flex flex-grow">
@@ -24,8 +26,9 @@
                 <header class="bg-white text-gray-600 text-center py-4 mb-8 border-b border-gray-200 flex-shrink-0">
                     <h2 class="text-2xl font-nunito">Input</h2>
                 </header>
-    
+                <!-- Input Form -->
                 <form id="promptForm" class="w-full flex-grow">
+                    <!-- Apartment Size -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Apartment size:</label>
                         <div class="flex w-2/3">
@@ -33,6 +36,7 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="size" data-value="big">big</button>
                         </div>
                     </div>
+                    <!-- Rooms -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Rooms:</label>
                         <div class="flex w-2/3">
@@ -40,6 +44,7 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="rooms" data-value="many">many</button>
                         </div>
                     </div>
+                    <!-- Bathrooms -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Bathrooms:</label>
                         <div class="flex w-2/3">
@@ -47,13 +52,15 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="bathrooms" data-value="multiple">multiple</button>
                         </div>
                     </div>
+                    <!-- Kitchen -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Kitchen:</label>
-                        <div class="flex w-2/3">
+                        <div class="flex w-2/3"></div>
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="kitchen" data-value="small">small</button>
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="kitchen" data-value="big">big</button>
                         </div>
                     </div>
+                    <!-- Windows -->
                     <div class="flex mb-12 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Windows:</label>
                         <div class="flex w-2/3">
@@ -61,13 +68,16 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="windows" data-value="many">many</button>
                         </div>
                     </div>
+                    <!-- Number of Images -->
                     <div class="mb-4">
                         <label for="numImages" class="block text-xl text-gray-600 font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
                         <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
                     </div>
+                    <!-- Advanced Options -->
                     <div class="absolute bottom left flex flex-col items-end">
                         <button id="advancedButton" type="button" class="bg-gray-300 text-white shadow-md w-32 h-12 hover:bg-gray-400 hover:shadow-inner transition font-nunito text-xl mb-2" onclick="toggleAdvancedMenu()">ADVANCED</button>
                         <div id="advancedMenu" class="hidden absolute top-full left-0 flex flex-col items-start bg-white shadow-lg p-4 border border-gray-200 rounded-lg mt-2 w-72">
+                            <!-- Scheduler -->
                             <div class="mb-4">
                                 <label for="scheduler" class="block text-xl text-gray-600 font-nunito mb-2">Scheduler:</label>
                                 <select id="scheduler" name="scheduler" class="shadow-inner w-full p-2 text-gray-600 text-xl font-nunito border border-gray-100 focus:outline-none focus:ring-0 focus:border-gray-300">
@@ -79,12 +89,14 @@
                                     <option value="scheduler2">K_EULER_ANCESTRAL</option>
                                 </select>
                             </div>
-                            <div class="mb-4">
+                            <!-- Inference Steps -->
+                            <div class="mb-4"></div>
                                 <label for="inferenceSteps" class="block text-xl text-gray-600 font-nunito mb-2">Inference Steps:</label>
                                 <input type="number" id="inferenceSteps" name="inference_steps" min="1" max="100" value="50" class="shadow-inner w-full p-2 text-gray-600 text-xl font-nunito border border-gray-100 focus:outline-none focus:ring-0 focus:border-gray-300">
                             </div>
                         </div>
                     </div>
+                    <!-- Generate and Reset Buttons -->
                     <div class="absolute bottom-4 right-4 flex flex-col items-end">
                         <div>
                             <button id="resetButton" type="button" class="bg-pink-200 text-white shadow-md w-32 h-16 hover:bg-pink-400 hover:shadow-inner transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
@@ -92,27 +104,27 @@
                         </div>
                     </div>
                 </form>
-                
             </div>
             <!-- Right Side: Generated Images -->
-        <div class="w-1/2 flex flex-col p-4">
-            <header class="bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
-                <h2 class="text-2xl font-nunito">Output</h2>
-            </header>
-            <div class="shadow-inner w-full h-full p-2 flex flex-col justify-start items-center overflow-y-auto relative" style="max-height: 80vh;">
-                <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4">
-                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-                    <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
-                        <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
+            <div class="w-1/2 flex flex-col p-4">
+                <header class="bg-white text-gray-600 text-center py-4 mb-4 border-b border-gray-200 flex-shrink-0">
+                    <h2 class="text-2xl font-nunito">Output</h2>
+                </header>
+                <div class="shadow-inner w-full h-full p-2 flex flex-col justify-start items-center overflow-y-auto relative" style="max-height: 80vh;">
+                    <!-- Loading Container -->
+                    <div id="loadingContainer" class="hidden absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-75 z-50 p-4"></div>
+                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                        <div class="w-full h-4 bg-gray-200 rounded-full mx-auto">
+                            <div id="loadingBar" class="h-4 bg-blue-600 rounded-full" style="width: 0%;"></div>
+                        </div>
+                        <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
                     </div>
-                    <div id="loadingText" class="mt-2 text-xl font-nunito">Loading...</div>
-                </div>
-                <div id="imageGrid" class="flex flex-col gap-4 w-full justify-start items-center">
-                    <!-- Images will be injected here -->
+                    <!-- Image Grid -->
+                    <div id="imageGrid" class="flex flex-col gap-4 w-full justify-start items-center">
+                        <!-- Images will be injected here -->
+                    </div>
                 </div>
             </div>
-        </div>
-    
         </div>
     </div>
 
@@ -126,12 +138,15 @@
     </div>
 
     <script>
+        // Connect to WebSocket
         const socket = io.connect('http://' + document.domain + ':' + location.port + '/generate');
 
+        // WebSocket connected event
         socket.on('connect', () => {
             console.log('WebSocket connected');
         });
 
+        // Progress event
         socket.on('progress', function(data) {
             console.log('Progress event received:', data);
             if (data.task_id === currentTaskID) {
@@ -152,6 +167,7 @@
             }
         });
 
+        // Variables
         let currentTaskID = null;
         let options = {
             size: null,
@@ -160,33 +176,36 @@
             kitchen: null,
             windows: null
         };
-    
+
+        // Option button click event
         document.querySelectorAll('.option-button').forEach(button => {
             button.addEventListener('click', function() {
                 const category = this.dataset.category;
                 const value = this.dataset.value;
-    
+
                 // Unselect previously selected button in the same category
                 document.querySelectorAll(`.option-button[data-category="${category}"]`).forEach(btn => {
                     btn.classList.remove('bg-blue-300', 'text-white');
                 });
-    
+
                 // Select the clicked button
                 this.classList.add('bg-blue-300', 'text-white');
-    
+
                 // Update options
                 options[category] = value;
-    
+
                 // Check if all options are selected
                 checkInput();
             });
         });
-    
+
+        // Check if all options are selected
         function checkInput() {
             const allSelected = Object.values(options).every(value => value !== null);
             document.getElementById('generateButton').disabled = !allSelected;
         }
-    
+
+        // Reset the form
         function resetPrompt() {
             options = {
                 size: null,
@@ -195,17 +214,18 @@
                 kitchen: null,
                 windows: null
             };
-    
+
             document.querySelectorAll('.option-button').forEach(button => {
                 button.classList.remove('bg-blue-300', 'text-white');
             });
-    
+
             checkInput();
         }
-    
+
+        // Form submit event
         function handleFormSubmit(event) {
             event.preventDefault();
-    
+
             // Determine the correct word for bathrooms
             const bathroomsText = options.bathrooms === 'one' ? 'bathroom' : 'bathrooms';
 
@@ -215,9 +235,9 @@
             const schedulerInput = document.querySelector('select[name="scheduler"]');
             const inferenceStepsInput = document.querySelector('input[name="inference_steps"]');
             const generateButton = document.getElementById('generateButton');
-    
+
             generateButton.disabled = true;
-    
+
             fetch('/submit', {
                 method: 'POST',
                 headers: {
@@ -245,12 +265,14 @@
                 enableGenerateButton();
             });
         }
-    
+
+        // DOMContentLoaded event
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('promptForm').addEventListener('submit', handleFormSubmit);
             checkInput();
         });
-    
+
+        // Check the status of the task
         function checkStatus(taskID) {
             fetch('/status/' + taskID)
                 .then(response => response.json())
@@ -269,7 +291,8 @@
                     enableGenerateButton();
                 });
         }
-    
+
+        // Show the generated images
         function showGeneratedImages(urls) {
             const imageGrid = document.getElementById('imageGrid');
             imageGrid.innerHTML = '';
@@ -291,64 +314,39 @@
 
         // JavaScript to prevent zooming
         document.addEventListener('wheel', function(event) {
-        if (event.ctrlKey) {
-            event.preventDefault();
-        }
+            if (event.ctrlKey) {
+                event.preventDefault();
+            }
         }, { passive: false });
-    
+
+        // Enable the generate button
         function enableGenerateButton() {
             const generateButton = document.getElementById('generateButton');
             generateButton.disabled = false;
         }
-    
+
+        // Show the image modal
         function showModal(src) {
             document.getElementById('modalImage').src = src;
             document.getElementById('imageModal').classList.remove('hidden');
             document.getElementById('downloadButton').href = src;
         }
-    
+
+        // Close the image modal
         function closeModal() {
             document.getElementById('imageModal').classList.add('hidden');
         }
-    
+
+        // Update the number of images label
         function updateNumImagesLabel(value) {
             document.getElementById('numImagesLabel').textContent = value;
         }
-    
+
+        // Toggle the advanced menu
         function toggleAdvancedMenu() {
             const advancedMenu = document.getElementById('advancedMenu');
             advancedMenu.classList.toggle('hidden');
         }
     </script>
-    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
