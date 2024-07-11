@@ -6,8 +6,10 @@ from io import BytesIO
 import base64
 import time
 import threading
-from diffusers import DDIMScheduler, PNDMScheduler, EulerDiscreteScheduler, DPMSolverMultistepScheduler, HeunDiscreteScheduler, EulerAncestralDiscreteScheduler
-
+from diffusers import (DDIMScheduler, PNDMScheduler, EulerDiscreteScheduler, 
+                       DPMSolverMultistepScheduler, HeunDiscreteScheduler, 
+                       EulerAncestralDiscreteScheduler)
+import ssl
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -15,7 +17,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
-pipeline.load_lora_weights("checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("Checkpoints_L1_r6/checkpoint-20", weight_name="pytorch_lora_weights.safetensors")
 
 def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     """
@@ -132,15 +134,15 @@ def submit():
     Submits a task with the provided data.
 
     Parameters:
-    - data (dict): A dictionary containing the following keys:
-        - 'prompt' (str): The prompt for the task.
-        - 'num_images' (int): The number of images for the task.
-        - 'scheduler' (str): The scheduler for the task.
-        - 'inference_steps' (int): The number of inference steps for the task.
+        data (dict): A dictionary containing the following keys:
+        prompt (str): The prompt for the task.
+        num_images (int): The number of images for the task.
+        scheduler (str): The scheduler for the task.
+        inference_steps (int): The number of inference steps for the task.
 
     Returns:
-    - response (json): A JSON response containing the task ID if the task was successfully added,
-      or an error message if any of the required data is missing.
+        response (json): A JSON response containing the task ID if the task was successfully added,
+        or an error message if any of the required data is missing.
 
     """
     data = request.json
@@ -191,7 +193,7 @@ def handle_disconnect():
 
     """
     print('Client disconnected')
-
+    
 if __name__ == '__main__':
     task = Task()
     threading.Thread(target=task.run, daemon=True).start()
