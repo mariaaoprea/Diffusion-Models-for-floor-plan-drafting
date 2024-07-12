@@ -29,6 +29,6 @@ for prompt, label in zip(prompts, labels):
         image = pipeline(prompt).images[0]
         
         # Save the generated image with the corresponding label and index
-        image.save(f"Evaluation/Robustness/images/L1/{label}_{i}.png")
+        image.save(f"Evaluation/Robustness/images/{label}_{i}.png")
 
 
