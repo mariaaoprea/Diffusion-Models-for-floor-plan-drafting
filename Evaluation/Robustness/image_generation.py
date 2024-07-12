@@ -29,20 +29,6 @@ for prompt, label in zip(prompts, labels):
         image = pipeline(prompt).images[0]
         
         # Save the generated image with the corresponding label and index
-        image.save(f"Evaluation/Robustness/images/L1_rank4/{label}_{i}.png")
+        image.save(f"Evaluation/Robustness/images/L1/{label}_{i}.png")
 
 
-# Load the pre-trained AutoPipelineForText2Image model
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to("cuda")
-
-# Load the LoRA weights for the model
-pipeline.load_lora_weights("Checkpoints_L1_r6/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
-
-# Generate and save the floor plan images for each prompt and label
-for prompt, label in zip(prompts, labels):
-    for i in range(1, 11):
-        # Generate the image using the pipeline
-        image = pipeline(prompt).images[0]
-        
-        # Save the generated image with the corresponding label and index
-        image.save(f"Evaluation/Robustness/images/L1_rank6/{label}_{i}.png")
