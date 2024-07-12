@@ -15,7 +15,7 @@ prompts = [
     "A floor plan of a small apartment that includes a small kitchen and one bathroom, with few rooms and few windows",
     "Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows, a balcony",
     "Floor plan of a small apartment, few rooms, one bathroom, a kitchen with an island, few windows",
-    "Floor plan of a small apartment, few rooms, one bathroom, a kitchen with an island, few windows, and a central hallway connecting all rooms",
+    "Floor plan of a small apartment, few rooms, one bathroom, a big kitchen, few windows, and a central hallway connecting all rooms",
     "Layout of an artist’s loft with an open plan living area, a mezzanine level bedroom, a bathroom to the left of the kitchenette, a small studio space next to a big balcony"
 ]
 
