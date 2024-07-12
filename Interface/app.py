@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO)
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
-pipeline.load_lora_weights("Checkpoints_L1_r6/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("checkpoint-15000", weight_name="pytorch_lora_weights.safetensors")
 
 def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     """
