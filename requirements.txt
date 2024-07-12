@@ -1,0 +1,17 @@
+accelerate==0.30.0
+datasets==2.19.1
+diffusers==0.28.0.dev0
+Flask==3.0.3
+Flask_SocketIO==5.3.6
+lpips==0.1.4
+matplotlib==3.8.4
+numpy==2.0.0
+pandas==2.2.2
+peft==0.10.0
+Pillow==10.4.0
+Requests==2.32.3
+skimage==0.0
+torch==2.3.0
+torchvision==0.18.0
+tqdm==4.66.4
+wandb==0.17.4
