@@ -114,6 +114,16 @@ def main():
     lora_layers = filter(lambda p: p.requires_grad, unet.parameters())
     # Unwrap the model if it is a compiled module
     def unwrap_model(model):
+        """
+        Unwraps a model by removing any accelerator-specific wrappers.
+
+        Args:
+            model: The model to unwrap.
+
+        Returns:
+            The unwrapped model.
+
+        """
         model = accelerator.unwrap_model(model)
         model = model._orig_mod if is_compiled_module(model) else model
         return model

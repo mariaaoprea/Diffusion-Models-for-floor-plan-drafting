@@ -136,7 +136,7 @@ def home():
     Returns:
         The rendered 'index.html' template.
     """
-    return render_template('index.html')
+    return render_template('index_2.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
