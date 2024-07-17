@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Generator</title>
+    <!-- External CSS stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <!-- External font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <!-- External JavaScript library -->
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 </head>
 <body class="flex flex-col h-screen justify-center items-center bg-gradient-to-r from-blue-500 to-pink-200">
@@ -25,6 +28,7 @@
                 </header>
 
                 <form id="promptForm" class="w-full flex-grow">
+                    <!-- Apartment size options -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Apartment size:</label>
                         <div class="flex w-2/3">
@@ -32,6 +36,7 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="size" data-value="big">big</button>
                         </div>
                     </div>
+                    <!-- Rooms options -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Rooms:</label>
                         <div class="flex w-2/3">
@@ -39,6 +44,7 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="rooms" data-value="many">many</button>
                         </div>
                     </div>
+                    <!-- Bathrooms options -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Bathrooms:</label>
                         <div class="flex w-2/3">
@@ -46,6 +52,7 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="bathrooms" data-value="multiple">multiple</button>
                         </div>
                     </div>
+                    <!-- Kitchen options -->
                     <div class="flex mb-4 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Kitchen:</label>
                         <div class="flex w-2/3">
@@ -53,6 +60,7 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="kitchen" data-value="big">big</button>
                         </div>
                     </div>
+                    <!-- Windows options -->
                     <div class="flex mb-12 items-center">
                         <label class="block text-xl text-gray-600 font-nunito w-1/3">Windows:</label>
                         <div class="flex w-2/3">
@@ -60,10 +68,12 @@
                             <button type="button" class="font-nunito shadow-md option-button w-1/2 py-2 bg-blue-200 text-gray-600 hover:bg-blue-400 hover:shadow-inner" data-category="windows" data-value="many">many</button>
                         </div>
                     </div>
+                    <!-- Number of Images input -->
                     <div class="mb-4">
                         <label for="numImages" class="block text-xl text-gray-600 font-nunito mb-2">Number of Images: <span id="numImagesLabel">1</span></label>
                         <input type="range" id="numImages" name="num_images" min="1" max="4" value="1" class="w-full" oninput="updateNumImagesLabel(this.value)">
                     </div>
+                    <!-- Advanced options -->
                     <div class="absolute bottom left flex flex-col items-end">
                         <button id="advancedButton" type="button" class="bg-gray-300 text-white shadow-md w-32 h-12 hover:bg-gray-400 hover:shadow-inner transition font-nunito text-xl mb-2" onclick="toggleAdvancedMenu()">ADVANCED</button>
                         <div id="advancedMenu" class="hidden absolute top-full left-0 flex flex-col items-start bg-white shadow-lg p-4 border border-gray-200 rounded-lg mt-2 w-72">
@@ -84,6 +94,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Reset and Generate buttons -->
                     <div class="absolute bottom-4 right-4 flex flex-col items-end">
                         <div>
                             <button id="resetButton" type="button" class="bg-pink-200 text-white shadow-md w-32 h-16 hover:bg-pink-400 hover:shadow-inner transition font-nunito text-2xl mb-4 mr-4" onclick="resetPrompt()">RESET</button>
@@ -114,7 +125,7 @@
     
         </div>
     </div>
-
+    
     <!-- Modal -->
     <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
         <div class="bg-white p-4 rounded-lg relative">
