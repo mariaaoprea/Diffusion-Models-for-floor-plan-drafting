@@ -11,22 +11,22 @@
 "Floor plan of a big apartment, few rooms, one bathroom, big kitchen, few windows", #6
 "Floor plan of a big apartment, few rooms, one bathroom, small kitchen, many windows", #3
 "Floor plan of a big apartment, few rooms, one bathroom, small kitchen, few windows", #2   ####big+few=39
-"Floor plan of a big apartment, many rooms, multiple bathrooms, big kitchen, many windows", #36
+"Floor plan of a big apartment, many rooms, multiple bathrooms, big kitchen, many windows", #37
 "Floor plan of a big apartment, many rooms, multiple bathrooms, big kitchen, few windows", #3
 "Floor plan of a big apartment, many rooms, multiple bathrooms, small kitchen, many windows", #7
 "Floor plan of a big apartment, many rooms, multiple bathrooms, small kitchen, few windows", #0
 "Floor plan of a big apartment, many rooms, one bathroom, big kitchen, many windows", #11
 "Floor plan of a big apartment, many rooms, one bathroom, big kitchen, few windows", #3
 "Floor plan of a big apartment, many rooms, one bathroom, small kitchen, many windows", #3
-"Floor plan of a big apartment, many rooms, one bathroom, small kitchen, few windows", #0   ####big+many=63  ##big=102
+"Floor plan of a big apartment, many rooms, one bathroom, small kitchen, few windows", #0   ####big+many=64  ##big=103
 "Floor plan of a small apartment, few rooms, multiple bathrooms, big kitchen, many windows", #14
 "Floor plan of a small apartment, few rooms, multiple bathrooms, big kitchen, few windows", #3
 "Floor plan of a small apartment, few rooms, multiple bathrooms, small kitchen, many windows", #4
 "Floor plan of a small apartment, few rooms, multiple bathrooms, small kitchen, few windows", #0
 "Floor plan of a small apartment, few rooms, one bathroom, big kitchen, many windows", #41
 "Floor plan of a small apartment, few rooms, one bathroom, big kitchen, few windows", #38
-"Floor plan of a small apartment, few rooms, one bathroom, small kitchen, many windows", #19
-"Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows", #50  ####small+few=169
+"Floor plan of a small apartment, few rooms, one bathroom, small kitchen, many windows", #20
+"Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows", #50  ####small+few=170
 "Floor plan of a small apartment, many rooms, multiple bathrooms, big kitchen, many windows", #0
 "Floor plan of a small apartment, many rooms, multiple bathrooms, big kitchen, few windows", #0
 "Floor plan of a small apartment, many rooms, multiple bathrooms, small kitchen, many windows", #1
@@ -34,4 +34,4 @@
 "Floor plan of a small apartment, many rooms, one bathroom, big kitchen, many windows", #5
 "Floor plan of a small apartment, many rooms, one bathroom, big kitchen, few windows", #0
 "Floor plan of a small apartment, many rooms, one bathroom, small kitchen, many windows", #1
-"Floor plan of a small apartment, many rooms, one bathroom, small kitchen, few windows" #0  ####small+many=7  ##small=176
+"Floor plan of a small apartment, many rooms, one bathroom, small kitchen, few windows" #0  ####small+many=7  ##small=177
