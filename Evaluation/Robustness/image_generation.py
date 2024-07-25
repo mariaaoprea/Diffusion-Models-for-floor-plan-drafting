@@ -69,6 +69,6 @@ for i, prompt in enumerate(prompts):
         image = pipeline(prompt).images[0]
         
         # Save the generated image with the corresponding label and index
-        image.save(f"Evaluation/Robustness/images/{i%8}_{i%5}_{j}.png")
+        image.save(f"Evaluation/Robustness/images/{i%8+1}_{i%5+1}_{j}.png")
 
 
