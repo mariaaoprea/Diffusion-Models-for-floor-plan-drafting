@@ -3,7 +3,6 @@ import concurrent.futures
 import csv
 import time
 import os
-import numpy as np
 
 # URL for the submit and status endpoints
 submit_url = "http://127.0.0.1:5000/submit"
@@ -64,53 +63,6 @@ def check_task_status(task_id):
                 return time.time()
         time.sleep(1)
 
-def run_test(count):
-    """
-    Runs a single test with a given number of prompts.
-    
-    Args:
-        count (int): The number of prompts to send in the test.
-        
-    Returns:
-        dict: A dictionary containing the aggregated metrics for the test.
-    """
-    print(f"Sending {count} prompts...")
-    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-        futures = [executor.submit(send_request, i) for i in range(count)]
-        results = []
-        submission_times = []
-
-        for future in concurrent.futures.as_completed(futures):
-            result = future.result()
-            results.append(result)
-            submission_times.append(result["submission_time"])
-
-        # Wait for all tasks to complete
-        completion_times = []
-        errors = 0
-        for result in results:
-            if "taskID" in result["response"]:
-                task_id = result["response"]["taskID"]
-                completion_time = check_task_status(task_id)
-                total_time = completion_time - result["start_time"]
-                completion_times.append(total_time)
-            else:
-                errors += 1
-
-        # Calculate metrics
-        avg_submission_time = sum(submission_times) / len(submission_times) if submission_times else 0
-        avg_completion_time = sum(completion_times) / len(completion_times) if completion_times else 0
-        total_completion_time = sum(completion_times)
-        throughput = count / total_completion_time if total_completion_time > 0 else 0
-
-        return {
-            "count": count,
-            "avg_submission_time": avg_submission_time,
-            "avg_completion_time": avg_completion_time,
-            "throughput": throughput,
-            "errors": errors
-        }
-
 def main():
     """
     Main function to conduct the stress test by sending multiple prompts concurrently.
@@ -121,37 +73,76 @@ def main():
     # Number of prompts to send in each test
     prompt_counts = [5, 10, 15, 20]
 
+    # Number of test runs
+    num_runs = 5
+
     # Ensure the directory exists
     os.makedirs('Evaluation/Interface', exist_ok=True)
     
     # Prepare the CSV file
     with open('Evaluation/Interface/stress_test_results.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["prompt_count", "average_submission_time", "average_completion_time", "throughput", "error_rate"])
-
+        writer.writerow(["prompt_count", "average_submission_time", "average_completion_time", 
+                         "total_errors", "throughput"])
+        
         for count in prompt_counts:
-            all_submission_times = []
-            all_completion_times = []
-            total_throughput = 0
-            total_errors = 0
-
-            for _ in range(5):  # Run the test 5 times
-                results = run_test(count)
-                all_submission_times.append(results["avg_submission_time"])
-                all_completion_times.append(results["avg_completion_time"])
-                total_throughput += results["throughput"]
-                total_errors += results["errors"]
-
-            # Calculate the averages and error rate
-            avg_submission_time = np.mean(all_submission_times)
-            avg_completion_time = np.mean(all_completion_times)
-            avg_throughput = total_throughput / 5
-            error_rate = total_errors / (count * 5)
-
-            # Write metrics to the CSV file
-            writer.writerow([count, avg_submission_time, avg_completion_time, avg_throughput, error_rate])
+            aggregated_submission_time = 0
+            aggregated_completion_time = 0
+            aggregated_errors = 0
+            aggregated_throughput = 0
             
-            print(f"Metrics for {count} prompts written to Evaluation/Interface/stress_test_results.csv")
+            for run in range(num_runs):
+                print(f"Run {run + 1}: Sending {count} prompts...")
+                with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+                    futures = [executor.submit(send_request, i) for i in range(count)]
+                    results = []
+                    submission_times = []
+                    
+                    for future in concurrent.futures.as_completed(futures):
+                        result = future.result()
+                        results.append(result)
+                        submission_times.append(result["submission_time"])
+
+                    # Wait for all tasks to complete
+                    completion_times = []
+                    errors = 0
+                    for result in results:
+                        if "taskID" in result["response"]:
+                            task_id = result["response"]["taskID"]
+                            completion_time = check_task_status(task_id)
+                            total_time = completion_time - result["start_time"]
+                            completion_times.append(total_time)
+                        else:
+                            errors += 1
+
+                    # Calculate metrics for this run
+                    if submission_times:
+                        avg_submission_time = sum(submission_times) / len(submission_times)
+                    else:
+                        avg_submission_time = 0
+
+                    if completion_times:
+                        avg_completion_time = sum(completion_times) / len(completion_times)
+                        total_completion_time = sum(completion_times)
+                        throughput = count / total_completion_time if total_completion_time > 0 else 0
+                    else:
+                        avg_completion_time = total_completion_time = throughput = 0
+
+                    aggregated_submission_time += avg_submission_time
+                    aggregated_completion_time += avg_completion_time
+                    aggregated_errors += errors
+                    aggregated_throughput += throughput
+
+            # Aggregate results across all runs
+            avg_aggregated_submission_time = aggregated_submission_time / num_runs
+            avg_aggregated_completion_time = aggregated_completion_time / num_runs
+            avg_aggregated_throughput = aggregated_throughput / num_runs
+
+            # Write aggregated metrics to the CSV file
+            writer.writerow([count, avg_aggregated_submission_time, avg_aggregated_completion_time, 
+                             aggregated_errors, avg_aggregated_throughput])
+            
+            print(f"Aggregated metrics for {count} prompts written to Evaluation/Interface/stress_test_results.csv")
 
 if __name__ == "__main__":
     main()
