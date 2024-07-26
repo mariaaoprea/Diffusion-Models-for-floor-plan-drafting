@@ -64,11 +64,11 @@ labels = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"]
 
 # Generate and save the floor plan images for each prompt and label
 for i, prompt in enumerate(prompts):
-    for j in range(1,6):
+    for j in range(1,5):
         # Generate the image using the pipeline
         image = pipeline(prompt).images[0]
         
         # Save the generated image with the corresponding label and index
-        image.save(f"Evaluation/Robustness/images/{i%8+1}_{i%5+1}_{j}.png")
+        image.save(f"Evaluation/Robustness/images/{(i//5)+1}_{i%5+1}_{j}.png")
 
 
