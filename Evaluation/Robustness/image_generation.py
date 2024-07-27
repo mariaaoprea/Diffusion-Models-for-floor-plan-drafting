@@ -9,11 +9,11 @@ pipeline.load_lora_weights("Checkpoints_L1/checkpoint-250", weight_name="pytorch
 
 # Define a list of prompts for generating floor plan images
 prompts = [
-"Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows" ,
+"Floor plan of a small apartment, few rooms, one bathroom, small kitchen, many windows",
 "Floor plan of a big apartment, few rooms, multiple bathrooms, big kitchen, many windows",
 "Floor plan of a big apartment, many rooms, multiple bathrooms, big kitchen, many windows" ,
 "Floor plan of a small apartment, few rooms, one bathroom, big kitchen, few windows",
-"Floor plan of a small apartment, few rooms, one bathroom, big kitchen, few windows" ,
+"Floor plan of a small apartment, few rooms, one bathroom, small kitchen, few windows" ,
 
 "Floor plan of a big apartment, few rooms, multiple bathrooms, small kitchen, few windows" ,
 "Floor plan of a small apartment, many rooms, multiple bathrooms, big kitchen, many windows" ,
