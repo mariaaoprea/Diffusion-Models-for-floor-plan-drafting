@@ -134,7 +134,7 @@ def home():
     Renders the 'index.html' template.
 
     Returns:
-        The rendered 'index.html' template.
+        The rendered 'index_2.html' template.
     """
     return render_template('index.html')
 
