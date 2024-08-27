@@ -3,8 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Define loss types and corresponding file paths
+# Define loss types and corresponding file paths
 loss_types = {
-    'L1': 'Evaluation/Training Loss/Loss_L1.csv',
+    'L1': 'Evaluation/Training Loss/Combined_losses.csv',  
     'L1_r6': 'Evaluation/Training Loss/Loss_L1_r6.csv',
     'L1_r8': 'Evaluation/Training Loss/Loss_L1_r8.csv'
 }
@@ -21,9 +22,16 @@ def load_and_preprocess_loss(file_path, loss_name):
     Returns:
         pd.DataFrame: Preprocessed loss data.
     """
-    df = pd.read_csv(file_path, header=None)
-    df = df.drop(0).reset_index(drop=True)
-    df.columns = ['Step', f'{loss_name}_loss']
+    if loss_name == 'L1':
+        # Special case: read the L1 loss from the "L1_loss" column in Combined_losses.csv
+        df = pd.read_csv(file_path)
+        df = df[['L1_loss']].reset_index().rename(columns={'index': 'Step', 'L1_loss': f'{loss_name}_loss'})
+    else:
+        # General case for other losses
+        df = pd.read_csv(file_path, header=None)
+        df = df.drop(0).reset_index(drop=True)
+        df.columns = ['Step', f'{loss_name}_loss']
+    
     df['Step'] = df['Step'].astype(int)
     df[f'{loss_name}_loss'] = df[f'{loss_name}_loss'].astype(float)
     return df
