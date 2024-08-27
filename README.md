@@ -40,7 +40,7 @@ After this, you can train your own LoRA module on the floor plan dataset.
  ```
   ????python3 main.py -mode training -use_tf_dataset
   ```
-You can also use the web interfaces.
+You can also use the web interfaces by modifying the paths to SD-v1.5 and the model in app.py and also by doing:
  ```
   ???
   ```
@@ -115,7 +115,7 @@ To get a list of all possible hyperparameters, use:
     │   │   ├───index-selection_input.html  #selection input interface
     │   │   └───index-text_input.html       #text input interface
     │   ├───__init__.py
-    │   ├───app.py
+    │   ├───app.py                          #make sure to add the right path to SD-v1.5 and your model
     │   ├───interface.jpynb
     │   ├───package_lock.json
     │   ├───package.json
