@@ -10,7 +10,7 @@ def main():
         "accelerate", "launch", 
         "Training/lora_training.py",
         "--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5",
-        "--train_data_dir=dataset",
+        "--train_data_dir=Dataset",
         "--output_dir=output",
         "--cache_dir=cache",
         "--random_flip",

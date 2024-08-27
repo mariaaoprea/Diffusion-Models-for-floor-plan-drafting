@@ -18,8 +18,8 @@ logging.basicConfig(level=logging.INFO)
 
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
-pipeline.load_lora_weights("model", weight_name="pytorch_lora_weights.safetensors") #add path to model
+pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device) #path to SD-v1.5
+pipeline.load_lora_weights("Model", weight_name="pytorch_lora_weights.safetensors") #path to the model
 
 def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     """
@@ -134,7 +134,7 @@ def home():
     Renders the .html template.
     
     """
-    return render_template('index-selection_input.html')
+    return render_template('index-selection_input.html') # modify this to "index-text_input.html" to use the text input interface
 
 @app.route('/submit', methods=['POST'])
 def submit():
