@@ -113,20 +113,20 @@ Additionally, link `app.py` to your preferred interface (text or selection input
     │   │   ├───output.css
     │   │   └───styles.css
     │   └───templates
-    │   │   ├───index-selection_input.html  #selection input interface
-    │   │   └───index-text_input.html       #text input interface
+    │   │   ├───index-selection_input.html   #selection input interface
+    │   │   └───index-text_input.html        #text input interface
     │   ├───__init__.py
-    │   ├───app.py                          #make sure to add the right path to your model
+    │   ├───app.py                           #make sure to add the right path to your model
     │   ├───interface.jpynb
     │   ├───package_lock.json
     │   ├───package.json
     │   └───tailwind.config.js
-    ├───Model                                 #EMPTY folder, ADD the downloaded model to this folder
+    ├───Model                                #EMPTY folder, ADD the downloaded model to this folder
     └───Training
-        ├───arguments.py                   #parameters
-        ├───lora_training.py               #training script
-        ├───preprocessing.py               #dataset preprocessing
-        └───run_script.py                  #run file
+        ├───arguments.py                     #parameters
+        ├───lora_training.py                 #training script
+        ├───preprocessing.py                 #dataset preprocessing
+        └───run_script.py                    #run file
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
