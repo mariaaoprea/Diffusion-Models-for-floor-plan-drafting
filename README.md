@@ -6,17 +6,12 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
 
 ## 📖 Table of Contents
   - [❓ Why?](#-why)
-  - [✴️ Model](#-model)
+  - [✴️ Model](#model)
   - [✨ Features](#-features)
   - [💻 Usage](#-usage)
   - [💾 Structure](#-structure)
   - [📎 License](#-license)
-  - [✴️ Model](#-model)
   <p align="right">(<a href="#top">back to top</a>)</p>
-
-## ✴️ Model
-The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/>
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
 Artificial Neural Networks (ANNs) are only loosely inspired by the human brain while Spiking Neural Networks (SNNs) incorporate various concepts of it.
@@ -25,6 +20,10 @@ In order to obtain a better understanding of SNNs we compared their performance 
 <img src="Images/MNISTDatasetSample.JPG" alt="MNIST Example Images" align="middle" width="500" /> <br/> 
 For this to work, we had to transform the data for the SNN into rate-encoded spike trains.
 As a major part of our work, we provide a comprehensible implementation of an STDP-based SNN.
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## ✴️ Model <a name="model"></a>
+The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✨ Features
