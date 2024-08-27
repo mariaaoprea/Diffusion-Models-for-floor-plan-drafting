@@ -21,6 +21,7 @@ Stable diffusion has shown great potential for generating realistic images. Howe
 ## ✴️ Model <a name="model"></a>
 The weights for the LoRA module with the best performance <br/> 
 (L1 loss, 250 epochs, rank 4) can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/> 
+<br/> 
 and then loaded on top of SD-v1.5: https://huggingface.co/runwayml/stable-diffusion-v1-5<br/> 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
