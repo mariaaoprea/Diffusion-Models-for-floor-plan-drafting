@@ -15,6 +15,7 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
 
 ## Model
 The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
 Artificial Neural Networks (ANNs) are only loosely inspired by the human brain while Spiking Neural Networks (SNNs) incorporate various concepts of it.
@@ -90,19 +91,19 @@ To get a list of all possible hyperparameters use
     └── SNN.py                  # The file containing all functions for training/infering 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## 🚫 Limitations
-- No hidden layers implemented
-- Conversions into Spike Trains works only with GreyScale
-- Long training times
-- Didn't use the entire MNIST dataset for training
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 
 ## 📎 License
-Copyright 2022 Cornelius Wolff, Paula Heupel, Leonie Grafweg, Peter Keffer
+Copyright 2024 Maria Oprea
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+<p align="right">(<a href="#top">back to top</a>)</p>
