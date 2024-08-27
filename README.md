@@ -1,8 +1,8 @@
 # Diffusion-Models-for-floor-plan-drafting
-Code for my bachelor thesis: "Using Diffusion Models to improve the process of floor plan drafting”
+Code for my Bachelor Thesis: "Using Diffusion Models to improve the process of floor plan drafting”
 ## Project Description
 
-This repository contains the code for my Bachelor Thesis at the _University Osnabrück, Germany_, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting". The goal of this project was to explore the application of diffusion models in the field of floor plan drafting and evaluate their capabilities in improving florr plan the drafting process.
+This repository contains the code developed for my Bachelor Thesis at the *University of Osnabrück, Germany*, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting." The project focuses on exploring the application of diffusion models in the field of floor plan drafting and evaluating their potential to enhance the drafting process.
 
 ## 📖 Table of Contents
   - [❓ Why?](#-why)
@@ -14,16 +14,19 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
-...
+Stable diffusion has shown great potential for generating realistic images. However, as it is not specialized for certain domains, SD is not capable of generating architectural floor plans. This project focused on fine-tuning SD-v1.5 with LoRA to obtain a specialized tool that lets users generate architectural floor plans that follow specific constraints.
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model <a name="model"></a>
-The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/>
+The weights for the LoRA module with the best performance (L1 loss, 250 epochs, rank 4) can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/> 
+and then loaded on top of SD-v1.5: https://huggingface.co/runwayml/stable-diffusion-v1-5<br/> 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✨ Features
-....
+Training: You can train your own LoRA on another labeled dataset of floor plans <br/>
+Experiment: You can train a LoRA module on the provided dataset and try out different hyperparameters <br/>
+User Interface: You can interact with your Model with one of the 2 UIs. One lets you input any prompt in text form, the other one has fixed, selectable options to customize your floor plan
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -117,10 +120,10 @@ To get a list of all possible hyperparameters use
     │   ├───package.json
     │   └───tailwind.config.js
     └───Training
-        ├───arguments.py                  #parameters
-        ├───lora_training.py              #training script
-        ├───preprocessing.py              #dataset preprocessing
-        └───run_script.py                 #run file
+        ├───arguments.py                   #parameters
+        ├───lora_training.py               #training script
+        ├───preprocessing.py               #dataset preprocessing
+        └───run_script.py                  #run file
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
