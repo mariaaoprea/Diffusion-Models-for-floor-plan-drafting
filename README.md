@@ -40,7 +40,7 @@ After this, you can train your own LoRA module on the floor plan dataset.
  ```
   ????python3 main.py -mode training -use_tf_dataset
   ```
-You can also use the web interfaces by modifying the paths to SD-v1.5 and the model in app.py and also by doing:
+You can also use the web interfaces by running the following code. Make sure to modify the path to the model in app.py so that it loads correctly😊.
  ```
   ???
   ```
@@ -104,7 +104,7 @@ To get a list of all possible hyperparameters, use:
     │       ├───Loss_L1_r8.csv
     │       ├───Loss_L1r4_MSE_SNR.csv
     │       ├───plot_different_losses.py     #script to plot losses
-    │       └───plot_different_ranks.py      #script to plot results with diff. ranks
+    │       └───plot_different_ranks.py      #script to plot results with different ranks
     ├───Interface
     │   ├───node_modules
     │   ├───static
@@ -115,7 +115,7 @@ To get a list of all possible hyperparameters, use:
     │   │   ├───index-selection_input.html  #selection input interface
     │   │   └───index-text_input.html       #text input interface
     │   ├───__init__.py
-    │   ├───app.py                          #make sure to add the right path to SD-v1.5 and your model
+    │   ├───app.py                          #make sure to add the right path to your model
     │   ├───interface.jpynb
     │   ├───package_lock.json
     │   ├───package.json
