@@ -70,29 +70,17 @@ To get a list of all possible hyperparameters use
     │   │   │   |   ├───...
     │   │   │   |   └───SFOSM_10.png
     │   │   │   ├───L1_6
-    │   │   │   |   ├───BFMB_1.png
-    │   │   │   |   ├───...
-    │   │   │   |   └───SFOSM_10.png
+    │   │   │   |   └───...
     │   │   │   ├───L1_8
-    │   │   │   |   ├───BFMB_1.png
-    │   │   │   |   ├───...
-    │   │   │   |   └───SFOSM_10.png
+    │   │   │   |   └───...
     │   │   │   ├───MSE
-    │   │   │   |   ├───BFMB_1.png
-    │   │   │   |   ├───...
-    │   │   │   |   └───SFOSM_10.png
+    │   │   │   |   └───...
     │   │   │   ├───Reference
-    │   │   │   |   ├───BFMB_1.png
-    │   │   │   |   ├───...
-    │   │   │   |   └───SFOSM_10.png
+    │   │   │   |   └───...
     │   │   │   ├───SD
-    │   │   │   |   ├───BFMB_1.png
-    │   │   │   |   ├───...
-    │   │   │   |   └───SFOSM_10.png
+    │   │   │   |   └───...
     │   │   │   └───SNR
-    │   │   │   |   ├───BFMB_1.png
-    │   │   │   |   ├───...
-    │   │   │   |   └───SFOSM_10.png
+    │   │   │   |   └───...
     │   │   ├───calculate_lpips_ssim.py
     │   │   ├───inference.py
     │   │   ├───L1_r6_results.csv
@@ -115,11 +103,22 @@ To get a list of all possible hyperparameters use
     │   │   ├───Loss_L1_r8.csv
     │   │   ├───Loss_L1r4_MSE_SNR.csv
     │   │   ├───plot_different_losses.py
-    │   │   ├───plot_different_ranks.py
+    │   │   └───plot_different_ranks.py
     ├───Interface
     │   ├───node_modules
     │   ├───static
+    │   │   ├───input.css
+    │   │   ├───output.css
+    │   │   └───styles.css
     │   └───templates
+    │   │   ├───index-selection_input.html
+    │   │   └───index-text_input.html
+    │   ├───__init__.py
+    │   ├───app.py
+    │   ├───interface.jpynb
+    │   ├───package_lock.json
+    │   ├───package.json
+    │   └───tailwind.config.js
     └───Training
         ├───arguments.py
         ├───lora_training.py
