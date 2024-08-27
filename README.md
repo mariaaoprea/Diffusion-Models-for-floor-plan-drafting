@@ -36,15 +36,15 @@ To use the code, you first have to install the required libraries from the requi
  ```
   pip install -r requirements.txt
   ```
-After this, you can create your own LoRA on your dataset.
+After this, you can train your own LoRA module on the floor plan dataset.
  ```
   ????python3 main.py -mode training -use_tf_dataset
   ```
-You can also use the web-interfaces.
+You can also use the web interfaces.
  ```
   ???
   ```
-To get a list of all possible hyperparameters use
+To get a list of all possible hyperparameters, use:
  ```
   python3 main.py -h
 ```
