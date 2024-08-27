@@ -131,12 +131,10 @@ class Task:
 @app.route('/', methods=['GET'])
 def home():
     """
-    Renders the 'index.html' template.
-
-    Returns:
-        The rendered 'index_2.html' template.
+    Renders the .html template.
+    
     """
-    return render_template('index.html')
+    return render_template('index-selection_input.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
