@@ -5,7 +5,7 @@ import torch
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to("cuda")
 
 # Load the LoRA weights for the model
-pipeline.load_lora_weights("Checkpoints_SNR/checkpoint-200", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("Checkpoints_SNR/checkpoint-250", weight_name="pytorch_lora_weights.safetensors")
 
 # Define a list of prompts for generating floor plan images
 prompts = [
@@ -30,4 +30,4 @@ for prompt, label in zip(prompts, labels):
         image = pipeline(prompt).images[0]
         
         # Save the generated image with the corresponding label and index
-        image.save(f"Evaluation/LPIPS and SSIM/images/SNR_200/{label}_{i}.png")
+        image.save(f"Evaluation/LPIPS and SSIM/images/SNR/{label}_{i}.png")
