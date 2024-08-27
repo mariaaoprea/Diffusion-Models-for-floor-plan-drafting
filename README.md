@@ -2,7 +2,7 @@
 Code for my Bachelor Thesis: "Using Diffusion Models to improve the process of floor plan drafting”
 ## Project Description
 
-This repository contains the code developed for my Bachelor Thesis at the *University of Osnabrück, Germany*, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting." The project focuses on exploring the application of diffusion models in the field of floor plan drafting and evaluating their potential to enhance the drafting process.
+This repository contains the code developed for my Bachelor Thesis at the *University of Osnabrück, Germany*, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting." The project focused on exploring the application of diffusion models in the field of floor plan drafting and evaluating their potential to enhance the drafting process.
 
 ## 📖 Table of Contents
   - [❓ Why?](#-why)
