@@ -15,7 +15,7 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model
-The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA
+The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
@@ -92,12 +92,7 @@ To get a list of all possible hyperparameters use
     └── SNN.py                  # The file containing all functions for training/infering 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## 📝 Authors
-[Peter Keffer](mailto:pkeffer@uos.de)<br/>
-[Leonie Grafweg](mailto:lgrafweg@uos.de)<br/>
-[Paula Heupel](mailto:pheupel@uos.de)<br/>
-[Cornelius Wolff](mailto:cowolff@uos.de)<br/>
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## 📎 License
 Copyright 2024 Maria Oprea
