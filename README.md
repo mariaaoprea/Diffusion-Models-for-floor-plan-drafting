@@ -11,6 +11,7 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
   - [💻 Usage](#-usage)
   - [💾 Structure](#-structure)
   - [📎 License](#-license)
+  - [📝 Authors](#-authors)
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model
@@ -91,6 +92,12 @@ To get a list of all possible hyperparameters use
     └── SNN.py                  # The file containing all functions for training/infering 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## 📝 Authors
+[Peter Keffer](mailto:pkeffer@uos.de)<br/>
+[Leonie Grafweg](mailto:lgrafweg@uos.de)<br/>
+[Paula Heupel](mailto:pheupel@uos.de)<br/>
+[Cornelius Wolff](mailto:cowolff@uos.de)<br/>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 📎 License
 Copyright 2024 Maria Oprea
