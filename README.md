@@ -37,14 +37,14 @@ To use the code, you first have to install the required libraries from the requi
   pip install -r requirements.txt
   ```
 To see all possible parameters, look at arguments.py and set the desired values in run_script.py. <br/>
-If you want to use my fine-tuned model, download it from https://huggingface.co/maria26/Floor_Plan_LoRA and put all the downloaded files into the empty `model` folder.
 After this, you can train your own LoRA module on the provided floor plan dataset or your own one by running the code below. Make sure to give the right path to the "train_data_dir" parameter.
  ```
   python3 run_script.py 
   ```
-You can also access the web interfaces by running the following code. Ensure the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly. 😊
+If you want to use my fine-tuned model, download it from https://huggingface.co/maria26/Floor_Plan_LoRA and put all the downloaded files into the empty `Model` folder.
+You can also access the web interfaces by running the code below. Make sure that the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly. 😊
 <br/>
-Additionally, link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line as needed.
+Additionally, link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line in the `home()` function as needed.
  ```
   python3 app.py 
   ```
@@ -55,8 +55,7 @@ Additionally, link `app.py` to your preferred interface (text or selection input
 <!-- Project Structure -->
 
     .
-    ├───model                                 #empty folder, add the downloaded model to this folder
-    ├───dataset
+    ├───Dataset
     │   └───train
     │   │   ├───0001.png                      #dataset images
     │   │   ├───...
@@ -122,6 +121,7 @@ Additionally, link `app.py` to your preferred interface (text or selection input
     │   ├───package_lock.json
     │   ├───package.json
     │   └───tailwind.config.js
+    ├───Model                                 #EMPTY folder, ADD the downloaded model to this folder
     └───Training
         ├───arguments.py                   #parameters
         ├───lora_training.py               #training script
