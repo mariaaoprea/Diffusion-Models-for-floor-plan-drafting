@@ -1,8 +1,8 @@
 # Diffusion-Models-for-floor-plan-drafting
-Code for my Bachelor Thesis: "Using Diffusion Models to improve the process of floor plan drafting”
+Code for my Bachelor Thesis: _"Using Diffusion Models to improve the process of floor plan drafting”_
 ## Project Description
 
-This repository contains the code developed for my Bachelor Thesis at the *University of Osnabrück, Germany*, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting." The project focused on exploring the application of diffusion models in the field of floor plan drafting and evaluating their potential to enhance the drafting process.
+This repository contains the code developed for my Bachelor Thesis at the *University of Osnabrück, Germany*. The project focused on exploring the application of diffusion models in the field of floor plan drafting and evaluating their potential to enhance the drafting process.
 
 ## 📖 Table of Contents
   - [❓ Why?](#-why)
@@ -42,13 +42,14 @@ After this, you can train your own LoRA module on the provided floor plan datase
   python3 run_script.py 
   ```
 If you want to use my fine-tuned model, download it from https://huggingface.co/maria26/Floor_Plan_LoRA and put all the downloaded files into the empty `Model` folder.
+<br/>
+<br/>
 You can also access the web interfaces by running the code below. Make sure that the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly. 😊
 <br/>
-Additionally, link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line in the `home()` function as needed.
  ```
   python3 app.py 
   ```
-
+You can link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line in the `home()` function as needed.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💾 Structure
