@@ -11,7 +11,7 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
   - [💻 Usage](#-usage)
   - [💾 Structure](#-structure)
   - [📎 License](#-license)
-  - [📝 Authors](#-authors)
+  - [✴️ Model](#-model)
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model
