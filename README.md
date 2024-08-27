@@ -51,44 +51,78 @@ To get a list of all possible hyperparameters use
 
 ## 💾 Structure
 <!-- Project Structure -->
-
-    .
-    ├── src                    
-    │   ├── MNIST                              # Here is the entire MNIST dataset          
-    │   │   ├── testing
-    │   │   │   ├── 0                          # Each subfolder represents a class
-    │   │   │   │   ├── 3.png
-    │   │   │   │   ├── 10.png
-    │   │   │   │   ├── 13.png
-    │   │   │   │   ...
-    │   │   │   ├── 1
-    │   │   │   ├── 2
-    │   │   │   ├── 3
-    │   │   │   ├── 4
-    │   │   │   ├── 5
-    │   │   │   ├── 6
-    │   │   │   ├── 7
-    │   │   │   ├── 8
-    │   │   │   ├── 9
-    │   │   ├── training
-    │   │   │   ├── 0
-    │   │   │   ...
-    │   │   ├── labels.csv
-    ├── Notebooks
-    │   │── ANN_Comparison.ipynb          # Comparison ANNs being trained in Tensorflow
-    │   │── Visualization_Helper.ipynb    # Visualization of our results
-    │   │── Deprecated_Training.ipynb     # Old deprecated training notebook
-    ├── Pretrained              # Pretrained weights and labels for testing
-    │   │── labels.csv
-    │   │── weights.csv
-    │── .gitignore
-    │── main.py                 # Main file for executing training/inference the SNN
-    │── Neuron.py
-    │── Paper.pdf               # The term paper we submitted
-    │── Parameters.py           # All parameters used for training/inference
-    │── README.md
-    │── requirements.txt
-    └── SNN.py                  # The file containing all functions for training/infering 
+├───dataset
+│   └───train
+│   │   ├───0001.png
+│   │   ├───...
+│   │   ├───0280.png
+│   │   └───metadata.jsonl
+├───Evaluation
+│   ├───Interface
+│   │   ├───stress_test_results.csv
+│   │   ├───stress_test.py
+│   ├───LPIPS and SSIM
+│   │   └───images
+│   │   │   ├───L1
+│   │   │   |   ├───BFMB_1.png
+│   │   │   |   ├───...
+│   │   │   |   └───SFOSM_10.png
+│   │   │   ├───L1_6
+│   │   │   |   ├───BFMB_1.png
+│   │   │   |   ├───...
+│   │   │   |   └───SFOSM_10.png
+│   │   │   ├───L1_8
+│   │   │   |   ├───BFMB_1.png
+│   │   │   |   ├───...
+│   │   │   |   └───SFOSM_10.png
+│   │   │   ├───MSE
+│   │   │   |   ├───BFMB_1.png
+│   │   │   |   ├───...
+│   │   │   |   └───SFOSM_10.png
+│   │   │   ├───Reference
+│   │   │   |   ├───BFMB_1.png
+│   │   │   |   ├───...
+│   │   │   |   └───SFOSM_10.png
+│   │   │   ├───SD
+│   │   │   |   ├───BFMB_1.png
+│   │   │   |   ├───...
+│   │   │   |   └───SFOSM_10.png
+│   │   │   └───SNR
+│   │   │   |   ├───BFMB_1.png
+│   │   │   |   ├───...
+│   │   │   |   └───SFOSM_10.png
+│   │   ├───calculate_lpips_ssim.py
+│   │   ├───inference.py
+│   │   ├───L1_r6_results.csv
+│   │   ├───L1_r8_results.csv
+│   │   ├───L1_results.csv
+│   │   ├───stress_test_results.csv
+│   │   ├───MSE_results.csv
+│   │   ├───SD_results.csv
+│   │   └───SNR_results.csv
+│   ├───Robustness
+│   │   └───images
+│   │   │   ├───1_1_1.png
+│   │   │   ├───...
+│   │   │   └───8_5_4.png
+│   │   └───image_generation.py
+│   └───Training Loss
+│   │   ├───Combined_loss.png
+│   │   ├───Combined_ranks.png
+│   │   ├───Loss_L1_r6.csv
+│   │   ├───Loss_L1_r8.csv
+│   │   ├───Loss_L1r4_MSE_SNR.csv
+│   │   ├───plot_different_losses.py
+│   │   ├───plot_different_ranks.py
+├───Interface
+│   ├───node_modules
+│   ├───static
+│   └───templates
+└───Training
+    ├───arguments.py
+    ├───lora_training.py
+    ├───preprocessing.py
+    └───run_script.py
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
