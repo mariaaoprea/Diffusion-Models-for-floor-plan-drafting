@@ -36,7 +36,7 @@ To use the code, you first have to install the required libraries from the requi
  ```
   pip install -r requirements.txt
   ```
-To see all possible parameters, look at arguments.py and set the desired values in run_script.py. <br/>
+To see all possible parameters, look at `arguments.py` and set the desired values in `run_script.py`. <br/>
 After this, you can train your own LoRA module on the provided floor plan dataset or your own one by running the code below. Make sure to give the right path to the "train_data_dir" parameter.
  ```
   python3 run_script.py 
