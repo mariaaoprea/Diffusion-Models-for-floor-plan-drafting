@@ -57,10 +57,10 @@ Additionally, link `app.py` to your preferred interface (text or selection input
     .
     ├───Dataset
     │   └───train
-    │   │   ├───0001.png                      #dataset images
-    │   │   ├───...
-    │   │   ├───0280.png
-    │   │   └───metadata.jsonl                #image descriptions
+    │       ├───0001.png                      #dataset images
+    │       ├───...
+    │       ├───0280.png
+    │       └───metadata.jsonl                #image descriptions
     ├───Evaluation
     │   ├───Interface
     │   │   ├───stress_test_results.csv       # stress test results
