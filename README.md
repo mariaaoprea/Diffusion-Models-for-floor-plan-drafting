@@ -14,24 +14,25 @@ This repository contains the code developed for my Bachelor Thesis at the *Unive
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
-Stable diffusion has shown great potential for generating realistic images. However, as it is not specialized for certain domains, SD is not capable of generating architectural floor plans. This project focused on fine-tuning SD-v1.5 with LoRA to obtain a specialized tool that lets users generate architectural floor plans that follow specific constraints.
+Stable diffusion has shown great potential for generating realistic images. However, SD cannot generate coherent architectural floor plans because it is not specialized for certain domains. This project focused on fine-tuning SD-v1.5 with LoRA to obtain a specialized tool that lets users generate architectural floor plans that follow specific constraints.
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model <a name="model"></a>
-The weights for the LoRA module with the best performance (L1 loss, 250 epochs, rank 4) can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/> 
+The weights for the LoRA module with the best performance <br/> 
+(L1 loss, 250 epochs, rank 4) can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/> 
 and then loaded on top of SD-v1.5: https://huggingface.co/runwayml/stable-diffusion-v1-5<br/> 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✨ Features
-Training: You can train your own LoRA on another labeled dataset of floor plans <br/>
-Experiment: You can train a LoRA module on the provided dataset and try out different hyperparameters <br/>
-User Interface: You can interact with your Model with one of the 2 UIs. One lets you input any prompt in text form, the other one has fixed, selectable options to customize your floor plan
+**Training:** You can train your own LoRA on another labeled dataset of floor plans <br/>
+**Experiment:** You can train a LoRA module on the provided dataset and try out different hyperparameters <br/>
+**User Interface:** You can interact with your Model with one of the 2 UIs. One lets you input any prompt in text form, the other one has fixed, selectable options to customize your floor plan
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💻 Usage
-To use the code, you first have to install the requiered libraries from the requirements.txt.
+To use the code, you first have to install the required libraries from the requirements.txt.
  ```
   pip install -r requirements.txt
   ```
@@ -65,7 +66,7 @@ To get a list of all possible hyperparameters use
     │   │   └───stress_test.py                #stress test script
     │   ├───LPIPS and SSIM
     │   │   └───images                        #images generated for LPIPS and SSIM
-    │   │   │   ├───L1                        #each model has a separated folder
+    │   │   │   ├───L1                        #each model has a separate folder
     │   │   │   |   ├───BFMBM_1.png           #10 images each were generated
     │   │   │   |   ├───...                   #encoded with initials of the quantifiers
     │   │   │   |   └───SFOSM_10.png
