@@ -14,8 +14,8 @@ This repository contains the code developed for my Bachelor Thesis at the *Unive
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
-Stable diffusion has shown great potential for generating realistic images. However, SD cannot generate coherent architectural floor plans because it is not specialized for certain domains. This project focused on fine-tuning SD-v1.5 with LoRA to obtain a specialized tool that lets users generate architectural floor plans that follow specific constraints.
-<br/>
+SStable Diffusion has demonstrated impressive capabilities in generating realistic images. However, it struggles to produce coherent architectural floor plans, as it is not tailored for this specific domain. This project aims to address that limitation by fine-tuning SD-v1.5 with LoRA, resulting in a specialized tool that enables users to generate architectural floor plans adhering to specific constraints.<br/> 
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model <a name="model"></a>
@@ -25,9 +25,9 @@ and then loaded on top of SD-v1.5: https://huggingface.co/runwayml/stable-diffus
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✨ Features
-**Training:** You can train your own LoRA on another labeled dataset of floor plans <br/>
-**Experiment:** You can train a LoRA module on the provided dataset and try out different hyperparameters <br/>
-**User Interface:** You can interact with your Model with one of the 2 UIs. One lets you input any prompt in text form, the other one has fixed, selectable options to customize your floor plan
+**Training:** Train your own LoRA model on a different labeled dataset of floor plans. <br/>
+**Experimentation:** Fine-tune a LoRA module using the provided dataset and explore various hyperparameter settings. <br/>
+**User Interface:** Interact with your model through one of two available UIs: a text-based interface for freeform prompts or a selection-based interface with preset options for customizing your floor plan.
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
