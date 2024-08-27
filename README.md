@@ -1,8 +1,8 @@
 # Diffusion-Models-for-floor-plan-drafting
-Code for my bachelor thesis: "Using Diffusion Models to improve the process of floor plan drafting”
+Code for my Bachelor Thesis: "Using Diffusion Models to improve the process of floor plan drafting”
 ## Project Description
 
-This repository contains the code for my Bachelor Thesis at the _University Osnabrück, Germany_, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting". The goal of this project was to explore the application of diffusion models in the field of floor plan drafting and evaluate their capabilities in improving florr plan the drafting process.
+This repository contains the code developed for my Bachelor Thesis at the *University of Osnabrück, Germany*, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting." The project focused on exploring the application of diffusion models in the field of floor plan drafting and evaluating their potential to enhance the drafting process.
 
 ## 📖 Table of Contents
   - [❓ Why?](#-why)
@@ -14,42 +14,48 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
-...
+Stable diffusion has shown great potential for generating realistic images. However, SD cannot generate coherent architectural floor plans because it is not specialized for certain domains. This project focused on fine-tuning SD-v1.5 with LoRA to obtain a specialized tool that lets users generate architectural floor plans that follow specific constraints.
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model <a name="model"></a>
-The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/>
+The weights for the LoRA module with the best performance (L1 loss, 250 epochs, rank 4) can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA <br/> 
+<br/> 
+and then loaded on top of SD-v1.5: https://huggingface.co/runwayml/stable-diffusion-v1-5<br/> 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✨ Features
-....
+**Training:** You can train your own LoRA on another labeled dataset of floor plans <br/>
+**Experiment:** You can train a LoRA module on the provided dataset and try out different hyperparameters <br/>
+**User Interface:** You can interact with your Model with one of the 2 UIs. One lets you input any prompt in text form, the other one has fixed, selectable options to customize your floor plan
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💻 Usage
-To use the code, you first have to install the requiered libraries from the requirements.txt.
+To use the code, you first have to install the required libraries from the requirements.txt.
  ```
   pip install -r requirements.txt
   ```
-After this, you can create your own LoRA on your dataset.
+To see all possible parameters, look at arguments.py and set the desired values in run_script.py. <br/>
+If you want to use my fine-tuned model, download it from https://huggingface.co/maria26/Floor_Plan_LoRA and put all the downloaded files into the empty `model` folder.
+After this, you can train your own LoRA module on the provided floor plan dataset or your own one by running the code below. Make sure to give the right path to the "train_data_dir" parameter.
  ```
-  ????python3 main.py -mode training -use_tf_dataset
+  python3 run_script.py 
   ```
-You can also use the web-interfaces.
+You can also access the web interfaces by running the following code. Ensure the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly. 😊
+<br/>
+Additionally, link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line as needed.
  ```
-  ???
+  python3 app.py 
   ```
-To get a list of all possible hyperparameters use
- ```
-  python3 main.py -h
-```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💾 Structure
 <!-- Project Structure -->
 
     .
+    ├───model                                 #empty folder, add the downloaded model to this folder
     ├───dataset
     │   └───train
     │   │   ├───0001.png                      #dataset images
@@ -62,7 +68,7 @@ To get a list of all possible hyperparameters use
     │   │   └───stress_test.py                #stress test script
     │   ├───LPIPS and SSIM
     │   │   └───images                        #images generated for LPIPS and SSIM
-    │   │   │   ├───L1                        #each model has a separated folder
+    │   │   │   ├───L1                        #each model has a separate folder
     │   │   │   |   ├───BFMBM_1.png           #10 images each were generated
     │   │   │   |   ├───...                   #encoded with initials of the quantifiers
     │   │   │   |   └───SFOSM_10.png
@@ -100,7 +106,7 @@ To get a list of all possible hyperparameters use
     │       ├───Loss_L1_r8.csv
     │       ├───Loss_L1r4_MSE_SNR.csv
     │       ├───plot_different_losses.py     #script to plot losses
-    │       └───plot_different_ranks.py      #script to plot results with diff. ranks
+    │       └───plot_different_ranks.py      #script to plot results with different ranks
     ├───Interface
     │   ├───node_modules
     │   ├───static
@@ -111,16 +117,16 @@ To get a list of all possible hyperparameters use
     │   │   ├───index-selection_input.html  #selection input interface
     │   │   └───index-text_input.html       #text input interface
     │   ├───__init__.py
-    │   ├───app.py
+    │   ├───app.py                          #make sure to add the right path to your model
     │   ├───interface.jpynb
     │   ├───package_lock.json
     │   ├───package.json
     │   └───tailwind.config.js
     └───Training
-        ├───arguments.py                  #parameters
-        ├───lora_training.py              #training script
-        ├───preprocessing.py              #dataset preprocessing
-        └───run_script.py                 #run file
+        ├───arguments.py                   #parameters
+        ├───lora_training.py               #training script
+        ├───preprocessing.py               #dataset preprocessing
+        └───run_script.py                  #run file
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
