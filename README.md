@@ -36,18 +36,18 @@ To use the code, you first have to install the required libraries from the requi
  ```
   pip install -r requirements.txt
   ```
-After this, you can train your own LoRA module on the floor plan dataset.
+To see all possible parameters, look at arguments.py and set the desired values in run_script.py.
+After this, you can train your own LoRA module on the provided floor plan dataset or your own one by running the code below. Make sure to give the right path to the "train_data_dir" parameter.
  ```
-  ????python3 main.py -mode training -use_tf_dataset
+  python3 run_script.py 
   ```
-You can also use the web interfaces by running the following code. Make sure to modify the path to the model in app.py so that it loads correctly😊.
+You can also access the web interfaces by running the following code. Ensure that you modify the path to the LoRA safetensors in `app.py` so that it loads correctly. 😊
+<br/>
+Additionally, link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line as needed.
  ```
-  ???
+  python3 app.py 
   ```
-To get a list of all possible hyperparameters, use:
- ```
-  python3 main.py -h
-```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💾 Structure
