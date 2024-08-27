@@ -13,7 +13,7 @@ This repository contains the code for my Bachelor Thesis at the _University Osna
   - [📎 License](#-license)
   <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Model
+## ✴️ Model
 The model can be downloaded from: https://huggingface.co/maria26/Floor_Plan_LoRA
 <p align="right">(<a href="#top">back to top</a>)</p>
 
