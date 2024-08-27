@@ -80,7 +80,7 @@ def main():
     os.makedirs('Evaluation/Interface', exist_ok=True)
     
     # Prepare the CSV file
-    with open('Evaluation/Interface/stress_test_results.csv', mode='w', newline='') as file:
+    with open('Evaluation/Interface/stress_test_results_new.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["prompt_count", "average_submission_time", "average_completion_time", 
                          "total_errors", "throughput"])
