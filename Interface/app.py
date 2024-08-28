@@ -19,16 +19,9 @@ logging.basicConfig(level=logging.INFO)
 # Initialize the model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5").to(device) #path to SD-v1.5
-<<<<<<< HEAD
-<<<<<<< HEAD
 pipeline.load_lora_weights("maria26/Floor_Plan_LoRA") # path to LoRA Module
 # to use the weights of your own model in the "Model" folder, use pipeline.load_lora_weights("Model",weights_name="your_weights_name")
-=======
-pipeline.load_lora_weights("Model", weight_name="model.safetensors") #path to the model
->>>>>>> parent of 00fbc96 (Refactor)
-=======
-pipeline.load_lora_weights("Model", weight_name="model.safetensors") #path to the model
->>>>>>> parent of 00fbc96 (Refactor)
+
 
 def generate_images(prompt, num_images, scheduler, inference_steps, task_id):
     """

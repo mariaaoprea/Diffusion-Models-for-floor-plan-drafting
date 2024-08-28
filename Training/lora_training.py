@@ -25,20 +25,10 @@ import torch.nn.functional as F
 import torch.utils.checkpoint
 
 #This is the training script for the LoRA model. 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #It is based on the training script from the huggingface diffusers repository: https://github.com/huggingface/diffusers.git.
 #The train_text_to_image.py script was then split into all python files that can be found in the training folder 
 #and then modified to the needs of this thesis
 
-
-
-=======
-#It is based on the training script from the stable-diffusion repository.
->>>>>>> parent of 00fbc96 (Refactor)
-=======
-#It is based on the training script from the stable-diffusion repository.
->>>>>>> parent of 00fbc96 (Refactor)
 # Imported files
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
