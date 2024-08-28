@@ -41,10 +41,10 @@ After this, you can train your own LoRA module on the provided floor plan datase
  ```
   python3 run_script.py 
   ```
-If you want to use my fine-tuned model, download it from https://huggingface.co/maria26/Floor_Plan_LoRA and put all the downloaded files into the empty `Model` folder.
+If you want to use my fine-tuned model, it is already linked to the interface.
 <br/>
 <br/>
-You can also access the web interfaces by running the code below. Make sure that the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly. 😊
+You can also access the web interfaces by running the code below. Make sure that the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly.😊
 <br/>
  ```
   python3 app.py 
@@ -122,7 +122,7 @@ You can link `app.py` to your preferred interface (text or selection input). By 
     │   ├───package_lock.json
     │   ├───package.json
     │   └───tailwind.config.js
-    ├───Model                                #EMPTY folder, ADD the downloaded model to this folder
+    ├───Model                                #EMPTY folder, you can ADD your trained LoRA model to this folder
     └───Training
         ├───arguments.py                     #parameters
         ├───lora_training.py                 #training script
