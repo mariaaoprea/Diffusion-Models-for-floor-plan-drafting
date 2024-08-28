@@ -25,7 +25,8 @@ import torch.nn.functional as F
 import torch.utils.checkpoint
 
 
-
+#This is the training script for the LoRA model. 
+#It is based on the training script from the stable-diffusion repository.
 # Imported files
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
