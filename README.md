@@ -37,14 +37,14 @@ To use the code, you first have to install the required libraries from the requi
   pip install -r requirements.txt
   ```
 To see all possible parameters, look at `arguments.py` and set the desired values in `run_script.py`. <br/>
-After this, you can train your own LoRA module on the provided floor plan dataset or your own one by running the code below. Make sure to give the right path to the `train_data_dir` parameter.
+After this, you can train your own LoRA module on the provided floor plan dataset or your own one if you insert it into the `Dataset` folder. To start the training, run the code below. Make sure to give the right path to the `train_data_dir` parameter.
  ```
   python3 run_script.py 
   ```
 If you want to use my fine-tuned model, it is already linked to the interface.
 <br/>
 <br/>
-You can also access the web interfaces by running the code below. Make sure that the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly.😊
+You can also access the web interface already linked to the fine-tuned model by running the code below. You can also link the interface to your model by modifying the path to the LoRA safe-tensors in `app.py`.😊
 <br/>
  ```
   python3 app.py 
