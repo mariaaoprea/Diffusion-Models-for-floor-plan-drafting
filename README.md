@@ -1,8 +1,8 @@
 # Diffusion-Models-for-floor-plan-drafting
-Code for my Bachelor Thesis: "Using Diffusion Models to improve the process of floor plan drafting”
+Code for my Bachelor Thesis: _"Using Diffusion Models to improve the process of floor plan drafting”_
 ## Project Description
 
-This repository contains the code developed for my Bachelor Thesis at the *University of Osnabrück, Germany*, titled "Using Diffusion Models to Improve the Process of Floor Plan Drafting." The project focused on exploring the application of diffusion models in the field of floor plan drafting and evaluating their potential to enhance the drafting process.
+This repository contains the code developed for my Bachelor’s Thesis, conducted at the *DFKI Osnabrück (German Research Center for Artificial Intelligence)* as part of my Bachelor’s degree at the *University of Osnabrück, Germany*. The project focused on exploring the application of diffusion models in floor plan drafting and assessing their potential to improve the drafting process.
 
 ## 📖 Table of Contents
   - [❓ Why?](#-why)
@@ -14,8 +14,8 @@ This repository contains the code developed for my Bachelor Thesis at the *Unive
   <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ❓ Why?
-Stable diffusion has shown great potential for generating realistic images. However, SD cannot generate coherent architectural floor plans because it is not specialized for certain domains. This project focused on fine-tuning SD-v1.5 with LoRA to obtain a specialized tool that lets users generate architectural floor plans that follow specific constraints.
-<br/>
+SStable Diffusion has demonstrated impressive capabilities in generating realistic images. However, it struggles to produce coherent architectural floor plans, as it is not tailored for this specific domain. This project aims to address that limitation by fine-tuning SD-v1.5 with LoRA, resulting in a specialized tool that enables users to generate architectural floor plans adhering to specific constraints.<br/> 
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✴️ Model <a name="model"></a>
@@ -25,9 +25,9 @@ and then loaded on top of SD-v1.5: https://huggingface.co/runwayml/stable-diffus
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## ✨ Features
-**Training:** You can train your own LoRA on another labeled dataset of floor plans <br/>
-**Experiment:** You can train a LoRA module on the provided dataset and try out different hyperparameters <br/>
-**User Interface:** You can interact with your Model with one of the 2 UIs. One lets you input any prompt in text form, the other one has fixed, selectable options to customize your floor plan
+**Training:** Train your own LoRA model on a different labeled dataset of floor plans. <br/>
+**Experimentation:** Fine-tune a LoRA module using the provided dataset and explore various hyperparameter settings. <br/>
+**User Interface:** Interact with your model through one of two available UIs: a text-based interface for freeform prompts or a selection-based interface with preset options for customizing your floor plan.
 <br/>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -36,32 +36,32 @@ To use the code, you first have to install the required libraries from the requi
  ```
   pip install -r requirements.txt
   ```
-To see all possible parameters, look at arguments.py and set the desired values in run_script.py. <br/>
-If you want to use my fine-tuned model, download it from https://huggingface.co/maria26/Floor_Plan_LoRA and put all the downloaded files into the empty `model` folder.
-After this, you can train your own LoRA module on the provided floor plan dataset or your own one by running the code below. Make sure to give the right path to the "train_data_dir" parameter.
+To see all possible parameters, look at `arguments.py` and set the desired values in `run_script.py`. <br/>
+After this, you can train your own LoRA module on the provided floor plan dataset or your own one by running the code below. Make sure to give the right path to the `train_data_dir` parameter.
  ```
   python3 run_script.py 
   ```
-You can also access the web interfaces by running the following code. Ensure the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly. 😊
+If you want to use my fine-tuned model, download it from https://huggingface.co/maria26/Floor_Plan_LoRA and put all the downloaded files into the empty `Model` folder.
 <br/>
-Additionally, link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line as needed.
+<br/>
+You can also access the web interfaces by running the code below. Make sure that the path to the LoRA safe-tensors in `app.py` is right so that it loads correctly. 😊
+<br/>
  ```
   python3 app.py 
   ```
-
+You can link `app.py` to your preferred interface (text or selection input). By default, it is set to the selection input, but you can adjust the corresponding line in the `home()` function as needed.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💾 Structure
 <!-- Project Structure -->
 
     .
-    ├───model                                 #empty folder, add the downloaded model to this folder
-    ├───dataset
+    ├───Dataset
     │   └───train
-    │   │   ├───0001.png                      #dataset images
-    │   │   ├───...
-    │   │   ├───0280.png
-    │   │   └───metadata.jsonl                #image descriptions
+    │       ├───0001.png                      #dataset images
+    │       ├───...
+    │       ├───0280.png
+    │       └───metadata.jsonl                #image descriptions
     ├───Evaluation
     │   ├───Interface
     │   │   ├───stress_test_results.csv       # stress test results
@@ -114,19 +114,20 @@ Additionally, link `app.py` to your preferred interface (text or selection input
     │   │   ├───output.css
     │   │   └───styles.css
     │   └───templates
-    │   │   ├───index-selection_input.html  #selection input interface
-    │   │   └───index-text_input.html       #text input interface
+    │   │   ├───index-selection_input.html   #selection input interface
+    │   │   └───index-text_input.html        #text input interface
     │   ├───__init__.py
-    │   ├───app.py                          #make sure to add the right path to your model
+    │   ├───app.py                           #make sure to add the right path to your model
     │   ├───interface.jpynb
     │   ├───package_lock.json
     │   ├───package.json
     │   └───tailwind.config.js
+    ├───Model                                #EMPTY folder, ADD the downloaded model to this folder
     └───Training
-        ├───arguments.py                   #parameters
-        ├───lora_training.py               #training script
-        ├───preprocessing.py               #dataset preprocessing
-        └───run_script.py                  #run file
+        ├───arguments.py                     #parameters
+        ├───lora_training.py                 #training script
+        ├───preprocessing.py                 #dataset preprocessing
+        └───run_script.py                    #run file
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
