@@ -9,7 +9,7 @@ def main():
     command = [
         "accelerate", "launch", 
         "Training/lora_training.py",
-        "--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5",
+        "--pretrained_model_name_or_path=sd-legacy/stable-diffusion-v1-5",
         "--train_data_dir=Dataset",
         "--output_dir=output",
         "--cache_dir=cache",
